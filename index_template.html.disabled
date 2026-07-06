@@ -186,8 +186,7 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- More Works Dropdown (commented out - uncomment to enable) -->
-  <!--
+  <!-- More Works Dropdown -->
   <div class="more-works-container">
     <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
       <i class="fas fa-flask"></i>
@@ -202,14 +201,19 @@
         </button>
       </div>
       <div class="works-list">
+        <!-- TODO: Replace with your lab's related works -->
         <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
           <div class="work-info">
+            <!-- TODO: Replace with actual paper title -->
             <h5>Paper Title 1</h5>
+            <!-- TODO: Replace with brief description -->
             <p>Brief description of the work and its main contribution.</p>
+            <!-- TODO: Replace with venue and year -->
             <span class="work-venue">Conference/Journal 2024</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
+        <!-- TODO: Add more related works or remove extra items -->
         <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
           <div class="work-info">
             <h5>Paper Title 2</h5>
@@ -229,7 +233,6 @@
       </div>
     </div>
   </div>
-  -->
 
   <main id="main-content">
   <section class="hero">
@@ -238,48 +241,28 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">MIRU若手 発表資料・プロジェクト公開班 (仮）​</h1>
+            <h1 class="title is-1 publication-title">Academic Project Page</h1>
             <div class="is-size-5 publication-authors">
-              <!-- Personal links are OFF by default. To enable a link, uncomment the <a> line and remove the plain name line below it. -->
+              <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <!-- <a href="ARIMURA_PERSONAL_LINK" target="_blank">有村 幸峻</a> -->
-                有村 幸峻<sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://oumi03.github.io/" target="_blank">大海 佑介</a><sup>2</sup>,
-              </span>
-              <span class="author-block">
-                <!-- <a href="KONNO_PERSONAL_LINK" target="_blank">近野 翼</a> -->
-                近野 翼<sup>3</sup>,
-              </span>
-              <span class="author-block">
-                <!-- <a href="SUGAYA_PERSONAL_LINK" target="_blank">菅谷 友稀</a> -->
-                菅谷 友稀<sup>4</sup>,
-              </span>
-              <span class="author-block">
-                <!-- <a href="TAKEZAKI_PERSONAL_LINK" target="_blank">竹崎 隼平</a> -->
-                竹崎 隼平<sup>5</sup>,
-              </span>
-              <span class="author-block">
-                <!-- <a href="YAMAMOTO_PERSONAL_LINK" target="_blank">山本 陸</a> -->
-                山本 陸<sup>1</sup>
-              </span>
-            </div>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                  </span>
+                  </div>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <sup>1</sup>九州工業大学&emsp;
-                <sup>2</sup>慶應義塾大学&emsp;
-                <sup>3</sup>東北大学&emsp;
-                <sup>4</sup>大阪公立大学&emsp;
-                <sup>5</sup>九州大学
-              </span>
-            </div>
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block">Institution Name<br>Conference name and year</span>
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div>
 
-                  <!-- Publication links (commented out - uncomment to enable) -->
-                  <!--
                   <div class="column has-text-centered">
                     <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
                       <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
@@ -289,6 +272,8 @@
                         <span>Paper</span>
                       </a>
                     </span>
+
+                    <!-- TODO: Add your supplementary material PDF or remove this section -->
                     <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
@@ -298,6 +283,8 @@
                       <span>Supplementary</span>
                     </a>
                   </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
                     <a href="https://github.com/YOUR REPO HERE" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
@@ -307,6 +294,8 @@
                     <span>Code</span>
                   </a>
                 </span>
+
+                <!-- TODO: Update with your arXiv paper ID -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
@@ -318,7 +307,6 @@
               </span>
             </div>
           </div>
-          -->
         </div>
       </div>
     </div>
@@ -361,66 +349,6 @@
   </div>
 </section>
 <!-- End paper abstract -->
-
-
-<!-- 引用数 -->
-<section class="section hero">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">引用数</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: 引用数の内容を追記してください -->
-          <p>
-            Project Pageの公開が研究の認知に貢献するかを検証するため，引用数を尺度としてProject Pageの有無による差を比較した．
-            CVPRの3年間の論文を対象に各論文の引用数とProject Pageの有無を収集し，各年度の引用数の中央値および四分位範囲を可視化した．
-            3年分の結果によりPPの公開が引用数向上に貢献する結果が得られた​
-          </p>
-          <img src="static/images/citation.png" alt="引用数の比較結果" style="width:100%; max-width:800px; display:block; margin:1.5rem auto 0;" loading="lazy"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End 引用数 -->
-
-
-<!-- Paper2Web -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Paper2Web</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Paper2Web の内容を追記してください -->
-          <p>
-            Paper2Web に関する説明をここに記述してください。
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Paper2Web -->
-
-
-<!-- 定性評価 -->
-<section class="section hero">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">定性評価</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: 定性評価の内容を追記してください -->
-          <p>
-            定性評価に関する説明をここに記述してください。
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End 定性評価 -->
 
 
 <!-- Image carousel -->
@@ -466,15 +394,17 @@
 
 
 
-<!-- Youtube video (commented out - uncomment to enable) -->
-<!--
+<!-- Youtube video -->
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
+      <!-- Paper video. -->
       <h2 class="title is-3">Video Presentation</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
+          
           <div class="publication-video">
+            <!-- TODO: Replace with your YouTube video ID -->
             <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
@@ -482,29 +412,33 @@
     </div>
   </div>
 </section>
--->
 <!-- End youtube video -->
 
 
-<!-- Video carousel (commented out - uncomment to enable) -->
-<!--
+<!-- Video carousel -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Another Carousel</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
+          <!-- TODO: Add poster image for better preview -->
           <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
+            <!-- Your video file here -->
             <source src="static/videos/carousel1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item item-video2">
+          <!-- TODO: Add poster image for better preview -->
           <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
+            <!-- Your video file here -->
             <source src="static/videos/carousel2.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item item-video3">
+          <!-- TODO: Add poster image for better preview -->
           <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
+            <!-- Your video file here -->
             <source src="static/videos/carousel3.mp4" type="video/mp4">
           </video>
         </div>
@@ -512,7 +446,6 @@
     </div>
   </div>
 </section>
--->
 <!-- End video carousel -->
 
 
@@ -547,16 +480,12 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@inproceedings{arimura2026yourpaper,
-  title     = {Your Paper Title Here},
-  author    = {Arimura, Yukitoshi and
-               Oumi, Yusuke and
-               Konno, Tsubasa and
-               Sugaya, Yuki and
-               Takezaki, Jumpei and
-               Yamamoto, Riku},
-  booktitle = {MIRU},
-  year      = {2026}
+      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
+  title={Your Paper Title Here},
+  author={First Author and Second Author and Third Author},
+  journal={Conference/Journal Name},
+  year={2024},
+  url={https://your-domain.com/your-project-page}
 }</code></pre>
     </div>
 </section>
