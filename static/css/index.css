@@ -750,4 +750,11 @@ a:focus {
 }
 
 
-
+/* ===== ページ全体のコンテンツ幅の調整（このブロックを消せば元に戻る） ===== */
+.container.is-max-desktop {
+  max-width: 1152px;   /* 元は 960px。さらに広くしたければ 1344px などに */
+}
+.columns.is-centered > .column.is-four-fifths {
+  flex: none;
+  width: 100%;         /* 各セクションの本文列を全幅に（元は 80% 幅） */
+}

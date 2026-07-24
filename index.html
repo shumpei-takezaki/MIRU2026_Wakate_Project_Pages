@@ -417,6 +417,7 @@
           </p>
         </div>
 
+        <div class="qual-wide">
         <!-- 3例の切り替えラベル（クリックでジャンプ） -->
         <div class="qual-labels">
           <button type="button" class="qual-btn is-active" data-slide="0" style="--qc:#3273dc;--qt:#fff;">A. Original (Good example)</button>
@@ -541,6 +542,7 @@
         <p class="has-text-centered is-size-7 has-text-grey mt-2">
           例ははじめ 5 秒ごとに自動で切り替わり，枠内に触れる・タップする・◀ ▶ 等を操作すると自動切り替えは停止します／3 例とも実物のページを枠内に埋め込んでおり，デモなどの操作はそのまま可能です（別ページへのリンクは無効化しています．右上の ⟳ で埋め込みを初期状態に戻せます）
         </p>
+        </div>
 
         <div class="content has-text-justified mt-4">
           <p>
@@ -561,6 +563,7 @@
 </section>
 
 <style>
+  #qualitative .qual-wide { width: 100%; }
   #qualitative .qual-labels { display: flex; gap: 12px; margin-bottom: 1rem; justify-content: center; }
   #qualitative .qual-btn {
     flex: 1; max-width: 260px; padding: .55em .5em;
@@ -615,6 +618,9 @@
   }
   #qualitative .qual-reload:hover { background: #f5f5f5; }
   #qualitative .qual-frame img { width: 100%; display: block; }
+  @media (min-width: 1024px) {
+    #qualitative .qual-frame { height: 560px; }
+  }
   #qualitative .qual-frame iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
 
   #qualitative .qual-arrow {
@@ -728,49 +734,6 @@
   });
 </script>
 <!-- End 定性評価 -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
 
 
 <!-- Youtube video (commented out - uncomment to enable) -->
