@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous 3D Perception Model with Persistent State</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333; background: #fff; line-height: 1.7; font-size: 15px;
+  }
+  .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+  header { text-align: center; padding: 42px 0 36px; }
+  header h1 { font-size: 30px; font-weight: 700; color: #222; line-height: 1.3; margin-bottom: 18px; }
+  .authors { font-size: 15px; margin-bottom: 4px; }
+  .authors a { color: #6fadef; text-decoration: none; }
+  sup { font-size: 11px; }
+  .affil { margin-top: 10px; font-size: 15px; color: #222; }
+  .equal { font-size: 14px; color: #222; margin-top: 2px; }
+  .venue { font-weight: 700; margin-top: 18px; font-size: 16px; }
+  .btns { margin-top: 18px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: #222; color: #fff; text-decoration: none;
+    border-radius: 9999px; padding: 7px 18px; font-size: 14px; margin: 0 4px;
+  }
+  section h2 { text-align: center; font-size: 26px; font-weight: 700; color: #222; margin-bottom: 22px; }
+  section p { text-align: justify; margin-bottom: 14px; }
+  .gray { background: #f2f2f2; padding: 46px 0 34px; }
+  .white { padding: 46px 0 10px; }
+  figure { text-align: center; margin: 24px 0 8px; }
+  figure img { max-width: 100%; }
+  figcaption { font-size: 12px; color: #555; margin-top: 6px; }
+  .fig-right { float: right; width: 40%; margin: 4px 0 10px 18px; }
+  .fig-right img { width: 100%; }
+  .clear { clear: both; }
+  .bibtex h2 { text-align: left; font-size: 24px; }
+  .bibtex pre {
+    background: #ececec; padding: 26px 24px; font-size: 12.5px;
+    font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+    overflow-x: auto; line-height: 1.6; color: #222;
+  }
+  footer { background: #f7f7f7; text-align: center; padding: 24px 0; font-size: 13px; color: #555; margin-top: 46px; }
+  footer a { color: #6fadef; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Continuous 3D Perception Model with Persistent State</h1>
+    <p class="authors">
+      <a href="https://qianqianwang68.github.io/">Qianqian Wang</a><sup>1,2*</sup>&nbsp;&nbsp;
+      <a href="https://forrest-110.github.io/">Yifei Zhang</a><sup>1*</sup>&nbsp;&nbsp;
+      <a href="https://holynski.org/">Aleksander Holynski</a><sup>1,2</sup>&nbsp;&nbsp;
+      <a href="https://people.eecs.berkeley.edu/~efros/">Alexei A Efros</a><sup>1</sup>
+    </p>
+    <p class="authors"><a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a><sup>1</sup></p>
+    <p class="affil"><sup>1</sup>UC Berkeley&nbsp;&nbsp;&nbsp;<sup>2</sup>Google DeepMind</p>
+    <p class="equal">(*: equal contribution)</p>
+    <p class="venue">CVPR 2025 (Oral)</p>
+    <div class="btns">
+      <a class="btn" href="https://arxiv.org/abs/2501.12387" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> arXiv</a>
+      <a class="btn" href="https://github.com/CUT3R/CUT3R" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+    </div>
+  </div>
+</header>
+
+<div class="gray">
+  <section class="container">
+    <h2>Abstract</h2>
+    <p>We present a unified framework capable of solving a broad range of 3D tasks. Our approach features a stateful recurrent model that continuously updates its state representation with each new observation. Given a stream of images, this evolving state can be used to generate metric-scale pointmaps (per-pixel 3D points) for each new input in an online fashion. These pointmaps reside within a common coordinate system, and can be accumulated into a coherent, dense scene reconstruction that updates as new images arrive. Our model, called <b>CUT3R</b> (<b>C</b>ontinuous <b>U</b>pdating <b>T</b>ransformer for <b>3D</b> <b>R</b>econstruction), captures rich priors of real-world scenes: not only can it predict accurate pointmaps from image observations, but it can also infer unseen regions of the scene by probing at virtual, unobserved views. Our method is simple yet highly flexible, naturally accepting varying length of images that may be either video streams or unordered photo collections, containing both static and dynamic content. We evaluate our method on various 3D/4D tasks and demonstrate competitive or state-of-the-art performance in each.</p>
+  </section>
+  <section class="container" style="margin-top: 36px;">
+    <h2>Introduction</h2>
+    <p>Humans are online visual learners. We continuously process streams of visual input, building on what we have learned in the past while learning in the present. Our prior knowledge enables us to interpret the world from minimal information; e.g., upon entering a new restaurant, it only takes a glance to start inferring its layout and atmosphere. But it doesn't stop there&mdash;as we accumulate more observations, we continuously refine our mental model of the 3D environment. This ability to reconcile our prior knowledge of the world with a continuous stream of new observations is crucial for functioning effectively in an ever-changing visual world. Building on these insights, we introduce an online 3D perception framework that unifies three key capabilities: 1) reconstructing 3D scenes from few observations, 2) continuously refining the reconstruction with more observations, and 3) inferring 3D properties of unobserved scene regions. We achieve these capabilities by integrating data-driven priors with a recurrent update mechanism. The learned prior enables our method to address challenges encountered by traditional methods (e.g., dynamic objects, sparse observations, degenerate camera motion), while the ability to continuously update allows it to process new observations online, and improve the reconstruction continuously over time. Specifically, given an image stream, our recurrent model maintains and incrementally updates a persistent internal state that encodes the scene content. With each new observation, the model simultaneously updates this state and reads from it to predict the current view's 3D properties, including an estimate of that view's dense 3D geometry (as a pointmap; a 3D point per-pixel in a world coordinate frame) and camera parameters (both intrinsics and extrinsics). Accumulating these pointmaps enables online dense scene reconstruction, as illustrated in Fig. 1. Additionally, our framework supports inferring unobserved parts of the scene: by querying the internal state with a virtual (unseen) view, parameterized as a raymap, we can extract the corresponding pointmap and color for the query view, as depicted in Fig. 2. Our framework is designed to be general and flexible, making it well-suited for training on an extensive collection of datasets and adaptable to diverse inference scenarios. During training, we leverage a wide variety of 3D data, including single images, videos, and photo collections with partial or full 3D annotations. These datasets span a broad spectrum of scene types and contexts&mdash;static and dynamic, indoor and outdoor, real and synthetic&mdash;enabling the model to acquire robust and generalizable priors. During inference, our recurrent framework naturally accepts varying numbers of images, and supports a wide range of input data settings: from streaming video to unstructured image collections, including wide-baseline or even non-overlapping images. Beyond static scenes, it seamlessly handles videos of dynamic scenes, estimating accurate camera parameters and dense point clouds for moving parts of the scene. We evaluate our method on various 3D tasks: monocular and consistent video depth estimation, camera pose estimation, and 3D reconstruction, achieving competitive or state-of-the-art performance in each. We also show that our method can infer previously unseen structures and continuously refine the reconstruction as new observations arrive.</p>
+  </section>
+</div>
+
+<div class="white">
+  <section class="container">
+    <h2>Results</h2>
+    <p>Our unified framework tackles various 3D tasks, including dynamic scene reconstruction, 3D reconstruction from videos and photo collections, and inferring unseen structure. An example reconstruction is shown below. Please refer to the paper for more results.</p>
+    <figure>
+      <img src="assets/figure1.png" alt="An example of our online reconstruction" style="max-width: 420px; width: 100%;">
+      <figcaption>Figure 1. An example of our online reconstruction.</figcaption>
+    </figure>
+  </section>
+</div>
+
+<div class="white">
+  <section class="container">
+    <h2>Method Overview</h2>
+    <figure class="fig-right">
+      <img src="assets/figure2.png" alt="Overview of our method">
+      <figcaption>Figure 2. Overview of our method.</figcaption>
+    </figure>
+    <p>Our approach takes as input a stream of images without any camera information. The image streams can come from either video or image collections. As a new image comes in through the model, it interacts with the latent state representation, which encodes the understanding of the current 3D scene. Specifically, the image simultaneously updates the state with new information and retrieves information stored in the state. Following the state-image interaction, explicit 3D pointmaps and camera poses are extracted for each view. The state can also be queried with a virtual view to predict its corresponding pointmap, capturing unseen parts of the scene. See Fig. 3 for our method overview. Our method takes a stream of images as input. For each current image, it is first encoded into token representation by a ViT encoder. We represent the state also as a set of tokens. Prior to seeing any image input, the state tokens are initialized as a set of learnable tokens shared by all scenes. The image tokens interact with the state in two ways: they update the state with information from the current image and read the context from the state, incorporating stored past information. We refer to these interactions as state-update and state-readout, respectively. This bidirectional interaction is implemented using two interconnected transformer decoders, which jointly operate on both image and state tokens. A learnable "pose token" is prepended to the image tokens, whose output captures image-level information related to the scene, such as ego motion. Within the decoders, the outputs from both sides cross-attend to each other at each decoder block to ensure effective information transfer. After this interaction, explicit 3D representation can be extracted. Specifically, we predict two pointmaps with corresponding confidence maps. These maps are defined in two coordinate frames: the input image's own coordinate frame and the world frame, respectively, where the world frame is defined as the coordinate frame of the initial image. Additionally, we predict the relative transformations between the two coordinate frames, or, the ego motion. All pointmaps and poses are in metric scale (i.e., meters). Although predicting these outputs may seem redundant, we found this redundancy simplifies training. It enables each output to receive direct supervision, and importantly, it facilitates training on datasets with partial annotations, such as those containing only pose or single-view depth, thereby broadening the range of usable data.</p>
+    <p>Leveraging past 3D experiences, humans can envision parts of a scene beyond what is directly observed. We emulate this ability by extending the state-readout operation to predict unseen portions of the scene from a virtual camera view. Specifically, we use a virtual camera as a query to extract information from the state. The virtual camera's intrinsics and extrinsics are represented as a raymap, a 6-channel image encoding the origin and direction of rays at each pixel. Given a query raymap, we first encode it into token representations using a separate transformer encoder. Then, the rest of the process aligns largely with what is described above. Note that, unlike in the state-image interaction, the state is not updated here, as the raymap serves solely as a query without introducing new scene content.</p>
+    <div class="clear"></div>
+  </section>
+</div>
+
+<div class="white">
+  <section class="container">
+    <h2>Acknowledgements</h2>
+    <p>We would like to thank Haiwen Feng, Chung Min Kim, Justin Kerr, Songwei Ge, Chenfeng Xu, Letian Fu, and Ren Wang for helpful discussions. And we thank Brent Yi for his support on the interactive visualization. We especially thank Noah Snavely for his guidance and support. This project is supported in part by DARPA No.~HR001123C0021, IARPA DOI/IBC No.~140D0423C0035, NSF:CNS-2235013, Bakar Fellows, ONR, MURI, TRI and BAIR sponsors. The views and conclusions contained herein are those of the authors and do not represent the official policies or endorsements of these institutions.</p>
+  </section>
+</div>
+
+<div class="white bibtex">
+  <section class="container">
+    <h2>BibTeX</h2>
+    <pre>@inproceedings{cut3r,
+    Author = {Qianqian Wang* and Yifei Zhang* and Aleksander Holynski and Alexei A. Efros and Angjoo Kanazawa},
+    Title = {Continuous 3D Perception Model with Persistent State},
+    Year = {2025},
+      booktitle={CVPR},
+    }</pre>
+  </section>
+</div>
+
+<footer>
+  Design borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">nerfies</a>.
+</footer>
+
+</body>
+</html>
