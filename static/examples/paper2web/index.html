@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous 3D Perception Model with Persistent State</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #4f46e5;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .authors {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .affiliations {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Resources */
+        .resources {
+            background-color: white;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-card p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .resource-link {
+            display: inline-block;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Citation */
+        .citation-box {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .citation-box pre {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero">
+        <div class="container">
+            <h1>Continuous 3D Perception Model with Persistent State</h1>
+            <div class="authors">Qianqian Wang<sup>1</sup>, Yifei Zhang<sup>1</sup>, Aleksander Holynski<sup>2</sup>, Alexei A. Efros<sup>1</sup>, Angjoo Kanazawa<sup>1</sup></div>
+            <div class="affiliations"><sup>1</sup>University of California, Berkeley<br><sup>2</sup>Google DeepMind</div>
+            <p>We introduce CUT3R, a unified framework for continuous 3D perception using a recurrent, stateful transformer. Given a stream of RGB images—whether video or unordered photo collections—our model incrementally updates a persistent scene state and generates metric-scale pointmaps and camera poses online.</p>
+            <div class="hero-buttons">
+                <a href="#introduction" class="btn btn-primary">Explore Project</a>
+                <a href="https://github.com/ucb-berkeley/continuous-3d-perception" class="btn btn-secondary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#introduction" class="nav-link active">Introduction</a></li>
+                <li><a href="#related-work" class="nav-link">Related Work</a></li>
+                <li><a href="#dataset" class="nav-link">Dataset</a></li>
+                <li><a href="#methodology" class="nav-link">Methodology</a></li>
+                <li><a href="#results" class="nav-link">Results</a></li>
+                <li><a href="#applications" class="nav-link">Applications</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+                <li><a href="#citation" class="nav-link">Citation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Introduction -->
+    <section id="introduction">
+        <div class="container">
+            <div class="section-header">
+                <h2>Introduction</h2>
+            </div>
+            <div class="section-content">
+                <p>We introduce CUT3R, a unified framework for continuous 3D perception using a recurrent, stateful transformer. Given a stream of RGB images—whether video or unordered photo collections—our model incrementally updates a persistent scene state and generates metric-scale pointmaps and camera poses online. This enables dense, online 3D reconstruction without assuming static scenes or known camera parameters.</p>
+                <p>Our model leverages learned priors to handle sparse inputs, degenerate motion, and dynamic content, while supporting inference of unobserved scene regions via virtual camera queries. Unlike tabula rasa methods like SfM/SLAM or NeRF, CUT3R builds a coherent 3D world model over time. The framework is simple, general, and effective for monocular depth, pose estimation, and reconstruction tasks across diverse scenes.</p>
+                
+                <div class="image-grid">
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-picture-1.png" alt="Figure 1. Continuous 3D Perception. Given a stream of RGB images as input, our approach enables dense 3D reconstruction in an online, continuous manner, estimating both camera parameters and dense 3D geometry with each incoming frame. Our framework supports various 3D tasks, processes inputs from video sequences and sparse photo collections, and can handle both static and dynamic scenes.">
+                        <div class="image-caption">Figure 1. Continuous 3D Perception. Given a stream of RGB images as input, our approach enables dense 3D reconstruction in an online, continuous manner, estimating both camera parameters and dense 3D geometry with each incoming frame. Our framework supports various 3D tasks, processes inputs from video sequences and sparse photo collections, and can handle both static and dynamic scenes.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Work -->
+    <section id="related-work" style="background-color: #f1f5f9;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Related Work</h2>
+            </div>
+            <div class="section-content">
+                <p>Traditional 3D reconstruction methods like SfM and SLAM are tabula rasa, requiring known camera parameters and failing under sparse or degenerate inputs. Learning-based approaches such as NeRF and 3D Gaussian Splatting generate geometry but need predefined poses. DUSt3R predicts metric pointmaps for image pairs but requires offline global alignment and cannot update incrementally.</p>
+                <p>Spann3R supports variable-length input with a spatial memory but only acts as a cache, not enabling inference of unseen regions. MonST3R extends DUSt3R to dynamic scenes via finetuning but still relies on post-processing alignment. Our method is the first to combine online, continuous updates, metric reconstruction, and generalizable inference of unobserved structures—all in a single feedforward, recurrent architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset -->
+    <section id="dataset">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dataset Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>CUT3R is trained on 32 diverse datasets covering synthetic and real-world scenes, including static and dynamic environments. These include ARKitScenes, ScanNet++, CO3Dv2, TartanAir, Waymo, MegaDepth, and MapFree. The dataset suite spans indoor, outdoor, object-centric, and large-scale 3D scenes. Each dataset provides varying annotations: metric depth, camera poses, or both.</p>
+                <p>We extended some datasets (e.g., MapFree, DL3DV) with MVS-derived depth maps. Our training leverages partial annotations—e.g., camera-only or single-view data—through curriculum learning, enhancing robustness across domains. This breadth ensures the model generalizes to real-world variations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology" style="background-color: #f1f5f9;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Methodology/Approach</h2>
+            </div>
+            <div class="section-content">
+                <p>CUT3R uses a ViT-Large encoder to token-encode input images, which interact with a persistent state via two interconnected transformers—state-update and state-readout. The image tokens update the state while simultaneously retrieving prior context. From the enriched features, we predict two metric pointmaps (in self and world frames) and camera pose using DPT and MLP heads, respectively.</p>
+                <p>A pose token captures ego-motion. For unseen view inference, a raymap query (origin + direction per pixel) is encoded and read from the state without updating it. Output includes pointmaps and color predictions, enabling metric-scale reconstruction and hallucination of unobserved regions.</p>
+                
+                <div class="image-grid">
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-picture-3.png" alt="Figure 3. Method Overview . Our method performs online dense 3D reconstruction from a stream of images (video frames or a photo collection) by using a persistent state. Each input image is encoded into visual tokens via a shared-weight ViT encoder. These tokens interact with state tokens, where state update integrates the current image into the state, and state readout retrieves the past context stored in the state for predictions. Both processes occur simultaneously through two interconnected ViT decoders. Outputs include pointmaps in world and camera frames (only world pointmaps are shown) and the camera-to-world transformation. On the right, we demonstrate our method's ability to predict unseen views: given a query camera (as a raymap), it reads information from the state to predict its corresponding pointmap, even for unobserved regions. For these readouts, we do not update the state. The hallucinated pointmap is highlighted with a blue border.">
+                        <div class="image-caption">Figure 3. Method Overview . Our method performs online dense 3D reconstruction from a stream of images (video frames or a photo collection) by using a persistent state. Each input image is encoded into visual tokens via a shared-weight ViT encoder. These tokens interact with state tokens, where state update integrates the current image into the state, and state readout retrieves the past context stored in the state for predictions. Both processes occur simultaneously through two interconnected ViT decoders. Outputs include pointmaps in world and camera frames (only world pointmaps are shown) and the camera-to-world transformation. On the right, we demonstrate our method's ability to predict unseen views: given a query camera (as a raymap), it reads information from the state to predict its corresponding pointmap, even for unobserved regions. For these readouts, we do not update the state. The hallucinated pointmap is highlighted with a blue border.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results">
+        <div class="container">
+            <div class="section-header">
+                <h2>Results/Evaluation</h2>
+            </div>
+            <div class="section-content">
+                <p>We evaluate on monocular depth (KITTI, NYU-v2), video depth (Sintel, Bonn, KITTI), camera pose (Sintel, TUM-dynamics, ScanNet), and 3D reconstruction (7-Scenes, NRGBD). CUT3R achieves state-of-the-art or competitive results, outperforming DUSt3R, MASt3R, MonST3R, and Spann3R.</p>
+                <p>On video depth, it improves over DUSt3R by 8.6% δ&lt;1.25 on KITTI and 25× faster than optimization-based methods. On pose estimation, it ranks best among online methods, especially on dynamic scenes. 3D reconstruction achieves 0.113 Acc on 7-Scenes, comparable to offline methods while being fully online and 25× faster.</p>
+                
+                <div class="image-grid">
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-table-2.png" alt="Table 2. Video Depth Evaluation . We report scale-invariant depth and metric depth accuracy on Sintel, Bonn, and KITTI datasets. Methods requiring global alignment are marked 'GA', while 'Optim.' and 'Onl.' indicate optimization-based and online methods, respectively. We also report the FPS on KITTI dataset using 512 × 144 image resolution for all methods on an A100 GPU, except Spann3R which only supports 224 × 224 inputs. We present a subset of baselines here; please refer to the supplementary material for full comparisons.">
+                        <div class="image-caption">Table 2. Video Depth Evaluation . We report scale-invariant depth and metric depth accuracy on Sintel, Bonn, and KITTI datasets. Methods requiring global alignment are marked 'GA', while 'Optim.' and 'Onl.' indicate optimization-based and online methods, respectively. We also report the FPS on KITTI dataset using 512 × 144 image resolution for all methods on an A100 GPU, except Spann3R which only supports 224 × 224 inputs. We present a subset of baselines here; please refer to the supplementary material for full comparisons.</div>
+                    </div>
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-table-3.png" alt="Table 3. Evaluation on Camera Pose Estimation on Sintel [12], TUM-dynamic [89], and ScanNet [19] datasets. Our method achieves the best overall performance among all online methods.">
+                        <div class="image-caption">Table 3. Evaluation on Camera Pose Estimation on Sintel [12], TUM-dynamic [89], and ScanNet [19] datasets. Our method achieves the best overall performance among all online methods.</div>
+                    </div>
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-table-4.png" alt="Table 4. 3D reconstruction comparison on 7-Scenes [83] and NRGBD [4] datasets. While operating online, our method achieves competitive performance, on par with and even surpassing offline methods that employ global alignment.">
+                        <div class="image-caption">Table 4. 3D reconstruction comparison on 7-Scenes [83] and NRGBD [4] datasets. While operating online, our method achieves competitive performance, on par with and even surpassing offline methods that employ global alignment.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications -->
+    <section id="applications" style="background-color: #f1f5f9;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Applications</h2>
+            </div>
+            <div class="section-content">
+                <p>CUT3R powers real-time 3D-aware systems: robotics navigation, AR/VR scene tracking, and autonomous vehicles. It enables dense reconstruction from casual video clips (e.g., user-recorded videos). The ability to query unobserved regions allows simulating missing views in autonomous driving scenarios or reconstructing partially occluded cities.</p>
+                <p>In AR, our model can hallucinate unseen building facades or furniture from a single photo. For indoor scene editing, it supports dynamic reconstruction during navigation. The system works on low-overlap collections—ideal for internet-scale data curation or reconstructing damaged heritage sites from scattered photos.</p>
+                
+                <div class="image-grid">
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-picture-5.png" alt="Figure 5. State Update Analysis. Compared to online, revisiting incorporates global context which improves overall reconstruction results, especially in the highlighted regions.">
+                        <div class="image-caption">Figure 5. State Update Analysis. Compared to online, revisiting incorporates global context which improves overall reconstruction results, especially in the highlighted regions.</div>
+                    </div>
+                    <div class="image-card fade-in">
+                        <img src="assets/2501.12387v1-picture-6.png" alt="Figure 6. Inferring New Structure via. State Readout . From top to bottom: the input image; the ground truth (GT) image, used to query the state via its camera parameters (note: GT image is not given to the model); the depth map from the predicted pointmap; the pointmap prediction of the input image alone; and the pointmap combined with the predicted pointmap in a shared coordinate frame.">
+                        <div class="image-caption">Figure 6. Inferring New Structure via. State Readout . From top to bottom: the input image; the ground truth (GT) image, used to query the state via its camera parameters (note: GT image is not given to the model); the depth map from the predicted pointmap; the pointmap prediction of the input image alone; and the pointmap combined with the predicted pointmap in a shared coordinate frame.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resources & External Links</h2>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-card fade-in">
+                    <h3>Official arXiv Paper</h3>
+                    <p>Access the full research article with technical details.</p>
+                    <a href="https://arxiv.org/abs/2308.04913" class="resource-link" target="_blank">View Paper</a>
+                </div>
+                <div class="resource-card fade-in">
+                    <h3>GitHub Repository</h3>
+                    <p>Project code, models, and implementation details.</p>
+                    <a href="https://github.com/ucb-berkeley/continuous-3d-perception" class="resource-link" target="_blank">View Repository</a>
+                </div>
+                <div class="resource-card fade-in">
+                    <h3>Video Demonstration</h3>
+                    <p>See the model's continuous 3D perception in action.</p>
+                    <a href="https://www.youtube.com/watch?v=example_video" class="resource-link" target="_blank">Watch Video</a>
+                </div>
+                <div class="resource-card fade-in">
+                    <h3>Google DeepMind</h3>
+                    <p>Official website of the institution behind part of the research.</p>
+                    <a href="https://www.google.com/deepmind" class="resource-link" target="_blank">Visit Website</a>
+                </div>
+                <div class="resource-card fade-in">
+                    <h3>Angjoo Kanazawa</h3>
+                    <p>Personal academic homepage at UC Berkeley.</p>
+                    <a href="https://www.cs.berkeley.edu/~angjoo" class="resource-link" target="_blank">View Profile</a>
+                </div>
+                <div class="resource-card fade-in">
+                    <h3>NeRF Framework</h3>
+                    <p>Documentation used as a foundational reference in the model design.</p>
+                    <a href="https://github.com/ucb-berkeley/nerf/blob/main/README.md" class="resource-link" target="_blank">View Documentation</a>
+                </div>
+                <div class="resource-card fade-in">
+                    <h3>NVIDIA AI Platform</h3>
+                    <p>AI and data science platform used for training the deep learning model.</p>
+                    <a href="https://www.nvidia.com/en-us/ai-data-science/" class="resource-link" target="_blank">Visit Platform</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation -->
+    <section id="citation">
+        <div class="container">
+            <div class="section-header">
+                <h2>How to Cite</h2>
+            </div>
+            <div class="citation-box">
+                <pre id="bibtex-code">@inproceedings{Wang2024Continuous3DPM,
+  title={Continuous 3D Perception Model with Persistent State},
+  author={Qianqian Wang and Yifei Zhang and Aleksander Holynski and Alexei A. Efros and Angjoo Kanazawa},
+  booktitle={arXiv preprint},
+  year={2024}
+}</pre>
+                <button id="copy-btn" class="copy-btn">Copy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Continuous 3D Perception Model with Persistent State</p>
+                <p>University of California, Berkeley & Google DeepMind</p>
+                <div class="social-links">
+                    <a href="https://github.com/ucb-berkeley/continuous-3d-perception" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://arxiv.org/abs/2308.04913" target="_blank"><i class="ai ai-arxiv"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Update active navigation link on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Intersection Observer for fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Copy BibTeX button
+            const copyBtn = document.getElementById('copy-btn');
+            const bibtexCode = document.getElementById('bibtex-code');
+
+            if (copyBtn && bibtexCode) {
+                copyBtn.addEventListener('click', () => {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = bibtexCode.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+    <script>
+      // 埋め込み(iframe)で表示されているときだけ調整
+      if (window.self !== window.top) {
+        document.documentElement.classList.add('embedded');
+        // 埋め込み表示では外部リンクを無効化（ページ内アンカーはそのまま動作）
+        document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach(function (a) {
+          a.addEventListener('click', function (e) { e.preventDefault(); });
+          a.setAttribute('title', '埋め込み表示ではリンクは無効です');
+        });
+      }
+    </script>
+    <style>
+      /* 埋め込み表示用の調整: ナビの追従固定を解除し、狭い幅でも横並びを維持 */
+      .embedded nav { position: static; }
+      .embedded .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem 0.5rem;
+      }
+      .embedded .nav-links a { padding: 0.25rem 0.5rem; font-size: 0.85rem; }
+    </style>
+</body>
+</html>

@@ -405,21 +405,328 @@
 
 
 <!-- 定性評価 -->
-<section class="section hero">
+<section class="section hero" id="qualitative">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">定性評価</h2>
         <div class="content has-text-justified">
-          <!-- TODO: 定性評価の内容を追記してください -->
           <p>
-            定性評価に関する説明をここに記述してください。
+            Project Page のわかりやすさに寄与するデザイン要因を明らかにするため，CVPR 2023–2025 の高被引用論文 75 本の PP を 6 名で精読し，"わかりやすさ" を左右する特徴を<strong>「第一印象」「操作性」「図と文の比率」「手法の伝達」</strong>の 4 観点に整理した．
+            ここでは代表例として，CVPR 2025 に Oral として採択された論文 "Continuous 3D Perception Model with Persistent State"（CUT3R，Wang et al.）の PP を取り上げ，実際に公開されている PP（A. Original），Paper2Web による自動生成例（B. Paper2Web），悪い PP の特徴をもとに Claude Code で生成した例（C. Bad example）を 4 観点で比較する．
           </p>
         </div>
+
+        <!-- 3例の切り替えラベル（クリックでジャンプ） -->
+        <div class="qual-labels">
+          <button type="button" class="qual-btn is-active" data-slide="0" style="--qc:#3273dc;--qt:#fff;">A. Original (Good example)</button>
+          <button type="button" class="qual-btn" data-slide="1" style="--qc:#f1c40f;--qt:#3a3a3a;">B. Paper2Web</button>
+          <button type="button" class="qual-btn" data-slide="2" style="--qc:#e74c3c;--qt:#fff;">C. Bad example</button>
+        </div>
+
+        <!-- スライダー -->
+        <div class="qual-slider" aria-label="3つの Project Page 例の比較スライダー">
+          <button type="button" class="qual-arrow qual-prev" aria-label="前の例へ">&#8249;</button>
+          <button type="button" class="qual-arrow qual-next" aria-label="次の例へ">&#8250;</button>
+          <div class="qual-window">
+            <div class="qual-track">
+
+              <!-- A. Original (Good example) -->
+              <div class="qual-slide">
+                <p class="has-text-left mb-2">
+                  <span class="tag has-text-weight-bold" style="background:#3273dc;color:#fff;">A. Original (Good example)</span>
+                  &nbsp;実際に公開されている PP を枠内にそのまま埋め込んでいる（直接操作可能）．
+                  <a href="https://cut3r.github.io/" target="_blank" rel="noopener">別タブで開く ↗</a>
+                </p>
+                <div class="qual-evals">
+                  <div class="qual-eval is-good">
+                    <p class="qual-eval-axis">第一印象</p>
+                    <p class="qual-eval-mark">◎</p>
+                    <p class="qual-eval-note">動画で内容が一目でわかる</p>
+                  </div>
+                  <div class="qual-eval is-good">
+                    <p class="qual-eval-axis">操作性</p>
+                    <p class="qual-eval-mark">◎</p>
+                    <p class="qual-eval-note">動かして試せるデモ</p>
+                  </div>
+                  <div class="qual-eval is-good">
+                    <p class="qual-eval-axis">図と文の比率</p>
+                    <p class="qual-eval-mark">◎</p>
+                    <p class="qual-eval-note">図で見せる</p>
+                  </div>
+                  <div class="qual-eval is-good">
+                    <p class="qual-eval-axis">手法の伝達</p>
+                    <p class="qual-eval-mark">◎</p>
+                    <p class="qual-eval-note">図＋説明で流れが追える</p>
+                  </div>
+                </div>
+                <div class="qual-frame">
+                  <button type="button" class="qual-reload" title="埋め込みを最初の状態に戻す" aria-label="埋め込みを最初の状態に戻す">&#8635;</button>
+                  <iframe sandbox="allow-scripts allow-same-origin allow-pointer-lock" src="https://cut3r.github.io/" title="CUT3R の実際の Project Page" loading="lazy"></iframe>
+                </div>
+              </div>
+
+              <!-- B. Paper2Web -->
+              <div class="qual-slide">
+                <p class="has-text-left mb-2">
+                  <span class="tag has-text-weight-bold" style="background:#f1c40f;color:#3a3a3a;">B. Paper2Web</span>
+                  &nbsp;Paper2Web による自動生成例を枠内にそのまま埋め込んでいる（直接操作可能）．構成は整っているが，図が少なく解説が冗長．
+                </p>
+                <div class="qual-evals">
+                  <div class="qual-eval is-mid">
+                    <p class="qual-eval-axis">第一印象</p>
+                    <p class="qual-eval-mark">△</p>
+                    <p class="qual-eval-note">図なし</p>
+                  </div>
+                  <div class="qual-eval is-bad">
+                    <p class="qual-eval-axis">操作性</p>
+                    <p class="qual-eval-mark">×</p>
+                    <p class="qual-eval-note">静止画のみ</p>
+                  </div>
+                  <div class="qual-eval is-mid">
+                    <p class="qual-eval-axis">図と文の比率</p>
+                    <p class="qual-eval-mark">△</p>
+                    <p class="qual-eval-note">解説が冗長</p>
+                  </div>
+                  <div class="qual-eval is-ok">
+                    <p class="qual-eval-axis">手法の伝達</p>
+                    <p class="qual-eval-mark">○</p>
+                    <p class="qual-eval-note">図＋要約</p>
+                  </div>
+                </div>
+                <div class="qual-frame">
+                  <button type="button" class="qual-reload" title="埋め込みを最初の状態に戻す" aria-label="埋め込みを最初の状態に戻す">&#8635;</button>
+                  <iframe sandbox="allow-scripts allow-same-origin allow-pointer-lock" src="static/examples/paper2web/index.html" title="Paper2Web で自動生成した Project Page" loading="lazy"></iframe>
+                </div>
+              </div>
+
+              <!-- C. Bad example -->
+              <div class="qual-slide">
+                <p class="has-text-left mb-2">
+                  <span class="tag has-text-weight-bold" style="background:#e74c3c;color:#fff;">C. Bad example</span>
+                  &nbsp;悪い PP の特徴をもとに生成した例を枠内にそのまま埋め込んでいる（直接操作可能）．文字が中心で，内容の判読が困難．
+                </p>
+                <div class="qual-evals">
+                  <div class="qual-eval is-bad">
+                    <p class="qual-eval-axis">第一印象</p>
+                    <p class="qual-eval-mark">×</p>
+                    <p class="qual-eval-note">文字のみ</p>
+                  </div>
+                  <div class="qual-eval is-bad">
+                    <p class="qual-eval-axis">操作性</p>
+                    <p class="qual-eval-mark">×</p>
+                    <p class="qual-eval-note">静止画 1 枚のみ</p>
+                  </div>
+                  <div class="qual-eval is-bad">
+                    <p class="qual-eval-axis">図と文の比率</p>
+                    <p class="qual-eval-mark">×</p>
+                    <p class="qual-eval-note">文字のみ</p>
+                  </div>
+                  <div class="qual-eval is-bad">
+                    <p class="qual-eval-axis">手法の伝達</p>
+                    <p class="qual-eval-mark">×</p>
+                    <p class="qual-eval-note">判読不可</p>
+                  </div>
+                </div>
+                <div class="qual-frame">
+                  <button type="button" class="qual-reload" title="埋め込みを最初の状態に戻す" aria-label="埋め込みを最初の状態に戻す">&#8635;</button>
+                  <iframe sandbox="allow-scripts allow-same-origin allow-pointer-lock" src="static/examples/bad/index.html" title="悪い例として生成した Project Page" loading="lazy"></iframe>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <p class="has-text-centered is-size-7 has-text-grey mt-2">
+          例ははじめ 5 秒ごとに自動で切り替わり，枠内に触れる・タップする・◀ ▶ 等を操作すると自動切り替えは停止します／3 例とも実物のページを枠内に埋め込んでおり，デモなどの操作はそのまま可能です（別ページへのリンクは無効化しています．右上の ⟳ で埋め込みを初期状態に戻せます）
+        </p>
+
+        <div class="content has-text-justified mt-4">
+          <p>
+            3 例の比較から，同じ論文であっても PP の設計次第で伝わりやすさが大きく変わることが確認できた．冒頭の動画と触れるデモを備えた A. Original に対し，B. Paper2Web は体裁こそ整っているものの図が少なく解説が冗長で，C. Bad example は文字のみで内容の判読が困難であった．
+          </p>
+          <p>
+            以上より，冒頭で内容が伝わる<strong>第一印象</strong>，動かして確かめられる<strong>操作性</strong>，図で見せる<strong>図と文章のバランス</strong>が，わかりやすい PP の条件として重要である．PP は論文では示せない動画や補足情報を発信できる媒体であり，こうした特性を活かした設計が研究の理解促進に寄与すると考えられる．
+          </p>
+          <p class="is-size-7 has-text-grey">
+            （参照: Q. Wang et al., "Continuous 3D Perception Model with Persistent State," CVPR 2025.
+            <a href="https://cut3r.github.io/" target="_blank" rel="noopener">https://cut3r.github.io/</a>）
+          </p>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  #qualitative .qual-labels { display: flex; gap: 12px; margin-bottom: 1rem; justify-content: center; }
+  #qualitative .qual-btn {
+    flex: 1; max-width: 260px; padding: .55em .5em;
+    border: none; border-radius: 8px;
+    background: var(--qc); color: var(--qt);
+    font-weight: 700; font-size: .95rem; cursor: pointer;
+    opacity: .45; transition: opacity .2s, box-shadow .2s;
+  }
+  #qualitative .qual-btn:hover { opacity: .8; }
+  #qualitative .qual-btn.is-active {
+    opacity: 1;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--qc);
+  }
+
+  #qualitative .qual-slider { position: relative; }
+  #qualitative .qual-window { overflow: hidden; }
+  #qualitative .qual-track { display: flex; transition: transform .35s ease; }
+  #qualitative .qual-slide { flex: 0 0 100%; min-width: 100%; box-sizing: border-box; padding: 0 2px; }
+
+  #qualitative .qual-evals {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    margin-bottom: .75rem;
+  }
+  #qualitative .qual-eval {
+    border: 1px solid #ececec; border-radius: 8px; background: #fafafa;
+    padding: .5rem .4rem; text-align: center;
+  }
+  #qualitative .qual-eval p { margin: 0; }
+  #qualitative .qual-eval-axis { font-size: .72rem; color: #7a7a7a; }
+  #qualitative .qual-eval-mark { font-size: 1.5rem; font-weight: 700; line-height: 1.3; }
+  #qualitative .qual-eval-note { font-size: .72rem; color: #4a4a4a; line-height: 1.35; }
+  #qualitative .qual-eval.is-good { background: #eefaf2; border-color: #bfe8cd; }
+  #qualitative .qual-eval.is-good .qual-eval-mark { color: #18a058; }
+  #qualitative .qual-eval.is-ok { background: #eef4fd; border-color: #c6d9f4; }
+  #qualitative .qual-eval.is-ok .qual-eval-mark { color: #2f6fd0; }
+  #qualitative .qual-eval.is-mid { background: #fdf6e0; border-color: #efdca3; }
+  #qualitative .qual-eval.is-mid .qual-eval-mark { color: #c07f00; }
+  #qualitative .qual-eval.is-bad { background: #fdeeee; border-color: #f3c3c3; }
+  #qualitative .qual-eval.is-bad .qual-eval-mark { color: #d92626; }
+
+  #qualitative .qual-frame {
+    position: relative;
+    height: 480px; overflow-y: auto;
+    border: 1px solid #dbdbdb; border-radius: 6px; background: #fff;
+  }
+  #qualitative .qual-reload {
+    position: absolute; top: 8px; right: 8px; z-index: 3;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid #dbdbdb; background: rgba(255, 255, 255, .95);
+    color: #363636; font-size: 1rem; line-height: 1; cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+  }
+  #qualitative .qual-reload:hover { background: #f5f5f5; }
+  #qualitative .qual-frame img { width: 100%; display: block; }
+  #qualitative .qual-frame iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
+
+  #qualitative .qual-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid #dbdbdb; background: #fff; color: #363636;
+    font-size: 1.5rem; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+  }
+  #qualitative .qual-arrow:hover { background: #f5f5f5; }
+  #qualitative .qual-prev { left: -14px; }
+  #qualitative .qual-next { right: -14px; }
+  @media (max-width: 768px) {
+    #qualitative .qual-prev { left: 4px; }
+    #qualitative .qual-next { right: 4px; }
+    #qualitative .qual-btn { font-size: .8rem; padding: .5em .25em; }
+    #qualitative .qual-evals { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var AUTOPLAY_MS = 5000; // 自動切り替えの間隔（ミリ秒）
+
+    var root = document.getElementById('qualitative');
+    if (!root) return;
+    var slider = root.querySelector('.qual-slider');
+    var track = root.querySelector('.qual-track');
+    var slides = root.querySelectorAll('.qual-slide');
+    var thumbs = root.querySelectorAll('.qual-btn');
+    var n = slides.length;
+    var idx = 0;
+    var timer = null;
+    var stopped = false;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function go(i) {
+      idx = (i + n) % n;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      thumbs.forEach(function (t, k) { t.classList.toggle('is-active', k === idx); });
+    }
+
+    function startAuto() {
+      if (stopped || reduceMotion || timer) return;
+      timer = setInterval(function () { go(idx + 1); }, AUTOPLAY_MS);
+    }
+    function pauseAuto() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+    function stopAuto() {
+      stopped = true;
+      pauseAuto();
+    }
+
+    root.querySelector('.qual-prev').addEventListener('click', function () { stopAuto(); go(idx - 1); });
+    root.querySelector('.qual-next').addEventListener('click', function () { stopAuto(); go(idx + 1); });
+    thumbs.forEach(function (t, k) {
+      t.addEventListener('click', function () { stopAuto(); go(k); });
+    });
+
+    slider.addEventListener('mouseenter', pauseAuto);
+    slider.addEventListener('mouseleave', startAuto);
+    root.querySelectorAll('.qual-frame').forEach(function (f) {
+      f.addEventListener('scroll', stopAuto, { passive: true });
+    });
+    root.querySelectorAll('.qual-frame').forEach(function (frame) {
+      var ifr = frame.querySelector('iframe');
+      if (!ifr) return;
+      var home = ifr.getAttribute('src');
+      var expected = true; // 初回ロードは想定内
+      function goHome() {
+        expected = true;
+        ifr.src = 'about:blank';
+        setTimeout(function () { expected = true; ifr.src = home; }, 30);
+      }
+      ifr.addEventListener('load', function () {
+        if (expected) { expected = false; return; }
+        goHome(); // リンク等で別ページへ遷移したら即座に元へ戻す
+      });
+      // 枠内にカーソルが入った時点で自動切り替えを完全停止（スクロール・クリック前に確実に止める）
+      ifr.addEventListener('mouseenter', stopAuto);
+      var btn = frame.querySelector('.qual-reload');
+      if (btn) btn.addEventListener('click', function () { stopAuto(); goHome(); });
+    });
+    window.addEventListener('blur', function () {
+      var ae = document.activeElement;
+      if (ae && ae.tagName === 'IFRAME' && root.contains(ae)) stopAuto();
+    });
+
+    var x0 = null, y0 = null;
+    track.addEventListener('touchstart', function (e) {
+      pauseAuto();
+      x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+    }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      var dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        stopAuto();
+        go(idx + (dx < 0 ? 1 : -1));
+      } else if (!stopped) {
+        startAuto();
+      }
+      x0 = null; y0 = null;
+    }, { passive: true });
+
+    go(0);
+    startAuto();
+  });
+</script>
 <!-- End 定性評価 -->
 
 
@@ -552,7 +859,7 @@
   author    = {Arimura, Yukitoshi and
                Oumi, Yusuke and
                Konno, Tsubasa and
-               Sugaya, Yuki and
+               Sugaya, Tomoki and
                Takezaki, Jumpei and
                Yamamoto, Riku},
   booktitle = {MIRU},
