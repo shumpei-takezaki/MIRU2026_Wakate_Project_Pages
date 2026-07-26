@@ -435,19 +435,12 @@
               </div>
             </div>
 
-            <!-- TODO: Paper2Webの評価プロセス図を static/images/paper2web_process.png に置き，
-                 下の .paper2web-figure-placeholder を下段のコメントアウトした <img> に差し替えてください．
-                 差し替え後は figcaption の文言も図に合わせて調整してください． -->
             <figure class="paper2web-figure">
-              <div class="paper2web-figure-placeholder">
-                <span class="paper2web-figure-placeholder-icon" aria-hidden="true">＋</span>
-                <span>Paper2Web の評価プロセス図をここに配置</span>
-                <small>static/images/paper2web_process.png</small>
-              </div>
-              <!--
-              <img src="static/images/paper2web_process.png" alt="Paper2Webによる評価プロセスの概要図" loading="lazy">
-              -->
-              <figcaption>Paper2Web における自動評価のプロセス．</figcaption>
+              <img src="static/images/paper2web_process.png" width="1570" height="667" loading="lazy"
+                alt="Paper2Webの評価プロセス図．入力はプロジェクトページのスクリーンショット・HTMLソース・CSSファイル・JSファイルと，論文本体のmarkdownファイル．評価方法はLLM/VLM判定方式（画像やソースコードを入力し評価用プロンプトに基づいて採点），ルールベース方式（HTML/CSS/JSのタグやキーワードの有無によりスコア化），Paper Quiz（論文本体からクイズを50問生成し，スクリーンショットを見たVLMが回答）の3つ．評価項目は，デザイン性，情報の完全性，リンク品質，インタラクティブ性，情報量（情報伝達性）の5つ．">
+              <figcaption>
+                Paper2Web における自動評価のプロセス．PPのスクリーンショットとソースコード，および論文本体を入力とし，LLM/VLM判定・ルールベース・Paper Quiz の3方式で5つの評価項目を算出する．
+              </figcaption>
             </figure>
 
             <div class="paper2web-results">
@@ -475,34 +468,8 @@
                   </div>
                 </div>
 
+                <!-- 並び順は上の評価プロセス図の項目番号 1〜5 に合わせている -->
                 <div class="paper2web-bars">
-                  <details class="paper2web-bar-row">
-                    <summary class="paper2web-bar-summary">
-                      <div class="paper2web-metric">
-                        <strong>情報量</strong>
-                        <span>論文の内容の伝わりやすさ</span>
-                      </div>
-                      <div class="paper2web-bar-area">
-                        <span class="paper2web-zero" aria-hidden="true"></span>
-                        <span class="paper2web-bar is-negative" style="--bar-size:19.48%;" aria-hidden="true"></span>
-                      </div>
-                      <span class="paper2web-value is-negative">−0.1948 <small>±0.138</small></span>
-                      <span class="paper2web-chevron" aria-hidden="true"></span>
-                    </summary>
-                    <div class="paper2web-detail">
-                      <span class="paper2web-detail-tag is-quiz">PaperQuiz</span>
-                      <p>論文の内容がPPからどれだけ伝わるかを，クイズ形式で測る（PaperQuiz）．</p>
-                      <ul class="paper2web-detail-list">
-                        <li><strong>出題</strong>：論文本文からLLMが4択問題を50問自動生成する（本文に直接書かれた「逐語問題」25問，動機や貢献の統合など高次の理解を要する「解釈問題」25問）</li>
-                        <li><strong>解答</strong>：PPのスクリーンショットのみを与えられた6つのMLLMが，外部知識を使わず，根拠となるページ内の箇所を示しながら解答する</li>
-                        <li><strong>集計</strong>：ここでは<strong>解釈問題</strong>の正答率を用いた．PPを見ただけで研究の要点まで掴めるかを表す</li>
-                      </ul>
-                      <p class="paper2web-detail-sub">
-                        PaperQuizには，文字を大量に載せるほど有利になることを防ぐための，冗長さに応じた減点項が設けられている．
-                      </p>
-                    </div>
-                  </details>
-
                   <details class="paper2web-bar-row is-highlighted">
                     <summary class="paper2web-bar-summary">
                       <div class="paper2web-metric">
@@ -604,6 +571,33 @@
                         <li><strong>デモ</strong>：埋め込みの実行デモ，または動作を確認できる動画</li>
                         <li><strong>ナビゲーション補助</strong>：追従する目次，節へのジャンプ，トップへ戻るボタン</li>
                       </ul>
+                    </div>
+                  </details>
+
+                  <details class="paper2web-bar-row">
+                    <summary class="paper2web-bar-summary">
+                      <div class="paper2web-metric">
+                        <strong>情報量</strong>
+                        <span>論文の内容の伝わりやすさ</span>
+                      </div>
+                      <div class="paper2web-bar-area">
+                        <span class="paper2web-zero" aria-hidden="true"></span>
+                        <span class="paper2web-bar is-negative" style="--bar-size:19.48%;" aria-hidden="true"></span>
+                      </div>
+                      <span class="paper2web-value is-negative">−0.1948 <small>±0.138</small></span>
+                      <span class="paper2web-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="paper2web-detail">
+                      <span class="paper2web-detail-tag is-quiz">PaperQuiz</span>
+                      <p>論文の内容がPPからどれだけ伝わるかを，クイズ形式で測る（PaperQuiz）．</p>
+                      <ul class="paper2web-detail-list">
+                        <li><strong>出題</strong>：論文本文からLLMが4択問題を50問自動生成する（本文に直接書かれた「逐語問題」25問，動機や貢献の統合など高次の理解を要する「解釈問題」25問）</li>
+                        <li><strong>解答</strong>：PPのスクリーンショットのみを与えられた6つのMLLMが，外部知識を使わず，根拠となるページ内の箇所を示しながら解答する</li>
+                        <li><strong>集計</strong>：ここでは<strong>解釈問題</strong>の正答率を用いた．PPを見ただけで研究の要点まで掴めるかを表す</li>
+                      </ul>
+                      <p class="paper2web-detail-sub">
+                        PaperQuizには，文字を大量に載せるほど有利になることを防ぐための，冗長さに応じた減点項が設けられている．
+                      </p>
                     </div>
                   </details>
                 </div>

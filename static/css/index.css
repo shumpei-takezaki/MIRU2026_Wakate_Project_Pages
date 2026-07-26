@@ -923,43 +923,6 @@ a:focus {
   text-align: center;
 }
 
-/* 画像を入れるまでの仮枠．<img> に差し替えたらこのブロックごと削除してよい */
-.paper2web-figure-placeholder {
-  align-items: center;
-  aspect-ratio: 16 / 7;
-  background:
-    repeating-linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0 10px, transparent 10px 20px),
-    rgba(255, 255, 255, 0.7);
-  border: 2px dashed rgba(37, 99, 235, 0.28);
-  border-radius: 14px;
-  color: var(--p2w-muted);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  justify-content: center;
-  min-height: 220px;
-  padding: 1rem;
-  text-align: center;
-}
-
-.paper2web-figure-placeholder-icon {
-  color: var(--p2w-blue);
-  font-size: 1.7rem;
-  line-height: 1;
-  opacity: 0.55;
-}
-
-.paper2web-figure-placeholder span:not(.paper2web-figure-placeholder-icon) {
-  color: var(--p2w-navy);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.paper2web-figure-placeholder small {
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 0.7rem;
-}
-
 .paper2web-results {
   align-items: stretch;
   display: grid;
@@ -1443,9 +1406,13 @@ a:focus {
     width: 100%;
   }
 
-  .paper2web-figure-placeholder {
-    aspect-ratio: 4 / 3;
-    min-height: 180px;
+  /* 横長の図を縮小すると文字が読めなくなるため，最小幅を保って横スクロールさせる */
+  .paper2web-figure {
+    overflow-x: auto;
+  }
+
+  .paper2web-figure img {
+    min-width: 620px;
   }
 
   .paper2web-card-heading {
