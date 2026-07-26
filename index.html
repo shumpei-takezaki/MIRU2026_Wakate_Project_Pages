@@ -409,7 +409,7 @@
               <p>
                 <a href="https://arxiv.org/abs/2510.15842" target="_blank" rel="noopener">Paper2Web</a>
                 は，Project
-                Page（PP）の品質を情報量（Informativeness）・デザイン性（Aesthetics）・情報の完全性（Completeness）・リンク品質（Connectivity）・インタラクティブ性（Interactivity）といった観点から自動評価する枠組みを提案している．
+                Page（PP）の品質を，デザイン性（Aesthetic）・情報の完全性（Completeness）・リンク品質（Connectivity）・インタラクティブ性（Interactive）といった観点から自動評価する枠組みと，論文の内容がPPからどれだけ伝わるかをクイズ形式で測る PaperQuiz を提案している．
                 本調査ではこれらの既存指標を実際に公開されているPPに適用し，人間の主観的な「わかりやすさ」をどの程度捉えられるかを定量的に検証した．
               </p>
             </div>
@@ -463,6 +463,10 @@
                   </div>
                 </div>
 
+                <p class="paper2web-hint">
+                  <span class="paper2web-chevron" aria-hidden="true"></span>指標名をクリックすると評価方法を表示
+                </p>
+
                 <div class="paper2web-axis" aria-hidden="true">
                   <div class="paper2web-axis-scale">
                     <span>−0.5</span>
@@ -472,65 +476,136 @@
                 </div>
 
                 <div class="paper2web-bars">
-                  <div class="paper2web-bar-row">
-                    <div class="paper2web-metric">
-                      <strong>情報量</strong>
-                      <span>論文との情報の差</span>
+                  <details class="paper2web-bar-row">
+                    <summary class="paper2web-bar-summary">
+                      <div class="paper2web-metric">
+                        <strong>情報量</strong>
+                        <span>論文の内容の伝わりやすさ</span>
+                      </div>
+                      <div class="paper2web-bar-area">
+                        <span class="paper2web-zero" aria-hidden="true"></span>
+                        <span class="paper2web-bar is-negative" style="--bar-size:19.48%;" aria-hidden="true"></span>
+                      </div>
+                      <span class="paper2web-value is-negative">−0.1948 <small>±0.138</small></span>
+                      <span class="paper2web-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="paper2web-detail">
+                      <span class="paper2web-detail-tag is-quiz">PaperQuiz</span>
+                      <p>論文の内容がPPからどれだけ伝わるかを，クイズ形式で測る（PaperQuiz）．</p>
+                      <ul class="paper2web-detail-list">
+                        <li><strong>出題</strong>：論文本文からLLMが4択問題を50問自動生成する（本文に直接書かれた「逐語問題」25問，動機や貢献の統合など高次の理解を要する「解釈問題」25問）</li>
+                        <li><strong>解答</strong>：PPのスクリーンショットのみを与えられた6つのMLLMが，外部知識を使わず，根拠となるページ内の箇所を示しながら解答する</li>
+                        <li><strong>集計</strong>：ここでは<strong>解釈問題</strong>の正答率を用いた．PPを見ただけで研究の要点まで掴めるかを表す</li>
+                      </ul>
+                      <p class="paper2web-detail-sub">
+                        PaperQuizには，文字を大量に載せるほど有利になることを防ぐための，冗長さに応じた減点項が設けられている．
+                      </p>
                     </div>
-                    <div class="paper2web-bar-area">
-                      <span class="paper2web-zero" aria-hidden="true"></span>
-                      <span class="paper2web-bar is-negative" style="--bar-size:19.48%;" aria-hidden="true"></span>
-                    </div>
-                    <span class="paper2web-value is-negative">−0.1948 <small>±0.138</small></span>
-                  </div>
+                  </details>
 
-                  <div class="paper2web-bar-row is-highlighted">
-                    <div class="paper2web-metric">
-                      <strong>デザイン性</strong>
-                      <span>レイアウト・視覚要素</span>
+                  <details class="paper2web-bar-row is-highlighted">
+                    <summary class="paper2web-bar-summary">
+                      <div class="paper2web-metric">
+                        <strong>デザイン性</strong>
+                        <span>レイアウト・視覚要素</span>
+                      </div>
+                      <div class="paper2web-bar-area">
+                        <span class="paper2web-zero" aria-hidden="true"></span>
+                        <span class="paper2web-bar is-positive" style="--bar-size:31.36%;" aria-hidden="true"></span>
+                      </div>
+                      <span class="paper2web-value is-positive">+0.3136 <small>±0.109</small></span>
+                      <span class="paper2web-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="paper2web-detail">
+                      <span class="paper2web-detail-tag is-llm">MLLM-as-a-Judge</span>
+                      <p>MLLMがレイアウトと視覚的な階層の分かりやすさを1〜5点で採点する（Aesthetic）．</p>
+                      <ul class="paper2web-detail-list">
+                        <li><strong>要素の質</strong>：画像の鮮明さ，図表の作り込みと理解しやすさ</li>
+                        <li><strong>レイアウトの均衡</strong>：要素の揃え方，画像サイズ，セクション間の余白</li>
+                        <li><strong>スタイル</strong>：配色の調和，書体の可読性，全体の作風</li>
+                        <li><strong>明瞭さ</strong>：要素を詰め込みすぎず，文字と背景のコントラストが十分か</li>
+                      </ul>
                     </div>
-                    <div class="paper2web-bar-area">
-                      <span class="paper2web-zero" aria-hidden="true"></span>
-                      <span class="paper2web-bar is-positive" style="--bar-size:31.36%;" aria-hidden="true"></span>
-                    </div>
-                    <span class="paper2web-value is-positive">+0.3136 <small>±0.109</small></span>
-                  </div>
+                  </details>
 
-                  <div class="paper2web-bar-row">
-                    <div class="paper2web-metric">
-                      <strong>情報の完全性</strong>
-                      <span>著者・タイトルなど</span>
+                  <details class="paper2web-bar-row">
+                    <summary class="paper2web-bar-summary">
+                      <div class="paper2web-metric">
+                        <strong>情報の完全性</strong>
+                        <span>著者・タイトルなど</span>
+                      </div>
+                      <div class="paper2web-bar-area">
+                        <span class="paper2web-zero" aria-hidden="true"></span>
+                        <span class="paper2web-bar is-positive" style="--bar-size:27.96%;" aria-hidden="true"></span>
+                      </div>
+                      <span class="paper2web-value is-positive">+0.2796 <small>±0.182</small></span>
+                      <span class="paper2web-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="paper2web-detail">
+                      <span class="paper2web-detail-tag is-hybrid">ルール＋LLM判定</span>
+                      <p>LLMがHTMLを解析し，研究ページに必要な要素が揃っているかを1〜5点で採点する（Completeness）．</p>
+                      <ul class="paper2web-detail-list">
+                        <li><strong>要素の網羅性</strong>：著者・タイトルなどのメタデータ，貢献の要約，実験設定，主要な結果</li>
+                        <li><strong>リッチメディア</strong>：デモ動画やインタラクティブな可視化などの補足資料</li>
+                        <li><strong>研究者への利便性</strong>：コピーしやすい引用形式，論文・コード・データへの明示的なリンク</li>
+                      </ul>
+                      <p class="paper2web-detail-sub">
+                        補助的に，画像と文字の面積比（理想は1:1）からのずれと，人手制作PPの文字数の中央値に対する比という2つのルールベースの事前分布も併用される．
+                      </p>
                     </div>
-                    <div class="paper2web-bar-area">
-                      <span class="paper2web-zero" aria-hidden="true"></span>
-                      <span class="paper2web-bar is-positive" style="--bar-size:27.96%;" aria-hidden="true"></span>
-                    </div>
-                    <span class="paper2web-value is-positive">+0.2796 <small>±0.182</small></span>
-                  </div>
+                  </details>
 
-                  <div class="paper2web-bar-row">
-                    <div class="paper2web-metric">
-                      <strong>リンク品質</strong>
-                      <span>論文リンク・著者情報など</span>
+                  <details class="paper2web-bar-row">
+                    <summary class="paper2web-bar-summary">
+                      <div class="paper2web-metric">
+                        <strong>リンク品質</strong>
+                        <span>論文リンク・著者情報など</span>
+                      </div>
+                      <div class="paper2web-bar-area">
+                        <span class="paper2web-zero" aria-hidden="true"></span>
+                        <span class="paper2web-bar is-negative" style="--bar-size:9.30%;" aria-hidden="true"></span>
+                      </div>
+                      <span class="paper2web-value is-negative">−0.0930 <small>±0.468</small></span>
+                      <span class="paper2web-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="paper2web-detail">
+                      <span class="paper2web-detail-tag is-hybrid">ルール＋LLM判定</span>
+                      <p>外向きリンクの豊富さ・関連性・信頼性を1〜5点で採点する（Connectivity）．</p>
+                      <ul class="paper2web-detail-list">
+                        <li><strong>研究資産へのリンク</strong>：コード・論文・データセットへの，実際に動作するリンク</li>
+                        <li><strong>学術的文脈</strong>：関連研究へのリンクの有無と質</li>
+                        <li><strong>ページ内ナビゲーション</strong>：見出しへのアンカーやメニューで目的の節へ迷わず移動できるか</li>
+                      </ul>
+                      <p class="paper2web-detail-sub">
+                        HTMLを解析し，外部リンク（他ドメインを指す <code>&lt;a href&gt;</code>）と内部リンク（<code>#section-id</code> 形式）を計数する．外部リンクはURL解析ツールで到達可能性と関連性を検証し，条件を満たすものだけを数える．
+                      </p>
                     </div>
-                    <div class="paper2web-bar-area">
-                      <span class="paper2web-zero" aria-hidden="true"></span>
-                      <span class="paper2web-bar is-negative" style="--bar-size:9.30%;" aria-hidden="true"></span>
-                    </div>
-                    <span class="paper2web-value is-negative">−0.0930 <small>±0.468</small></span>
-                  </div>
+                  </details>
 
-                  <div class="paper2web-bar-row">
-                    <div class="paper2web-metric">
-                      <strong>インタラクティブ性</strong>
-                      <span>動画・視覚効果など</span>
+                  <details class="paper2web-bar-row">
+                    <summary class="paper2web-bar-summary">
+                      <div class="paper2web-metric">
+                        <strong>インタラクティブ性</strong>
+                        <span>動画・視覚効果など</span>
+                      </div>
+                      <div class="paper2web-bar-area">
+                        <span class="paper2web-zero" aria-hidden="true"></span>
+                        <span class="paper2web-bar is-positive" style="--bar-size:5.76%;" aria-hidden="true"></span>
+                      </div>
+                      <span class="paper2web-value is-positive">+0.0576 <small>±0.454</small></span>
+                      <span class="paper2web-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="paper2web-detail">
+                      <span class="paper2web-detail-tag is-llm">MLLM-as-a-Judge</span>
+                      <p>MLLMが要素の反応性・強調の効き方・全体の使いやすさを1〜5点で採点する（Interactive）．</p>
+                      <ul class="paper2web-detail-list">
+                        <li><strong>基本的な操作</strong>：ホバー効果，開閉するセクション，クリックできるタブ</li>
+                        <li><strong>可視化の操作性</strong>：動かせるグラフ，結果を見比べる比較スライダー</li>
+                        <li><strong>デモ</strong>：埋め込みの実行デモ，または動作を確認できる動画</li>
+                        <li><strong>ナビゲーション補助</strong>：追従する目次，節へのジャンプ，トップへ戻るボタン</li>
+                      </ul>
                     </div>
-                    <div class="paper2web-bar-area">
-                      <span class="paper2web-zero" aria-hidden="true"></span>
-                      <span class="paper2web-bar is-positive" style="--bar-size:5.76%;" aria-hidden="true"></span>
-                    </div>
-                    <span class="paper2web-value is-positive">+0.0576 <small>±0.454</small></span>
-                  </div>
+                  </details>
                 </div>
                 <p class="paper2web-chart-note">値は相関係数の平均 ± 標準偏差．右に伸びるほど，人間による高評価と同じ傾向を示す．</p>
               </div>
@@ -540,7 +615,7 @@
                 <div class="paper2web-finding-value">0.3136</div>
                 <h3>最も相関したのは<br><strong>デザイン性</strong></h3>
                 <p>
-                  レイアウトや視覚要素を捉える指標が，人間の評価と最も強い正の相関を示した．情報の完全性も正の相関を示す一方，単純な情報量は負の相関となった．
+                  レイアウトや視覚要素を捉える指標が，人間の評価と最も強い正の相関を示した．情報の完全性も正の相関を示す一方，論文の内容がどれだけ伝わるかを測る指標はむしろ負の相関となった．
                 </p>
               </aside>
             </div>

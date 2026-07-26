@@ -986,7 +986,16 @@ a:focus {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.paper2web-hint {
+  align-items: center;
+  color: var(--p2w-muted);
+  display: flex;
+  font-size: 0.68rem;
+  gap: 0.4rem;
+  margin: 0 0 0.9rem;
 }
 
 .paper2web-card-heading h3 {
@@ -1034,7 +1043,7 @@ a:focus {
   display: grid;
   font-size: 0.64rem;
   gap: 0.75rem;
-  grid-template-columns: 138px minmax(140px, 1fr) 116px;
+  grid-template-columns: 138px minmax(140px, 1fr) 116px 16px;
   margin: 0 0 0.4rem;
   padding: 0 0.55rem;
 }
@@ -1062,19 +1071,155 @@ a:focus {
   gap: 0.48rem;
 }
 
+/* <details> が行，<summary> が折りたたみ時に見える帯．
+   グリッドは .paper2web-axis と必ず同じ定義に保つこと（目盛りがずれる） */
 .paper2web-bar-row {
-  align-items: center;
   border-radius: 10px;
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: 138px minmax(140px, 1fr) 116px;
-  min-height: 58px;
-  padding: 0.42rem 0.55rem;
 }
 
 .paper2web-bar-row.is-highlighted {
   background: #eff6ff;
   box-shadow: inset 3px 0 0 var(--p2w-blue);
+}
+
+.paper2web-bar-summary {
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 138px minmax(140px, 1fr) 116px 16px;
+  list-style: none;
+  min-height: 58px;
+  padding: 0.42rem 0.55rem;
+}
+
+/* 既定の開閉マーカーを消す（自前のシェブロンを使う） */
+.paper2web-bar-summary::-webkit-details-marker {
+  display: none;
+}
+
+.paper2web-bar-summary:hover {
+  background: rgba(37, 99, 235, 0.045);
+}
+
+.paper2web-bar-summary:focus-visible {
+  outline: 2px solid var(--p2w-blue);
+  outline-offset: -2px;
+}
+
+.paper2web-chevron {
+  border-bottom: 2px solid #94a3b8;
+  border-radius: 1px;
+  border-right: 2px solid #94a3b8;
+  height: 7px;
+  justify-self: center;
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+  width: 7px;
+}
+
+.paper2web-bar-row[open] .paper2web-chevron {
+  border-color: var(--p2w-blue);
+  transform: rotate(45deg);
+}
+
+.paper2web-hint .paper2web-chevron {
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper2web-chevron {
+    transition: none;
+  }
+}
+
+.paper2web-detail {
+  border-top: 1px dashed #e2e8f0;
+  margin: 0 0.55rem;
+  padding: 0.75rem 0 0.9rem;
+}
+
+.paper2web-detail-tag {
+  border-radius: 99px;
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.22rem 0.6rem;
+}
+
+.paper2web-detail-tag.is-hybrid {
+  background: #ecfeff;
+  color: var(--p2w-cyan);
+}
+
+.paper2web-detail-tag.is-quiz {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.paper2web-detail-tag.is-llm {
+  background: #eff6ff;
+  color: var(--p2w-blue);
+}
+
+.paper2web-detail p {
+  color: var(--p2w-muted);
+  font-size: 0.75rem;
+  line-height: 1.8;
+  margin: 0.5rem 0 0;
+}
+
+.paper2web-detail-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.paper2web-detail-list li {
+  color: var(--p2w-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  padding-left: 0.95rem;
+  position: relative;
+}
+
+.paper2web-detail-list li + li {
+  margin-top: 0.25rem;
+}
+
+.paper2web-detail-list li::before {
+  background: var(--p2w-blue);
+  border-radius: 99px;
+  content: "";
+  height: 4px;
+  left: 0.15rem;
+  opacity: 0.5;
+  position: absolute;
+  top: 0.62em;
+  width: 4px;
+}
+
+/* 数式・パース処理など，実装寄りの補足 */
+.paper2web-detail-sub {
+  border-left: 2px solid #e2e8f0;
+  font-size: 0.71rem !important;
+  margin-top: 0.7rem !important;
+  padding-left: 0.7rem;
+}
+
+.paper2web-detail strong {
+  color: var(--p2w-ink);
+  font-weight: 700;
+}
+
+.paper2web-detail code {
+  background: #f1f5f9;
+  border-radius: 4px;
+  color: #475569;
+  font-size: 0.92em;
+  padding: 0.05em 0.35em;
 }
 
 .paper2web-metric {
@@ -1321,9 +1466,10 @@ a:focus {
     grid-column: 1;
   }
 
-  .paper2web-bar-row {
-    gap: 0.35rem;
-    grid-template-columns: 1fr 110px;
+  /* 1行目に 指標名 / 数値 / シェブロン，2行目にバーを回り込ませる */
+  .paper2web-bar-summary {
+    gap: 0.35rem 0.5rem;
+    grid-template-columns: 1fr 110px 16px;
     padding: 0.65rem 0.45rem;
   }
 
@@ -1335,6 +1481,15 @@ a:focus {
   .paper2web-value {
     grid-column: 2;
     grid-row: 1;
+  }
+
+  .paper2web-chevron {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .paper2web-detail {
+    margin: 0 0.45rem;
   }
 
   .paper2web-takeaway {
