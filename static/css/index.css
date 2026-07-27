@@ -1341,20 +1341,6 @@ a:focus {
   text-align: left;
 }
 
-.paper2web-takeaway-icon {
-  align-items: center;
-  background: #eff6ff;
-  border-radius: 13px;
-  color: var(--p2w-blue);
-  display: flex;
-  flex: 0 0 54px;
-  font-family: Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  height: 54px;
-  justify-content: center;
-}
-
 .paper2web-takeaway-label {
   margin-bottom: 0.22rem;
 }
@@ -1613,35 +1599,17 @@ a:focus {
 }
 
 /* --- PP のビューア --- */
-.pp-viewer-bar {
-  align-items: center;
-  display: flex;
-  gap: 0.6rem;
-  justify-content: space-between;
-  margin: 1.1rem 0 0.5rem;
-}
-
 .pp-viewer-hint {
   color: var(--p2w-muted);
   font-size: 0.65rem;
   margin: 0;
 }
 
-.pp-toggle {
-  appearance: none;
-  background: #fff;
-  border: 1px solid #d7dee8;
-  border-radius: 99px;
-  color: var(--p2w-ink);
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.35rem 0.75rem;
-}
-
-.pp-toggle:hover {
-  background: #f1f5f9;
+.pp-viewer-note {
+  color: var(--p2w-muted);
+  font-size: 0.65rem;
+  line-height: 1.6;
+  margin: 1.1rem 0 0.5rem;
 }
 
 .pp-viewer {
@@ -1653,18 +1621,6 @@ a:focus {
   position: relative;
 }
 
-/* スクリーンショットは実ページと同じように縦スクロールできる */
-.pp-viewer-shot {
-  height: 100%;
-  overflow-y: auto;
-  scroll-behavior: auto;
-}
-
-.pp-viewer-shot img {
-  display: block;
-  width: 100%;
-}
-
 .pp-viewer iframe {
   background: #fff;
   border: 0;
@@ -1673,9 +1629,36 @@ a:focus {
   width: 100%;
 }
 
-/* display 指定が hidden 属性の既定スタイルに勝ってしまうので明示的に打ち消す */
-.pp-viewer-shot[hidden],
-.pp-viewer iframe[hidden] {
+/* 埋め込み不可のページ用。hidden 属性を display 指定に勝たせる */
+.pp-viewer-fallback {
+  align-items: center;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pp-viewer-fallback-title {
+  color: var(--p2w-navy);
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.pp-viewer-fallback-body {
+  color: var(--p2w-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  margin: 0 0 0.4rem;
+  max-width: 34em;
+}
+
+.pp-viewer iframe[hidden],
+.pp-viewer-fallback[hidden] {
   display: none;
 }
 
@@ -1809,9 +1792,5 @@ a:focus {
 
   .paper2web-takeaway {
     padding: 1rem;
-  }
-
-  .paper2web-takeaway-icon {
-    display: none;
   }
 }
