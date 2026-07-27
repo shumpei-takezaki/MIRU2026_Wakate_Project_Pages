@@ -261,8 +261,7 @@
                 竹崎 隼平<sup>5</sup>,
               </span>
               <span class="author-block">
-                <!-- <a href="YAMAMOTO_PERSONAL_LINK" target="_blank">山本 陸</a> -->
-                山本 陸<sup>1</sup>
+                <a href="https://yammer2.github.io/homepage/ja" target="_blank">山本 陸</a><sup>1</sup>
               </span>
             </div>
 
@@ -401,7 +400,115 @@
     </div>
   </div>
 </section>
-<!-- End Paper2Web -->
+
+<!-- Paper2Web QA Carousel -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Paper Quizで生成される質問</h2>
+
+      <!-- 対象プロジェクトページ -->
+      <p class="has-text-grey is-size-7 has-text-centered" style="margin-bottom:2rem;">
+        複数のプロジェクトページを対象に評価を実施．以下は例として
+        <a href="https://vulab-ai.github.io/BARD-GS/" target="_blank" rel="noopener" class="has-text-grey" style="text-decoration:underline;">BARD-GS (CVPR 2025)</a>
+        の結果を示す．
+      </p>
+
+      <!-- QA観点テーブル -->
+      <div class="columns is-variable is-6" style="max-width:1000px; margin:0 auto 2.5rem;">
+
+        <!-- detail QA -->
+        <div class="column">
+          <p class="title is-5 mb-1">detail QA <span class="has-text-weight-normal" style="font-size:1rem;">（詳細事実の再現性）</span></p>
+          <p class="has-text-grey is-size-7 mb-3">13観点　A〜L は各2問・M は1問</p>
+          <table class="table is-bordered is-fullwidth is-size-7">
+            <thead>
+              <tr style="background:#4a7fc1; color:#fff;">
+                <th style="color:#fff; width:3rem; text-align:center;">観点</th>
+                <th style="color:#fff;">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-centered has-text-weight-bold">A</td><td>タイトル・著者（所属・キーワード含む）</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">B</td><td>研究の動機・課題背景</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">C</td><td>目的・仮説</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">D</td><td>データセット・実験材料</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">E</td><td>手法（アルゴリズム・モデル構造・処理フロー）</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">F</td><td>パラメータ・ハイパーパラメータ</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">G</td><td>評価指標・基準</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">H</td><td>定量的な結果（表・グラフ中の数値）</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">I</td><td>定性的な知見・図表の説明</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">J</td><td>比較実験・アブレーション結果</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">K</td><td>結論・貢献・示唆</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">L</td><td>限界・今後の課題</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">M</td><td>専門用語・略語の定義</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- understanding QA -->
+        <div class="column">
+          <p class="title is-5 mb-1">understanding QA <span class="has-text-weight-normal" style="font-size:1rem;">（高レベルな理解度）</span></p>
+          <p class="has-text-grey is-size-7 mb-3">10観点　全て各2問（B/D/E/F/H のみ追加1問）</p>
+          <table class="table is-bordered is-fullwidth is-size-7">
+            <thead>
+              <tr style="background:#4a7fc1; color:#fff;">
+                <th style="color:#fff; width:3rem; text-align:center;">観点</th>
+                <th style="color:#fff;">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-centered has-text-weight-bold">A</td><td>研究分野・背景</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">B</td><td>中心的な課題・動機</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">C</td><td>主な目的・研究課題</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">D</td><td>主要な貢献・新規性</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">E</td><td>手法・ワークフローの概要</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">F</td><td>主要な（数値的）成果とその意義</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">G</td><td>定性的な知見・具体例</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">H</td><td>応用・意義</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">I</td><td>限界・今後の展望</td></tr>
+              <tr><td class="has-text-centered has-text-weight-bold">J</td><td>結論・要点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div id="p2w-qa-carousel" class="carousel results-carousel"></div>
+      <script>
+      (function () {
+        var images = [
+          "Detail_Q1_A", "Detail_Q2_A", "Detail_Q3_B", "Detail_Q4_B",
+          "Detail_Q5_C", "Detail_Q6_C", "Detail_Q7_D", "Detail_Q8_D",
+          "Detail_Q9_E", "Detail_Q10_E", "Detail_Q11_F", "Detail_Q12_F",
+          "Detail_Q13_G", "Detail_Q14_G", "Detail_Q15_H", "Detail_Q16_H",
+          "Detail_Q17_I", "Detail_Q18_I", "Detail_Q19_J", "Detail_Q20_J",
+          "Detail_Q21_K", "Detail_Q22_K", "Detail_Q23_L", "Detail_Q24_L",
+          "Detail_Q25_M",
+          "Understanding_Q1_A", "Understanding_Q2_A", "Understanding_Q3_B", "Understanding_Q4_B",
+          "Understanding_Q5_C", "Understanding_Q6_C", "Understanding_Q7_D", "Understanding_Q8_D",
+          "Understanding_Q9_E", "Understanding_Q10_E", "Understanding_Q11_F", "Understanding_Q12_F",
+          "Understanding_Q13_G", "Understanding_Q14_G", "Understanding_Q15_H", "Understanding_Q16_H",
+          "Understanding_Q17_I", "Understanding_Q18_I", "Understanding_Q19_J", "Understanding_Q20_J",
+          "Understanding_Q21_B", "Understanding_Q22_D", "Understanding_Q23_E",
+          "Understanding_Q24_F", "Understanding_Q25_H"
+        ];
+        var carousel = document.getElementById('p2w-qa-carousel');
+        images.forEach(function (name) {
+          var item = document.createElement('div');
+          item.className = 'item';
+          item.innerHTML =
+            '<img src="static/images/p2w_qa/' + name + '.png" alt="' + name + '" style="width:100%;" loading="lazy"/>' +
+            '<p class="has-text-centered" style="margin-top:0.5rem;font-size:0.9rem;">' + name.replace(/_/g, ' ') + '</p>';
+          carousel.appendChild(item);
+        });
+      })();
+      </script>
+    </div>
+  </div>
+</section>
+<!-- End Paper2Web QA Carousel -->
+
 
 
 <!-- 定性評価 -->
