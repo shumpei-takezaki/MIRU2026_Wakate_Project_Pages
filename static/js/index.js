@@ -133,6 +133,13 @@ $(document).ready(function() {
 
 	// Initialize all div with carousel class
     var carousels = bulmaCarousel.attach('.carousel', options);
+
+    // QAカルーセルだけ自動遷移を無効化
+    carousels.forEach(function(carousel) {
+        if (carousel.element && carousel.element.id === 'p2w-qa-carousel') {
+            carousel.stop();
+        }
+    });
 	
     bulmaSlider.attach();
     
