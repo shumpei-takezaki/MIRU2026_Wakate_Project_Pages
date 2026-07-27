@@ -803,10 +803,10 @@ a:focus {
   margin: 0 auto 1.5rem;
 }
 
+/* 幅は他セクション（.column.is-four-fifths = 全幅）に合わせる */
 .paper2web-lead {
   color: var(--p2w-ink);
   margin: 0 auto 2rem;
-  max-width: 880px;
 }
 
 .paper2web-lead a,
@@ -825,7 +825,6 @@ a:focus {
   gap: 1.75rem;
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto 2rem;
-  max-width: 920px;
 }
 
 .paper2web-step {
@@ -902,7 +901,6 @@ a:focus {
 /* ===== 評価プロセス図 ===== */
 .paper2web-figure {
   margin: 0 auto 2rem;
-  max-width: 920px;
 }
 
 .paper2web-figure img {
@@ -1341,20 +1339,6 @@ a:focus {
   text-align: left;
 }
 
-.paper2web-takeaway-icon {
-  align-items: center;
-  background: #eff6ff;
-  border-radius: 13px;
-  color: var(--p2w-blue);
-  display: flex;
-  flex: 0 0 54px;
-  font-family: Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  height: 54px;
-  justify-content: center;
-}
-
 .paper2web-takeaway-label {
   margin-bottom: 0.22rem;
 }
@@ -1381,6 +1365,7 @@ a:focus {
 /* ===== 評価したPP一覧（Project Page Explorer） ===== */
 .pp-explorer {
   margin-top: 2.5rem;
+  min-width: 0;          /* grid/flex の子が内容幅で膨らんで横スクロールするのを防ぐ */
   text-align: left;
 }
 
@@ -1513,6 +1498,7 @@ a:focus {
   font-weight: 800;
   line-height: 1.45;
   margin: 0;
+  overflow-wrap: anywhere;   /* 長い英語タイトルで枠を突き破らせない */
 }
 
 .pp-open {
@@ -1613,35 +1599,17 @@ a:focus {
 }
 
 /* --- PP のビューア --- */
-.pp-viewer-bar {
-  align-items: center;
-  display: flex;
-  gap: 0.6rem;
-  justify-content: space-between;
-  margin: 1.1rem 0 0.5rem;
-}
-
 .pp-viewer-hint {
   color: var(--p2w-muted);
   font-size: 0.65rem;
   margin: 0;
 }
 
-.pp-toggle {
-  appearance: none;
-  background: #fff;
-  border: 1px solid #d7dee8;
-  border-radius: 99px;
-  color: var(--p2w-ink);
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.35rem 0.75rem;
-}
-
-.pp-toggle:hover {
-  background: #f1f5f9;
+.pp-viewer-note {
+  color: var(--p2w-muted);
+  font-size: 0.65rem;
+  line-height: 1.6;
+  margin: 1.1rem 0 0.5rem;
 }
 
 .pp-viewer {
@@ -1653,18 +1621,6 @@ a:focus {
   position: relative;
 }
 
-/* スクリーンショットは実ページと同じように縦スクロールできる */
-.pp-viewer-shot {
-  height: 100%;
-  overflow-y: auto;
-  scroll-behavior: auto;
-}
-
-.pp-viewer-shot img {
-  display: block;
-  width: 100%;
-}
-
 .pp-viewer iframe {
   background: #fff;
   border: 0;
@@ -1673,9 +1629,36 @@ a:focus {
   width: 100%;
 }
 
-/* display 指定が hidden 属性の既定スタイルに勝ってしまうので明示的に打ち消す */
-.pp-viewer-shot[hidden],
-.pp-viewer iframe[hidden] {
+/* 埋め込み不可のページ用。hidden 属性を display 指定に勝たせる */
+.pp-viewer-fallback {
+  align-items: center;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pp-viewer-fallback-title {
+  color: var(--p2w-navy);
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.pp-viewer-fallback-body {
+  color: var(--p2w-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  margin: 0 0 0.4rem;
+  max-width: 34em;
+}
+
+.pp-viewer iframe[hidden],
+.pp-viewer-fallback[hidden] {
   display: none;
 }
 
@@ -1686,6 +1669,10 @@ a:focus {
 }
 
 @media screen and (max-width: 700px) {
+  .pp-explorer {
+    margin-top: 2rem;
+  }
+
   .pp-explorer-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -1693,15 +1680,33 @@ a:focus {
   }
 
   .pp-picker {
-    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
-    max-height: 280px;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+    max-height: 260px;
+    padding: 0.5rem;
+  }
+
+  .pp-detail {
+    padding: 0.9rem;
   }
 
   .pp-detail-head {
     flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  /* 縦積みになるとボタンが中途半端な幅で浮くので横いっぱいに広げる */
+  .pp-detail-head .pp-open {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pp-detail-title {
+    font-size: 0.92rem;
   }
 
   .pp-scores {
+    gap: 0.45rem;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1710,7 +1715,32 @@ a:focus {
   }
 
   .pp-viewer {
-    height: 420px;
+    height: 68vh;
+    max-height: 520px;
+    min-height: 360px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .pp-picker {
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 300px;
+  }
+
+  .pp-thumb-caption {
+    padding: 0.35rem 0.4rem 0.45rem;
+  }
+
+  .pp-score {
+    padding: 0.45rem 0.5rem 0.55rem;
+  }
+
+  .pp-score-value {
+    font-size: 1.02rem;
+  }
+
+  .pp-viewer-fallback {
+    padding: 1.1rem;
   }
 }
 
@@ -1807,11 +1837,29 @@ a:focus {
     padding-right: 0.75rem;
   }
 
-  .paper2web-takeaway {
-    padding: 1rem;
+  /* 指標名の列が潰れるので数値列を詰める */
+  .paper2web-bar-summary {
+    grid-template-columns: 1fr 92px 14px;
+    padding: 0.6rem 0.35rem;
   }
 
-  .paper2web-takeaway-icon {
-    display: none;
+  .paper2web-value {
+    font-size: 0.76rem;
+  }
+
+  .paper2web-value small {
+    display: block;
+  }
+
+  .paper2web-metric strong {
+    font-size: 0.78rem;
+  }
+
+  .paper2web-detail-list li {
+    padding-left: 0.8rem;
+  }
+
+  .paper2web-takeaway {
+    padding: 1rem;
   }
 }
