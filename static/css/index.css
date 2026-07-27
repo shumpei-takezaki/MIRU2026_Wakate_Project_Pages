@@ -104,8 +104,12 @@ body {
 }
 
 .teaser .hero-body {
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 4rem;
+}
+
+.title-hero .hero-body {
+  padding-bottom: 1.5rem;
 }
 
 .teaser {
@@ -326,7 +330,7 @@ body {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: var(--gradient-accent);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
   border-radius: 2px;
 }
 
@@ -804,6 +808,17 @@ a:focus {
 }
 
 /* 幅は他セクション（.column.is-four-fifths = 全幅）に合わせる */
+
+/* セクション見出し下の「問い」テキスト（paper2web-question と同じ見た目、他セクション向け） */
+.section-question {
+  color: var(--text-primary);
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  margin: 0 auto 1.5rem;
+}
+
 .paper2web-lead {
   color: var(--p2w-ink);
   margin: 0 auto 2rem;

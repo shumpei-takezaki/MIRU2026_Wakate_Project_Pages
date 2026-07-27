@@ -236,7 +236,7 @@
   -->
 
   <main id="main-content">
-    <section class="hero">
+    <section class="hero title-hero">
       <div class="hero-body">
         <div class="container is-max-desktop">
           <div class="columns is-centered">
@@ -281,49 +281,29 @@
                 </span>
               </div>
 
-              <!-- Publication links (commented out - uncomment to enable) -->
-              <!--
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+              <!-- Publication links -->
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://github.com/oumi03/PresentationMaterialsAnalysis" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://drive.google.com/file/d/1B6WQ377VrfpWHrXW50Kb-Wdj5l6gorxK/view?usp=sharing" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
                       </span>
-                      <span>Supplementary</span>
+                      <span>Poster</span>
                     </a>
                   </span>
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
-          -->
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -336,7 +316,7 @@
       <div class="container is-max-desktop">
         <div class="hero-body">
           <img src="static/images/abstract.png" alt="研究概要図"
-            style="width:100%; max-width:1000px; display:block; margin:0 auto;" loading="lazy" />
+            style="width:100%; display:block; margin:0 auto;" loading="lazy" />
         </div>
       </div>
     </section>
@@ -350,10 +330,10 @@
             <h2 class="title is-3">概要</h2>
             <div class="content has-text-justified">
               <p>
-                よい研究も，その魅力が伝わらなければ多くの人には届かない．論文やコードとあわせて公開される「プロジェクトページ」は，研究成果を広く届けるための重要な入口である．一方で，どのようなページが研究の認知や理解につながるのかは，十分に整理されていない．
+                よい研究も，その魅力が伝わらなければ多くの人には届かない．論文やコードとあわせて公開される「Project Page」は，研究成果を広く届けるための重要な入口である．一方で，どのようなページが研究の認知や理解につながるのかは，十分に整理されていない．
               </p>
               <p>
-                本プロジェクトでは，CVPR 2023–2025の論文を対象に，プロジェクトページの公開と引用数の関係，AIによる自動評価と人間の主観評価の関係，そして「わかりやすさ」を左右するデザイン要因を調査した．その結果，ページを公開している論文は引用数が高い傾向にあり，単に情報を多く載せることよりも，動画や図，レイアウト，図と文章のバランスを工夫することが重要だと分かった．
+                本プロジェクトでは，CVPR 2023–2025の論文を対象に，Project Pageの公開と引用数の関係，AIによる自動評価と人間の主観評価の関係，そして「わかりやすさ」を左右するデザイン要因を調査した．その結果，ページを公開している論文は引用数が高い傾向にあり，単に情報を多く載せることよりも，動画や図，レイアウト，図と文章のバランスを工夫することが重要だと分かった．
               </p>
             </div>
           </div>
@@ -369,15 +349,16 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">引用数</h2>
+            <p class="section-question">Project Pageを公開すると，論文はより引用されるのか？</p>
             <div class="content has-text-justified">
               <!-- TODO: 引用数の内容を追記してください -->
               <p>
                 Project Pageの公開が研究の認知に貢献するかを検証するため，引用数を尺度としてProject Pageの有無による差を比較した．
                 CVPRの3年間の論文を対象に各論文の引用数とProject Pageの有無を収集し，各年度の引用数の中央値および四分位範囲を可視化した．
-                3年分の結果によりPPの公開が引用数向上に貢献する結果が得られた​
+                3年分の結果によりProject Pageの公開が引用数向上に貢献する結果が得られた​
               </p>
               <img src="static/images/citation.png" alt="引用数の比較結果"
-                style="width:100%; max-width:800px; display:block; margin:1.5rem auto 0;" loading="lazy" />
+                style="width:100%; display:block; margin:1.5rem auto 0;" loading="lazy" />
             </div>
           </div>
         </div>
@@ -398,9 +379,8 @@
             <div class="content has-text-justified paper2web-lead">
               <p>
                 <a href="https://arxiv.org/abs/2510.15842" target="_blank" rel="noopener">Paper2Web</a>
-                は，Project
-                Page（PP）の品質を，デザイン性（Aesthetic）・情報の完全性（Completeness）・リンク品質（Connectivity）・インタラクティブ性（Interactive）といった観点から自動評価する枠組みと，論文の内容がPPからどれだけ伝わるかをクイズ形式で測る PaperQuiz を提案している．
-                本調査ではこれらの既存指標を実際に公開されているPPに適用し，人間の主観的な「わかりやすさ」をどの程度捉えられるかを定量的に検証した．
+                は，Project Pageの品質を，デザイン性（Aesthetic）・情報の完全性（Completeness）・リンク品質（Connectivity）・インタラクティブ性（Interactive）といった観点から自動評価する枠組みと，論文の内容がProject Pageからどれだけ伝わるかをクイズ形式で測る PaperQuiz を提案している．
+                本調査ではこれらの既存指標を実際に公開されているProject Pageに適用し，人間の主観的な「わかりやすさ」をどの程度捉えられるかを定量的に検証した．
               </p>
             </div>
 
@@ -409,7 +389,7 @@
                 <span class="paper2web-step-index">STEP 1</span>
                 <span class="paper2web-step-title">評価対象</span>
                 <span class="paper2web-step-number">54<small>本</small></span>
-                <span class="paper2web-step-note">CVPR 2023–2025 の論文のPP</span>
+                <span class="paper2web-step-note">CVPR 2023–2025 の論文のProject Page</span>
               </div>
               <div class="paper2web-step">
                 <span class="paper2web-step-index">STEP 2</span>
@@ -427,9 +407,9 @@
 
             <figure class="paper2web-figure">
               <img src="static/images/paper2web_process.png" width="1570" height="667" loading="lazy"
-                alt="Paper2Webの評価プロセス図．入力はプロジェクトページのスクリーンショット・HTMLソース・CSSファイル・JSファイルと，論文本体のmarkdownファイル．評価方法はLLM/VLM判定方式（画像やソースコードを入力し評価用プロンプトに基づいて採点），ルールベース方式（HTML/CSS/JSのタグやキーワードの有無によりスコア化），Paper Quiz（論文本体からクイズを50問生成し，スクリーンショットを見たVLMが回答）の3つ．評価項目は，デザイン性，情報の完全性，リンク品質，インタラクティブ性，情報量（情報伝達性）の5つ．">
+                alt="Paper2Webの評価プロセス図．入力はProject Pageのスクリーンショット・HTMLソース・CSSファイル・JSファイルと，論文本体のmarkdownファイル．評価方法はLLM/VLM判定方式（画像やソースコードを入力し評価用プロンプトに基づいて採点），ルールベース方式（HTML/CSS/JSのタグやキーワードの有無によりスコア化），Paper Quiz（論文本体からクイズを50問生成し，スクリーンショットを見たVLMが回答）の3つ．評価項目は，デザイン性，情報の完全性，リンク品質，インタラクティブ性，情報量（情報伝達性）の5つ．">
               <figcaption>
-                Paper2Web における自動評価のプロセス．PPのスクリーンショットとソースコード，および論文本体を入力とし，LLM/VLM判定・ルールベース・Paper Quiz の3方式で5つの評価項目を算出する．
+                Paper2Web における自動評価のプロセス．Project Pageのスクリーンショットとソースコード，および論文本体を入力とし，LLM/VLM判定・ルールベース・Paper Quiz の3方式で5つの評価項目を算出する．
               </figcaption>
             </figure>
 
@@ -574,11 +554,11 @@
                     </summary>
                     <div class="paper2web-detail">
                       <span class="paper2web-detail-tag is-quiz">PaperQuiz</span>
-                      <p>論文の内容がPPからどれだけ伝わるかを，クイズ形式で測る（PaperQuiz）．</p>
+                      <p>論文の内容がProject Pageからどれだけ伝わるかを，クイズ形式で測る（PaperQuiz）．</p>
                       <ul class="paper2web-detail-list">
                         <li><strong>出題</strong>：論文本文からLLMが4択問題を50問自動生成する（本文に直接書かれた「逐語問題」25問，動機や貢献の統合など高次の理解を要する「解釈問題」25問）</li>
-                        <li><strong>解答</strong>：PPのスクリーンショットのみを与えられた6つのMLLMが，外部知識を使わず，根拠となるページ内の箇所を示しながら解答する</li>
-                        <li><strong>集計</strong>：ここでは<strong>解釈問題25問</strong>の正答率を用いた．PPを見ただけで研究の要点まで掴めるかを表す</li>
+                        <li><strong>解答</strong>：Project Pageのスクリーンショットのみを与えられた6つのMLLMが，外部知識を使わず，根拠となるページ内の箇所を示しながら解答する</li>
+                        <li><strong>集計</strong>：ここでは<strong>解釈問題25問</strong>の正答率を用いた．Project Pageを見ただけで研究の要点まで掴めるかを表す</li>
                       </ul>
                     </div>
                   </details>
@@ -601,8 +581,8 @@
                 <p class="paper2web-takeaway-label">TAKEAWAY</p>
                 <p>
                   <strong>「たくさん書く」より，「見やすく，簡潔に伝える」．</strong>
-                  文字による情報量が多いPPよりも，デザイン性を重視した簡潔なPPのほうが高く評価される傾向が見られた．
-                  実際のPPを用いた比較は<a href="#qualitative">定性評価</a>を参照．
+                  文字による情報量が多いProject Pageよりも，デザイン性を重視した簡潔なProject Pageのほうが高く評価される傾向が見られた．
+                  実際のProject Pageを用いた比較は<a href="#qualitative">定性評価</a>を参照．
                 </p>
               </div>
             </div>
@@ -618,7 +598,7 @@
               </div>
 
               <p class="pp-viewer-hint">
-                サムネイルを選ぶと，そのPPの各指標の点数と人手評価の順位，そして実際のページを確認できる．
+                サムネイルを選ぶと，そのProject Pageの各指標の点数と人手評価の順位，そして実際のページを確認できる．
               </p>
 
               <div class="pp-picker" role="tablist" aria-label="評価したProject Pageの一覧">
@@ -1063,92 +1043,23 @@
             </div>
             <!-- End 評価したPP一覧 -->
 
-            <p class="paper2web-reference">
-              参照：Y. Chen et al., “Paper2Web: Let’s Make Your Paper Alive!,” arXiv:2510.15842, 2025.
-              <a href="https://arxiv.org/abs/2510.15842" target="_blank" rel="noopener">arXiv ↗</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End 定量評価 -->
+            <!-- Paper Quiz サブセクション -->
+            <div class="pp-explorer">
+              <div class="pp-explorer-heading" style="justify-content:center;">
+                <div class="has-text-centered">
+                  <p class="paper2web-card-kicker">PAPER QUIZ EXAMPLE</p>
+                  <h3>Paper Quizで生成される質問</h3>
+                </div>
+              </div>
 
+              <p class="has-text-grey is-size-7 has-text-centered" style="margin-bottom:2rem;">
+                複数のProject Pageを対象に評価を実施．以下は例として
+                <a href="https://vulab-ai.github.io/BARD-GS/" target="_blank" rel="noopener" class="has-text-grey" style="text-decoration:underline;">BARD-GS (CVPR 2025)</a>
+                の結果を示す．
+              </p>
 
-    <!-- Paper2Web QA Carousel -->
-    <section class="hero is-small is-light">
-      <div class="hero-body">
-        <div class="container">
-          <h2 class="title is-3 has-text-centered">Paper Quizで生成される質問</h2>
-
-          <!-- 対象プロジェクトページ -->
-          <p class="has-text-grey is-size-7 has-text-centered" style="margin-bottom:2rem;">
-            複数のプロジェクトページを対象に評価を実施．以下は例として
-            <a href="https://vulab-ai.github.io/BARD-GS/" target="_blank" rel="noopener" class="has-text-grey" style="text-decoration:underline;">BARD-GS (CVPR 2025)</a>
-            の結果を示す．
-          </p>
-
-          <!-- QA観点テーブル -->
-          <div class="columns is-variable is-6" style="max-width:1000px; margin:0 auto 2.5rem;">
-
-            <!-- detail QA -->
-            <div class="column">
-              <p class="title is-5 mb-1">detail QA <span class="has-text-weight-normal" style="font-size:1rem;">（詳細事実の再現性）</span></p>
-              <p class="has-text-grey is-size-7 mb-3">13観点　A〜L は各2問・M は1問</p>
-              <table class="table is-bordered is-fullwidth is-size-7">
-                <thead>
-                  <tr style="background:#4a7fc1; color:#fff;">
-                    <th style="color:#fff; width:3rem; text-align:center;">観点</th>
-                    <th style="color:#fff;">内容</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td class="has-text-centered has-text-weight-bold">A</td><td>タイトル・著者（所属・キーワード含む）</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">B</td><td>研究の動機・課題背景</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">C</td><td>目的・仮説</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">D</td><td>データセット・実験材料</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">E</td><td>手法（アルゴリズム・モデル構造・処理フロー）</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">F</td><td>パラメータ・ハイパーパラメータ</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">G</td><td>評価指標・基準</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">H</td><td>定量的な結果（表・グラフ中の数値）</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">I</td><td>定性的な知見・図表の説明</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">J</td><td>比較実験・アブレーション結果</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">K</td><td>結論・貢献・示唆</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">L</td><td>限界・今後の課題</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">M</td><td>専門用語・略語の定義</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- understanding QA -->
-            <div class="column">
-              <p class="title is-5 mb-1">understanding QA <span class="has-text-weight-normal" style="font-size:1rem;">（高レベルな理解度）</span></p>
-              <p class="has-text-grey is-size-7 mb-3">10観点　全て各2問（B/D/E/F/H のみ追加1問）</p>
-              <table class="table is-bordered is-fullwidth is-size-7">
-                <thead>
-                  <tr style="background:#4a7fc1; color:#fff;">
-                    <th style="color:#fff; width:3rem; text-align:center;">観点</th>
-                    <th style="color:#fff;">内容</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td class="has-text-centered has-text-weight-bold">A</td><td>研究分野・背景</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">B</td><td>中心的な課題・動機</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">C</td><td>主な目的・研究課題</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">D</td><td>主要な貢献・新規性</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">E</td><td>手法・ワークフローの概要</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">F</td><td>主要な（数値的）成果とその意義</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">G</td><td>定性的な知見・具体例</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">H</td><td>応用・意義</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">I</td><td>限界・今後の展望</td></tr>
-                  <tr><td class="has-text-centered has-text-weight-bold">J</td><td>結論・要点</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-          </div>
-
-          <div id="p2w-qa-carousel" class="carousel results-carousel"></div>
-          <script>
+              <div id="p2w-qa-carousel" class="carousel results-carousel"></div>
+              <script>
           (function () {
             var images = [
               "Detail_Q1_A", "Detail_Q2_A", "Detail_Q3_B", "Detail_Q4_B",
@@ -1177,10 +1088,18 @@
             });
           })();
           </script>
+            </div>
+            <!-- End Paper Quiz サブセクション -->
+
+            <p class="paper2web-reference">
+              参照：Y. Chen et al., “Paper2Web: Let’s Make Your Paper Alive!,” arXiv:2510.15842, 2025.
+              <a href="https://arxiv.org/abs/2510.15842" target="_blank" rel="noopener">arXiv ↗</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
-    <!-- End Paper2Web QA Carousel -->
+    <!-- End 定量評価 -->
 
 
     <!-- 定性評価 -->
@@ -1189,12 +1108,13 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">定性評価</h2>
+            <p class="section-question">同じ論文でも，Project Pageの作り方で伝わりやすさは変わるのか？</p>
             <div class="content has-text-justified">
               <p>
-                Project Page のわかりやすさに寄与するデザイン要因を明らかにするため，CVPR 2023–2025 の高被引用論文 75 本の PP を 6 名で精読し，"わかりやすさ"
+                Project Page のわかりやすさに寄与するデザイン要因を明らかにするため，CVPR 2023–2025 の高被引用論文 75 本の Project Page を 6 名で精読し，"わかりやすさ"
                 を左右する特徴を<strong>「第一印象」「操作性」「図と文の比率」「手法の伝達」</strong>の 4 観点に整理した．
                 ここでは代表例として，CVPR 2025 に Oral として採択された論文 "Continuous 3D Perception Model with Persistent State"（CUT3R，Wang
-                et al.）の PP を取り上げ，実際に公開されている PP（A. Original），Paper2Web による自動生成例（B. Paper2Web），悪い PP の特徴をもとに Claude Code
+                et al.）の Project Page を取り上げ，実際に公開されている Project Page（A. Original），Paper2Web による自動生成例（B. Paper2Web），悪い Project Page の特徴をもとに Claude Code
                 で生成した例（C. Bad example）を 4 観点で比較する．
               </p>
             </div>
@@ -1222,7 +1142,7 @@
                       <p class="has-text-left mb-2">
                         <span class="tag has-text-weight-bold" style="background:#3273dc;color:#fff;">A. Original (Good
                           example)</span>
-                        &nbsp;実際に公開されている PP を枠内にそのまま埋め込んでいる（直接操作可能）．
+                        &nbsp;実際に公開されている Project Page を枠内にそのまま埋め込んでいる（直接操作可能）．
                         <a href="https://cut3r.github.io/" target="_blank" rel="noopener">別タブで開く ↗</a>
                       </p>
                       <div class="qual-evals">
@@ -1298,7 +1218,7 @@
                       <p class="has-text-left mb-2">
                         <span class="tag has-text-weight-bold" style="background:#e74c3c;color:#fff;">C. Bad
                           example</span>
-                        &nbsp;悪い PP の特徴をもとに生成した例を枠内にそのまま埋め込んでいる（直接操作可能）．文字が中心で，内容の判読が困難．
+                        &nbsp;悪い Project Page の特徴をもとに生成した例を枠内にそのまま埋め込んでいる（直接操作可能）．文字が中心で，内容の判読が困難．
                       </p>
                       <div class="qual-evals">
                         <div class="qual-eval is-bad">
@@ -1337,12 +1257,12 @@
 
             <div class="content has-text-justified mt-4">
               <p>
-                3 例の比較から，同じ論文であっても PP の設計次第で伝わりやすさが大きく変わることが確認できた．冒頭の動画と触れるデモを備えた A. Original に対し，B. Paper2Web
+                3 例の比較から，同じ論文であっても Project Page の設計次第で伝わりやすさが大きく変わることが確認できた．冒頭の動画と触れるデモを備えた A. Original に対し，B. Paper2Web
                 は体裁こそ整っているものの図が少なく解説が冗長で，C. Bad example は文字のみで内容の判読が困難であった．
               </p>
               <p>
                 以上より，冒頭で内容が伝わる<strong>第一印象</strong>，動かして確かめられる<strong>操作性</strong>，図で見せる<strong>図と文章のバランス</strong>が，わかりやすい
-                PP の条件として重要である．PP は論文では示せない動画や補足情報を発信できる媒体であり，こうした特性を活かした設計が研究の理解促進に寄与すると考えられる．
+                Project Page の条件として重要である．Project Page は論文では示せない動画や補足情報を発信できる媒体であり，こうした特性を活かした設計が研究の理解促進に寄与すると考えられる．
               </p>
               <p class="is-size-7 has-text-grey">
                 （参照: Q. Wang et al., "Continuous 3D Perception Model with Persistent State," CVPR 2025.
@@ -1369,7 +1289,6 @@
 
       #qualitative .qual-btn {
         flex: 1;
-        max-width: 260px;
         padding: .55em .5em;
         border: none;
         border-radius: 8px;
@@ -1836,20 +1755,6 @@
 
 
 
-    <!-- Paper poster -->
-    <section class="hero is-small is-light">
-      <div class="hero-body">
-        <div class="container">
-          <h2 class="title">Poster</h2>
-
-          <!-- TODO: Replace with your poster PDF -->
-          <iframe src="static/pdfs/poster.pdf" width="100%" height="550">
-          </iframe>
-
-        </div>
-      </div>
-    </section>
-    <!--End paper poster -->
 
 
     <!-- Acknowledgements -->
@@ -1888,7 +1793,7 @@
                Oumi, Yusuke and
                Konno, Tsubasa and
                Sugaya, Tomoki and
-               Takezaki, Jumpei and
+               Takezaki, Shumpei and
                Yamamoto, Riku},
   booktitle = {MIRU},
   year      = {2026}
