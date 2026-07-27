@@ -1377,6 +1377,343 @@ a:focus {
   margin: 1.1rem 0 0;
 }
 
+
+/* ===== 評価したPP一覧（Project Page Explorer） ===== */
+.pp-explorer {
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+.pp-explorer-heading {
+  align-items: flex-end;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pp-explorer-heading h3 {
+  color: var(--p2w-navy);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.pp-explorer-count {
+  color: var(--p2w-muted);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.pp-explorer-count strong {
+  color: var(--p2w-blue);
+  font-size: 1.05rem;
+}
+
+/* --- サムネイルのピッカー --- */
+.pp-picker {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  max-height: 336px;
+  overflow-y: auto;
+  padding: 0.7rem;
+  scrollbar-width: thin;
+}
+
+.pp-thumb {
+  appearance: none;
+  background: #f8fafc;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+  transition: border-color 0.12s ease, transform 0.12s ease;
+  width: 100%;
+}
+
+.pp-thumb:hover {
+  border-color: #bfdbfe;
+  transform: translateY(-2px);
+}
+
+.pp-thumb.is-active {
+  border-color: var(--p2w-blue);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18);
+}
+
+.pp-thumb img {
+  aspect-ratio: 8 / 5;
+  background: #fff;
+  border-bottom: 1px solid #eef2f7;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+}
+
+.pp-thumb-caption {
+  display: block;
+  padding: 0.4rem 0.5rem 0.5rem;
+}
+
+.pp-thumb-name {
+  color: var(--p2w-ink);
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pp-thumb-year {
+  color: var(--p2w-muted);
+  display: block;
+  font-size: 0.62rem;
+  margin-top: 0.1rem;
+}
+
+/* --- 選択中のPPの詳細 --- */
+.pp-detail {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(30, 41, 59, 0.07);
+  margin-top: 1rem;
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.pp-detail-head {
+  align-items: flex-start;
+  border-bottom: 1px solid #eef2f7;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-bottom: 0.9rem;
+}
+
+.pp-detail-meta {
+  color: var(--p2w-muted);
+  font-size: 0.68rem;
+  margin: 0 0 0.25rem;
+}
+
+.pp-detail-title {
+  color: var(--p2w-navy);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.pp-open {
+  align-items: center;
+  background: var(--p2w-blue);
+  border-radius: 99px;
+  color: #fff !important;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 0.3rem;
+  padding: 0.45rem 0.85rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.pp-open:hover {
+  background: #1d4ed8;
+}
+
+/* --- 点数パネル --- */
+.pp-scores {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(6, 1fr);
+  margin: 0.9rem 0 0;
+}
+
+.pp-score {
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+  border-radius: 10px;
+  padding: 0.55rem 0.6rem 0.65rem;
+}
+
+.pp-score-label {
+  color: var(--p2w-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.3rem;
+  min-height: 2.2em;
+}
+
+.pp-score-value {
+  color: var(--p2w-navy);
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0;
+}
+
+.pp-score-value small {
+  color: var(--p2w-muted);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.pp-score-bar {
+  background: #e5eaf1;
+  border-radius: 99px;
+  height: 4px;
+  margin-top: 0.45rem;
+  overflow: hidden;
+}
+
+.pp-score-bar span {
+  background: linear-gradient(90deg, var(--p2w-blue), var(--p2w-cyan));
+  border-radius: 99px;
+  display: block;
+  height: 100%;
+  width: var(--v, 0%);
+}
+
+/* 人間の順位（データ未投入） */
+.pp-score.is-human {
+  background: #eff6ff;
+  border-color: #dbeafe;
+}
+
+.pp-score.is-human .pp-score-label {
+  color: var(--p2w-blue);
+}
+
+.pp-score.is-pending .pp-score-value {
+  color: #cbd5e1;
+}
+
+.pp-score-pending-note {
+  color: var(--p2w-muted);
+  font-size: 0.58rem;
+  line-height: 1.35;
+  margin: 0.3rem 0 0;
+}
+
+/* --- PP のビューア --- */
+.pp-viewer-bar {
+  align-items: center;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: space-between;
+  margin: 1.1rem 0 0.5rem;
+}
+
+.pp-viewer-hint {
+  color: var(--p2w-muted);
+  font-size: 0.65rem;
+  margin: 0;
+}
+
+.pp-toggle {
+  appearance: none;
+  background: #fff;
+  border: 1px solid #d7dee8;
+  border-radius: 99px;
+  color: var(--p2w-ink);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+}
+
+.pp-toggle:hover {
+  background: #f1f5f9;
+}
+
+.pp-viewer {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  height: 560px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* スクリーンショットは実ページと同じように縦スクロールできる */
+.pp-viewer-shot {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+
+.pp-viewer-shot img {
+  display: block;
+  width: 100%;
+}
+
+.pp-viewer iframe {
+  background: #fff;
+  border: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* display 指定が hidden 属性の既定スタイルに勝ってしまうので明示的に打ち消す */
+.pp-viewer-shot[hidden],
+.pp-viewer iframe[hidden] {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .pp-scores {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .pp-explorer-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .pp-picker {
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    max-height: 280px;
+  }
+
+  .pp-detail-head {
+    flex-direction: column;
+  }
+
+  .pp-scores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pp-score-label {
+    min-height: 0;
+  }
+
+  .pp-viewer {
+    height: 420px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .paper2web-results {
     grid-template-columns: 1fr;

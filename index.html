@@ -485,12 +485,11 @@
                     </summary>
                     <div class="paper2web-detail">
                       <span class="paper2web-detail-tag is-llm">MLLM-as-a-Judge</span>
-                      <p>MLLMがレイアウトと視覚的な階層の分かりやすさを1〜5点で採点する（Aesthetic）．</p>
+                      <p>HTMLとスクリーンショットをMLLMが見て，次の3項目を1〜5点で採点し，その平均をとる（Aesthetic）．</p>
                       <ul class="paper2web-detail-list">
-                        <li><strong>要素の質</strong>：画像の鮮明さ，図表の作り込みと理解しやすさ</li>
-                        <li><strong>レイアウトの均衡</strong>：要素の揃え方，画像サイズ，セクション間の余白</li>
-                        <li><strong>スタイル</strong>：配色の調和，書体の可読性，全体の作風</li>
-                        <li><strong>明瞭さ</strong>：要素を詰め込みすぎず，文字と背景のコントラストが十分か</li>
+                        <li><strong>要素品質</strong>：画像・図の解像度と視認性</li>
+                        <li><strong>視覚的魅力</strong>：配色やレイアウトから受ける印象</li>
+                        <li><strong>レイアウト均衡</strong>：要素の配置，余白，全体の整合性</li>
                       </ul>
                     </div>
                   </details>
@@ -509,16 +508,13 @@
                       <span class="paper2web-chevron" aria-hidden="true"></span>
                     </summary>
                     <div class="paper2web-detail">
-                      <span class="paper2web-detail-tag is-hybrid">ルール＋LLM判定</span>
-                      <p>LLMがHTMLを解析し，研究ページに必要な要素が揃っているかを1〜5点で採点する（Completeness）．</p>
+                      <span class="paper2web-detail-tag is-hybrid">MLLM判定（HTML＋画面）</span>
+                      <p>論文のコア内容がページに含まれているかを，MLLMが1〜5点で採点する（Completeness）．</p>
                       <ul class="paper2web-detail-list">
-                        <li><strong>要素の網羅性</strong>：著者・タイトルなどのメタデータ，貢献の要約，実験設定，主要な結果</li>
-                        <li><strong>リッチメディア</strong>：デモ動画やインタラクティブな可視化などの補足資料</li>
-                        <li><strong>研究者への利便性</strong>：コピーしやすい引用形式，論文・コード・データへの明示的なリンク</li>
+                        <li><strong>主要セクション</strong>：Abstract・Method・Results といった論文の骨格が揃っているか</li>
+                        <li><strong>メタデータ</strong>：著者・タイトルなど，論文を同定するための情報</li>
+                        <li><strong>付随情報</strong>：デモ動画，引用形式，論文・コードへのリンク</li>
                       </ul>
-                      <p class="paper2web-detail-sub">
-                        補助的に，画像と文字の面積比（理想は1:1）からのずれと，人手制作PPの文字数の中央値に対する比という2つのルールベースの事前分布も併用される．
-                      </p>
                     </div>
                   </details>
 
@@ -536,16 +532,13 @@
                       <span class="paper2web-chevron" aria-hidden="true"></span>
                     </summary>
                     <div class="paper2web-detail">
-                      <span class="paper2web-detail-tag is-hybrid">ルール＋LLM判定</span>
-                      <p>外向きリンクの豊富さ・関連性・信頼性を1〜5点で採点する（Connectivity）．</p>
+                      <span class="paper2web-detail-tag is-hybrid">MLLM判定（HTML＋画面）</span>
+                      <p>外部リンクと内部ナビゲーションの充実度を，MLLMが1〜5点で採点する（Connectivity）．</p>
                       <ul class="paper2web-detail-list">
-                        <li><strong>研究資産へのリンク</strong>：コード・論文・データセットへの，実際に動作するリンク</li>
+                        <li><strong>研究資産へのリンク</strong>：論文・コード・デモ・データセットへのリンク</li>
                         <li><strong>学術的文脈</strong>：関連研究へのリンクの有無と質</li>
                         <li><strong>ページ内ナビゲーション</strong>：見出しへのアンカーやメニューで目的の節へ迷わず移動できるか</li>
                       </ul>
-                      <p class="paper2web-detail-sub">
-                        HTMLを解析し，外部リンク（他ドメインを指す <code>&lt;a href&gt;</code>）と内部リンク（<code>#section-id</code> 形式）を計数する．外部リンクはURL解析ツールで到達可能性と関連性を検証し，条件を満たすものだけを数える．
-                      </p>
                     </div>
                   </details>
 
@@ -563,8 +556,10 @@
                       <span class="paper2web-chevron" aria-hidden="true"></span>
                     </summary>
                     <div class="paper2web-detail">
-                      <span class="paper2web-detail-tag is-llm">MLLM-as-a-Judge</span>
-                      <p>MLLMが要素の反応性・強調の効き方・全体の使いやすさを1〜5点で採点する（Interactive）．</p>
+                      <span class="paper2web-detail-tag is-hybrid">MLLM＋実測</span>
+                      <p>
+                        CSS/JSの動的要素に対するMLLMの主観評価と，動的要素の実測数を組み合わせて1〜5点とする（Interactivity）．
+                      </p>
                       <ul class="paper2web-detail-list">
                         <li><strong>基本的な操作</strong>：ホバー効果，開閉するセクション，クリックできるタブ</li>
                         <li><strong>可視化の操作性</strong>：動かせるグラフ，結果を見比べる比較スライダー</li>
@@ -593,11 +588,8 @@
                       <ul class="paper2web-detail-list">
                         <li><strong>出題</strong>：論文本文からLLMが4択問題を50問自動生成する（本文に直接書かれた「逐語問題」25問，動機や貢献の統合など高次の理解を要する「解釈問題」25問）</li>
                         <li><strong>解答</strong>：PPのスクリーンショットのみを与えられた6つのMLLMが，外部知識を使わず，根拠となるページ内の箇所を示しながら解答する</li>
-                        <li><strong>集計</strong>：ここでは<strong>解釈問題</strong>の正答率を用いた．PPを見ただけで研究の要点まで掴めるかを表す</li>
+                        <li><strong>集計</strong>：ここでは<strong>解釈問題25問</strong>の正答率を用いた．PPを見ただけで研究の要点まで掴めるかを表す</li>
                       </ul>
-                      <p class="paper2web-detail-sub">
-                        PaperQuizには，文字を大量に載せるほど有利になることを防ぐための，冗長さに応じた減点項が設けられている．
-                      </p>
                     </div>
                   </details>
                 </div>
@@ -625,6 +617,462 @@
                 </p>
               </div>
             </div>
+
+            <!-- 評価したPP一覧 -->
+            <div class="pp-explorer" id="pp-explorer">
+              <div class="pp-explorer-heading">
+                <div>
+                  <p class="paper2web-card-kicker">EVALUATED PROJECT PAGES</p>
+                  <h3>評価したProject Pageを見る</h3>
+                </div>
+                <p class="pp-explorer-count"><strong>54</strong> pages</p>
+              </div>
+
+              <p class="pp-viewer-hint">
+                サムネイルを選ぶと，そのPPの各指標の点数と人手評価の順位，そして実際のページを確認できる．
+              </p>
+
+              <div class="pp-picker" role="tablist" aria-label="評価したProject Pageの一覧">
+                  <button type="button" class="pp-thumb is-active" data-i="0" role="tab" aria-selected="true" title="DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation">
+                    <img src="static/images/pp/dreambooth-fine-tuning-text-to-image-diffusion-models-for-su-2.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">DreamBooth</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="1" role="tab" aria-selected="false" title="InstructPix2Pix: Learning To Follow Image Editing Instructions">
+                    <img src="static/images/pp/instructpix2pix-learning-to-follow-image-editing-instruction-3.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">InstructPix2Pix</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="2" role="tab" aria-selected="false" title="Align Your Latents: High-Resolution Video Synthesis With Latent Diffusion Models">
+                    <img src="static/images/pp/align-your-latents-high-resolution-video-synthesis-with-late-5.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Video LDM</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="3" role="tab" aria-selected="false" title="Objaverse: A Universe of Annotated 3D Objects">
+                    <img src="static/images/pp/objaverse-a-universe-of-annotated-3d-objects-6.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Objaverse</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="4" role="tab" aria-selected="false" title="Magic3D: High-Resolution Text-to-3D Content Creation">
+                    <img src="static/images/pp/magic3d-high-resolution-text-to-3d-content-creation-7.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Magic3D</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="5" role="tab" aria-selected="false" title="ImageBind: One Embedding Space To Bind Them All">
+                    <img src="static/images/pp/imagebind-one-embedding-space-to-bind-them-all-8.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">ImageBind</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="6" role="tab" aria-selected="false" title="Imagic: Text-Based Real Image Editing With Diffusion Models">
+                    <img src="static/images/pp/imagic-text-based-real-image-editing-with-diffusion-models-9.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Imagic</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="7" role="tab" aria-selected="false" title="Multi-Concept Customization of Text-to-Image Diffusion">
+                    <img src="static/images/pp/multi-concept-customization-of-text-to-image-diffusion-11.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Custom Diffusion</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="8" role="tab" aria-selected="false" title="NULL-Text Inversion for Editing Real Images Using Guided Diffusion Models">
+                    <img src="static/images/pp/null-text-inversion-for-editing-real-images-using-guided-dif-12.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Null-text Inversion</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="9" role="tab" aria-selected="false" title="MaPLe: Multi-Modal Prompt Learning">
+                    <img src="static/images/pp/maple-multi-modal-prompt-learning-14.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">MaPLe</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="10" role="tab" aria-selected="false" title="Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation">
+                    <img src="static/images/pp/plug-and-play-diffusion-features-for-text-driven-image-to-im-15.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Plug-and-Play</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="11" role="tab" aria-selected="false" title="K-Planes: Explicit Radiance Fields in Space, Time, and Appearance">
+                    <img src="static/images/pp/k-planes-explicit-radiance-fields-in-space-time-and-appearan-19.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">K-Planes</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="12" role="tab" aria-selected="false" title="GLIGEN: Open-Set Grounded Text-to-Image Generation">
+                    <img src="static/images/pp/gligen-open-set-grounded-text-to-image-generation-20.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">GLIGEN</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="13" role="tab" aria-selected="false" title="CDDFuse: Correlation-Driven Dual-Branch Feature Decomposition for Multi-Modality Image Fusion">
+                    <img src="static/images/pp/cddfuse-correlation-driven-dual-branch-feature-decomposition-65.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">CDDFuse</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="14" role="tab" aria-selected="false" title="HexPlane: A Fast Representation for Dynamic Scenes">
+                    <img src="static/images/pp/hexplane-a-fast-representation-for-dynamic-scenes-66.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">HexPlane</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="15" role="tab" aria-selected="false" title="Open-Vocabulary Semantic Segmentation With Mask-Adapted CLIP">
+                    <img src="static/images/pp/open-vocabulary-semantic-segmentation-with-mask-adapted-clip-68.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Open-Vocabulary Semanti…</span>
+                      <span class="pp-thumb-year">CVPR 2023</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="16" role="tab" aria-selected="false" title="Improved Baselines with Visual Instruction Tuning">
+                    <img src="static/images/pp/improved-baselines-with-visual-instruction-tuning-21.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">LLaVA</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="17" role="tab" aria-selected="false" title="MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI">
+                    <img src="static/images/pp/mmmu-a-massive-multi-discipline-multimodal-understanding-and-22.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">MMMU</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="18" role="tab" aria-selected="false" title="DUSt3R: Geometric 3D Vision Made Easy">
+                    <img src="static/images/pp/dust3r-geometric-3d-vision-made-easy-23.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">DUSt3R</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="19" role="tab" aria-selected="false" title="VBench: Comprehensive Benchmark Suite for Video Generative Models">
+                    <img src="static/images/pp/vbench-comprehensive-benchmark-suite-for-video-generative-mo-24.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">VBench</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="20" role="tab" aria-selected="false" title="MVBench: A Comprehensive Multi-modal Video Understanding Benchmark">
+                    <img src="static/images/pp/mvbench-a-comprehensive-multi-modal-video-understanding-benc-25.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">MVBench</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="21" role="tab" aria-selected="false" title="YOLO-World: Real-Time Open-Vocabulary Object Detection">
+                    <img src="static/images/pp/yolo-world-real-time-open-vocabulary-object-detection-26.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">YOLO-World</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="22" role="tab" aria-selected="false" title="SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering">
+                    <img src="static/images/pp/sugar-surface-aligned-gaussian-splatting-for-efficient-3d-me-29.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">SuGaR</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="23" role="tab" aria-selected="false" title="Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering">
+                    <img src="static/images/pp/scaffold-gs-structured-3d-gaussians-for-view-adaptive-render-30.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Scaffold-GS</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="24" role="tab" aria-selected="false" title="Mip-Splatting: Alias-free 3D Gaussian Splatting">
+                    <img src="static/images/pp/mip-splatting-alias-free-3d-gaussian-splatting-31.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Mip-Splatting</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="25" role="tab" aria-selected="false" title="SpatialVLM: Endowing Vision-Language Models with Spatial Reasoning Capabilities">
+                    <img src="static/images/pp/spatialvlm-endowing-vision-language-models-with-spatial-reas-32.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">SpatialVLM</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="26" role="tab" aria-selected="false" title="SplaTAM: Splat Track &amp; Map 3D Gaussians for Dense RGB-D SLAM">
+                    <img src="static/images/pp/splatam-splat-track-map-3d-gaussians-for-dense-rgb-d-slam-33.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">SplaTAM</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="27" role="tab" aria-selected="false" title="RepViT: Revisiting Mobile CNN From ViT Perspective">
+                    <img src="static/images/pp/repvit-revisiting-mobile-cnn-from-vit-perspective-34.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">RepViT</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="28" role="tab" aria-selected="false" title="Gaussian Splatting SLAM">
+                    <img src="static/images/pp/gaussian-splatting-slam-35.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Gaussian Splatting SLAM</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="29" role="tab" aria-selected="false" title="GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting">
+                    <img src="static/images/pp/gs-slam-dense-visual-slam-with-3d-gaussian-splatting-37.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">GS-SLAM</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="30" role="tab" aria-selected="false" title="V?: Guided Visual Search as a Core Mechanism in Multimodal LLMs">
+                    <img src="static/images/pp/v-guided-visual-search-as-a-core-mechanism-in-multimodal-llm-38.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">V*</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="31" role="tab" aria-selected="false" title="LangSplat: 3D Language Gaussian Splatting">
+                    <img src="static/images/pp/langsplat-3d-language-gaussian-splatting-39.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">LangSplat</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="32" role="tab" aria-selected="false" title="Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives">
+                    <img src="static/images/pp/ego-exo4d-understanding-skilled-human-activity-from-first-an-40.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Ego-Exo4D</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="33" role="tab" aria-selected="false" title="Compact 3D Gaussian Representation for Radiance Field">
+                    <img src="static/images/pp/compact-3d-gaussian-representation-for-radiance-field-69.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Compact 3D Gaussian Rep…</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="34" role="tab" aria-selected="false" title="RLHF-V: Towards Trustworthy MLLMs via Behavior Alignment from Fine-grained Correctional Human Feedback">
+                    <img src="static/images/pp/rlhf-v-towards-trustworthy-mllms-via-behavior-alignment-from-71.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">RLHF-V</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="35" role="tab" aria-selected="false" title="Feature 3DGS: Supercharging 3D Gaussian Splatting to Enable Distilled Feature Fields">
+                    <img src="static/images/pp/feature-3dgs-supercharging-3d-gaussian-splatting-to-enable-d-73.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Feature 3DGS</span>
+                      <span class="pp-thumb-year">CVPR 2024</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="36" role="tab" aria-selected="false" title="Structured 3D Latents for Scalable and Versatile 3D Generation">
+                    <img src="static/images/pp/structured-3d-latents-for-scalable-and-versatile-3d-generati-41.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">TRELLIS</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="37" role="tab" aria-selected="false" title="Continuous 3D Perception Model with Persistent State">
+                    <img src="static/images/pp/continuous-3d-perception-model-with-persistent-state-42.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">CUT3R</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="38" role="tab" aria-selected="false" title="OmniGen: Unified Image Generation">
+                    <img src="static/images/pp/omnigen-unified-image-generation-44.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">OmniGen</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="39" role="tab" aria-selected="false" title="From Slow Bidirectional to Fast Autoregressive Video Diffusion Models">
+                    <img src="static/images/pp/from-slow-bidirectional-to-fast-autoregressive-video-diffusi-46.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">CausVid</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="40" role="tab" aria-selected="false" title="DepthSplat: Connecting Gaussian Splatting and Depth">
+                    <img src="static/images/pp/depthsplat-connecting-gaussian-splatting-and-depth-47.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">DepthSplat</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="41" role="tab" aria-selected="false" title="VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos">
+                    <img src="static/images/pp/videotree-adaptive-tree-based-video-representation-for-llm-r-49.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">VideoTree</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="42" role="tab" aria-selected="false" title="DepthCrafter: Generating Consistent Long Depth Sequences for Open-world Videos">
+                    <img src="static/images/pp/depthcrafter-generating-consistent-long-depth-sequences-for-50.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">DepthCrafter</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="43" role="tab" aria-selected="false" title="Video Depth Anything: Consistent Depth Estimation for Super-Long Videos">
+                    <img src="static/images/pp/video-depth-anything-consistent-depth-estimation-for-super-l-51.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Video Depth Anything</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="44" role="tab" aria-selected="false" title="WonderWorld: Interactive 3D Scene Generation from a Single Image">
+                    <img src="static/images/pp/wonderworld-interactive-3d-scene-generation-from-a-single-im-53.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">WonderWorld</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="45" role="tab" aria-selected="false" title="TokenFlow: Unified Image Tokenizer for Multimodal Understanding and Generation">
+                    <img src="static/images/pp/tokenflow-unified-image-tokenizer-for-multimodal-understandi-54.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">TokenFlow</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="46" role="tab" aria-selected="false" title="Transformers without Normalization">
+                    <img src="static/images/pp/transformers-without-normalization-55.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">DyT</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="47" role="tab" aria-selected="false" title="Tora: Trajectory-oriented Diffusion Transformer for Video Generation">
+                    <img src="static/images/pp/tora-trajectory-oriented-diffusion-transformer-for-video-gen-56.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Tora</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="48" role="tab" aria-selected="false" title="Identity-Preserving Text-to-Video Generation by Frequency Decomposition">
+                    <img src="static/images/pp/identity-preserving-text-to-video-generation-by-frequency-de-57.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">ConsisID</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="49" role="tab" aria-selected="false" title="Motion Prompting: Controlling Video Generation with Motion Trajectories">
+                    <img src="static/images/pp/motion-prompting-controlling-video-generation-with-motion-tr-58.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Motion Prompting</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="50" role="tab" aria-selected="false" title="Magma: A Foundation Model for Multimodal AI Agents">
+                    <img src="static/images/pp/magma-a-foundation-model-for-multimodal-ai-agents-59.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">Magma</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="51" role="tab" aria-selected="false" title="RoboSpatial: Teaching Spatial Understanding to 2D and 3D Vision-Language Models for Robotics">
+                    <img src="static/images/pp/robospatial-teaching-spatial-understanding-to-2d-and-3d-visi-74.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">RoboSpatial</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="52" role="tab" aria-selected="false" title="LLaVA-Critic: Learning to Evaluate Multimodal Models">
+                    <img src="static/images/pp/llava-critic-learning-to-evaluate-multimodal-models-76.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">LLaVA-Critic</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+                  <button type="button" class="pp-thumb" data-i="53" role="tab" aria-selected="false" title="AC3D: Analyzing and Improving 3D Camera Control in Video Diffusion Transformers">
+                    <img src="static/images/pp/ac3d-analyzing-and-improving-3d-camera-control-in-video-diff-78.webp" alt="" width="640" height="400" loading="lazy">
+                    <span class="pp-thumb-caption">
+                      <span class="pp-thumb-name">AC3D</span>
+                      <span class="pp-thumb-year">CVPR 2025</span>
+                    </span>
+                  </button>
+              </div>
+
+              <div class="pp-detail">
+                <div class="pp-detail-head">
+                  <div>
+                    <p class="pp-detail-meta"></p>
+                    <h4 class="pp-detail-title"></h4>
+                  </div>
+                  <a class="pp-open" href="#" target="_blank" rel="noopener">実際のページを開く ↗</a>
+                </div>
+
+                <div class="pp-scores">
+                      <div class="pp-score" data-k="aesthetic">
+                        <p class="pp-score-label">デザイン性</p>
+                        <p class="pp-score-value">–</p>
+                        <div class="pp-score-bar"><span></span></div>
+                      </div>
+                      <div class="pp-score" data-k="completeness">
+                        <p class="pp-score-label">情報の完全性</p>
+                        <p class="pp-score-value">–</p>
+                        <div class="pp-score-bar"><span></span></div>
+                      </div>
+                      <div class="pp-score" data-k="connectivity">
+                        <p class="pp-score-label">リンク品質</p>
+                        <p class="pp-score-value">–</p>
+                        <div class="pp-score-bar"><span></span></div>
+                      </div>
+                      <div class="pp-score" data-k="interactivity">
+                        <p class="pp-score-label">インタラクティブ性</p>
+                        <p class="pp-score-value">–</p>
+                        <div class="pp-score-bar"><span></span></div>
+                      </div>
+                      <div class="pp-score" data-k="qa">
+                        <p class="pp-score-label">情報量</p>
+                        <p class="pp-score-value">–</p>
+                        <div class="pp-score-bar"><span></span></div>
+                      </div>
+                  <div class="pp-score is-human" data-k="humanRanks">
+                    <p class="pp-score-label">人間の順位</p>
+                    <p class="pp-score-value">–</p>
+                    <p class="pp-score-pending-note"></p>
+                  </div>
+                </div>
+
+                <div class="pp-viewer-bar">
+                  <p class="pp-viewer-hint">
+                    下の枠は評価時に取得したページ全体のスクリーンショット．枠内を縦にスクロールできる．
+                  </p>
+                  <button type="button" class="pp-toggle" data-mode="shot">ライブ埋め込みに切替</button>
+                </div>
+
+                <div class="pp-viewer">
+                  <div class="pp-viewer-shot">
+                    <img src="" alt="" loading="lazy">
+                  </div>
+                  <iframe title="選択中のProject Page" src="" hidden></iframe>
+                </div>
+              </div>
+
+              <script type="application/json" id="pp-data">[{"slug":"dreambooth-fine-tuning-text-to-image-diffusion-models-for-su-2","url":"https://dreambooth.github.io","year":2023,"title":"DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation","citations":4177,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":3.0,"interactivity":1.0,"qa":0.9199999999999999,"humanRanks":[{"rank":3,"of":10}]},{"slug":"instructpix2pix-learning-to-follow-image-editing-instruction-3","url":"https://timothybrooks.com/instruct-pix2pix/","year":2023,"title":"InstructPix2Pix: Learning To Follow Image Editing Instructions","citations":2948,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":2.0,"qa":0.8550724637681159,"humanRanks":[{"rank":1,"of":10}]},{"slug":"align-your-latents-high-resolution-video-synthesis-with-late-5","url":"https://research.nvidia.com/labs/toronto-ai/VideoLDM/","year":2023,"title":"Align Your Latents: High-Resolution Video Synthesis With Latent Diffusion Models","citations":1635,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":3.0,"qa":0.8533333333333334,"humanRanks":[{"rank":9,"of":10}]},{"slug":"objaverse-a-universe-of-annotated-3d-objects-6","url":"https://objaverse.allenai.org","year":2023,"title":"Objaverse: A Universe of Annotated 3D Objects","citations":1614,"aesthetic":3.6666666666666665,"completeness":3.0,"connectivity":5.0,"interactivity":2.0,"qa":0.5333333333333333,"humanRanks":[{"rank":6,"of":10}]},{"slug":"magic3d-high-resolution-text-to-3d-content-creation-7","url":"https://research.nvidia.com/labs/dir/magic3d/","year":2023,"title":"Magic3D: High-Resolution Text-to-3D Content Creation","citations":1559,"aesthetic":3.0,"completeness":3.0,"connectivity":3.0,"interactivity":1.0,"qa":0.43999999999999995,"humanRanks":[{"rank":9,"of":10}]},{"slug":"imagebind-one-embedding-space-to-bind-them-all-8","url":"https://imagebind.metademolab.com/","year":2023,"title":"ImageBind: One Embedding Space To Bind Them All","citations":1515,"aesthetic":4.0,"completeness":3.0,"connectivity":4.0,"interactivity":1.0,"qa":0.6533333333333333,"humanRanks":[{"rank":4,"of":10}]},{"slug":"imagic-text-based-real-image-editing-with-diffusion-models-9","url":"https://imagic-editing.github.io/","year":2023,"title":"Imagic: Text-Based Real Image Editing With Diffusion Models","citations":1455,"aesthetic":4.333333333333333,"completeness":4.0,"connectivity":4.0,"interactivity":1.0,"qa":0.7200000000000001,"humanRanks":[{"rank":3,"of":10}]},{"slug":"multi-concept-customization-of-text-to-image-diffusion-11","url":"https://www.cs.cmu.edu/~custom-diffusion","year":2023,"title":"Multi-Concept Customization of Text-to-Image Diffusion","citations":1286,"aesthetic":2.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":3.0,"qa":0.8266666666666667,"humanRanks":[{"rank":7,"of":10}]},{"slug":"null-text-inversion-for-editing-real-images-using-guided-dif-12","url":"https://null-text-inversion.github.io/","year":2023,"title":"NULL-Text Inversion for Editing Real Images Using Guided Diffusion Models","citations":1285,"aesthetic":3.0,"completeness":4.0,"connectivity":3.0,"interactivity":1.0,"qa":0.88,"humanRanks":[{"rank":9,"of":10}]},{"slug":"maple-multi-modal-prompt-learning-14","url":"https://muzairkhattak.github.io/multimodal-prompt-learning/","year":2023,"title":"MaPLe: Multi-Modal Prompt Learning","citations":1041,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":3.0,"interactivity":2.0,"qa":0.9333333333333332,"humanRanks":[{"rank":6,"of":10}]},{"slug":"plug-and-play-diffusion-features-for-text-driven-image-to-im-15","url":"https://pnp-diffusion.github.io/","year":2023,"title":"Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation","citations":1032,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":1.0,"qa":0.4666666666666666,"humanRanks":[{"rank":7,"of":10}]},{"slug":"k-planes-explicit-radiance-fields-in-space-time-and-appearan-19","url":"https://sarafridov.github.io/K-Planes/","year":2023,"title":"K-Planes: Explicit Radiance Fields in Space, Time, and Appearance","citations":915,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":3.0,"qa":0.88,"humanRanks":[{"rank":8,"of":10}]},{"slug":"gligen-open-set-grounded-text-to-image-generation-20","url":"https://gligen.github.io/","year":2023,"title":"GLIGEN: Open-Set Grounded Text-to-Image Generation","citations":897,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":2.0,"qa":0.6,"humanRanks":[{"rank":4,"of":10}]},{"slug":"cddfuse-correlation-driven-dual-branch-feature-decomposition-65","url":"https://github.com/Zhaozixiang1228/MMIF-CDDFuse","year":2023,"title":"CDDFuse: Correlation-Driven Dual-Branch Feature Decomposition for Multi-Modality Image Fusion","citations":756,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.6666666666666666,"humanRanks":[{"rank":7,"of":10}]},{"slug":"hexplane-a-fast-representation-for-dynamic-scenes-66","url":"https://caoang327.github.io/HexPlane/","year":2023,"title":"HexPlane: A Fast Representation for Dynamic Scenes","citations":731,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":5.0,"interactivity":4.0,"qa":0.7599999999999999,"humanRanks":[{"rank":5,"of":6}]},{"slug":"open-vocabulary-semantic-segmentation-with-mask-adapted-clip-68","url":"https://jeff-liangf.github.io/projects/ovseg/","year":2023,"title":"Open-Vocabulary Semantic Segmentation With Mask-Adapted CLIP","citations":718,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":3.0,"qa":0.5866666666666667,"humanRanks":[{"rank":3,"of":6}]},{"slug":"improved-baselines-with-visual-instruction-tuning-21","url":"https://llava-vl.github.io","year":2024,"title":"Improved Baselines with Visual Instruction Tuning","citations":5077,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":5.0,"interactivity":3.0,"qa":0.9733333333333333,"humanRanks":[{"rank":10,"of":10}]},{"slug":"mmmu-a-massive-multi-discipline-multimodal-understanding-and-22","url":"https://mmmu-benchmark.github.io/","year":2024,"title":"MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI","citations":2102,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.8133333333333334,"humanRanks":[{"rank":1,"of":10}]},{"slug":"dust3r-geometric-3d-vision-made-easy-23","url":"https://europe.naverlabs.com/research/publications/dust3r-geometric-3d-vision-made-easy/","year":2024,"title":"DUSt3R: Geometric 3D Vision Made Easy","citations":1400,"aesthetic":2.6666666666666665,"completeness":3.0,"connectivity":4.0,"interactivity":4.0,"qa":0.36000000000000004,"humanRanks":[{"rank":9,"of":10}]},{"slug":"vbench-comprehensive-benchmark-suite-for-video-generative-mo-24","url":"https://vchitect.github.io/VBench-project/","year":2024,"title":"VBench: Comprehensive Benchmark Suite for Video Generative Models","citations":1390,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.5733333333333334,"humanRanks":[{"rank":6,"of":10}]},{"slug":"mvbench-a-comprehensive-multi-modal-video-understanding-benc-25","url":"https://github.com/OpenGVLab/Ask-Anything/tree/main/video_chat2","year":2024,"title":"MVBench: A Comprehensive Multi-modal Video Understanding Benchmark","citations":1101,"aesthetic":3.0,"completeness":3.0,"connectivity":3.0,"interactivity":4.0,"qa":0.9199999999999999,"humanRanks":[{"rank":5,"of":10}]},{"slug":"yolo-world-real-time-open-vocabulary-object-detection-26","url":"https://wondervictor.github.io/","year":2024,"title":"YOLO-World: Real-Time Open-Vocabulary Object Detection","citations":839,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":2.0,"qa":0.8266666666666667,"humanRanks":[{"rank":6,"of":10}]},{"slug":"sugar-surface-aligned-gaussian-splatting-for-efficient-3d-me-29","url":"https://anttwo.github.io/sugar/","year":2024,"title":"SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering","citations":768,"aesthetic":3.3333333333333335,"completeness":5.0,"connectivity":4.0,"interactivity":1.0,"qa":0.64,"humanRanks":[{"rank":8,"of":10}]},{"slug":"scaffold-gs-structured-3d-gaussians-for-view-adaptive-render-30","url":"https://city-super.github.io/scaffold-gs/","year":2024,"title":"Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering","citations":768,"aesthetic":4.0,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.0,"humanRanks":[{"rank":2,"of":10}]},{"slug":"mip-splatting-alias-free-3d-gaussian-splatting-31","url":"https://niujinshuchong.github.io/mip-splatting/","year":2024,"title":"Mip-Splatting: Alias-free 3D Gaussian Splatting","citations":766,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":5.0,"interactivity":4.0,"qa":0.5599999999999999,"humanRanks":[{"rank":2,"of":10}]},{"slug":"spatialvlm-endowing-vision-language-models-with-spatial-reas-32","url":"https://spatial-vlm.github.io/","year":2024,"title":"SpatialVLM: Endowing Vision-Language Models with Spatial Reasoning Capabilities","citations":765,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":2.0,"qa":0.9466666666666667,"humanRanks":[{"rank":1,"of":10}]},{"slug":"splatam-splat-track-map-3d-gaussians-for-dense-rgb-d-slam-33","url":"https://spla-tam.github.io/","year":2024,"title":"SplaTAM: Splat Track & Map 3D Gaussians for Dense RGB-D SLAM","citations":594,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.6933333333333334,"humanRanks":[{"rank":2,"of":10}]},{"slug":"repvit-revisiting-mobile-cnn-from-vit-perspective-34","url":"https://github.com/THU-MIG/RepViT","year":2024,"title":"RepViT: Revisiting Mobile CNN From ViT Perspective","citations":584,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.96,"humanRanks":[{"rank":10,"of":10}]},{"slug":"gaussian-splatting-slam-35","url":"https://rmurai.co.uk/projects/GaussianSplattingSLAM/","year":2024,"title":"Gaussian Splatting SLAM","citations":564,"aesthetic":2.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.6533333333333333,"humanRanks":[{"rank":4,"of":10}]},{"slug":"gs-slam-dense-visual-slam-with-3d-gaussian-splatting-37","url":"https://gs-slam.github.io/","year":2024,"title":"GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting","citations":455,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":3.0,"interactivity":1.0,"qa":0.8666666666666667,"humanRanks":[{"rank":10,"of":10}]},{"slug":"v-guided-visual-search-as-a-core-mechanism-in-multimodal-llm-38","url":"https://vstar-seal.github.io/","year":2024,"title":"V?: Guided Visual Search as a Core Mechanism in Multimodal LLMs","citations":454,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":2.0,"qa":0.9866666666666667,"humanRanks":[{"rank":10,"of":10}]},{"slug":"langsplat-3d-language-gaussian-splatting-39","url":"https://langsplat.github.io/","year":2024,"title":"LangSplat: 3D Language Gaussian Splatting","citations":453,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.8133333333333334,"humanRanks":[{"rank":5,"of":10}]},{"slug":"ego-exo4d-understanding-skilled-human-activity-from-first-an-40","url":"https://ego-exo4d-data.org","year":2024,"title":"Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives","citations":438,"aesthetic":3.6666666666666665,"completeness":3.0,"connectivity":3.0,"interactivity":3.0,"qa":0.36000000000000004,"humanRanks":[{"rank":10,"of":10}]},{"slug":"compact-3d-gaussian-representation-for-radiance-field-69","url":"https://maincold2.github.io/c3dgs/","year":2024,"title":"Compact 3D Gaussian Representation for Radiance Field","citations":434,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":2.0,"qa":0.8933333333333332,"humanRanks":[{"rank":4,"of":6}]},{"slug":"rlhf-v-towards-trustworthy-mllms-via-behavior-alignment-from-71","url":"https://github.com/RLHF-V/RLHF-V","year":2024,"title":"RLHF-V: Towards Trustworthy MLLMs via Behavior Alignment from Fine-grained Correctional Human Feedback","citations":427,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.7733333333333334,"humanRanks":[{"rank":9,"of":10}]},{"slug":"feature-3dgs-supercharging-3d-gaussian-splatting-to-enable-d-73","url":"https://feature-3dgs.github.io/","year":2024,"title":"Feature 3DGS: Supercharging 3D Gaussian Splatting to Enable Distilled Feature Fields","citations":421,"aesthetic":3.6666666666666665,"completeness":5.0,"connectivity":3.0,"interactivity":3.0,"qa":0.9466666666666667,"humanRanks":[{"rank":3,"of":10}]},{"slug":"structured-3d-latents-for-scalable-and-versatile-3d-generati-41","url":"https://github.com/microsoft/TRELLIS","year":2025,"title":"Structured 3D Latents for Scalable and Versatile 3D Generation","citations":625,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.9733333333333333,"humanRanks":[{"rank":6,"of":10}]},{"slug":"continuous-3d-perception-model-with-persistent-state-42","url":"https://cut3r.github.io/","year":2025,"title":"Continuous 3D Perception Model with Persistent State","citations":417,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.64,"humanRanks":[{"rank":4,"of":10}]},{"slug":"omnigen-unified-image-generation-44","url":"https://github.com/VectorSpaceLab/OmniGen","year":2025,"title":"OmniGen: Unified Image Generation","citations":353,"aesthetic":3.0,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.7866666666666666,"humanRanks":[{"rank":6,"of":6}]},{"slug":"from-slow-bidirectional-to-fast-autoregressive-video-diffusi-46","url":"https://causvid.github.io","year":2025,"title":"From Slow Bidirectional to Fast Autoregressive Video Diffusion Models","citations":249,"aesthetic":3.0,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.8533333333333334,"humanRanks":[{"rank":8,"of":10}]},{"slug":"depthsplat-connecting-gaussian-splatting-and-depth-47","url":"https://haofeixu.github.io/depthsplat/","year":2025,"title":"DepthSplat: Connecting Gaussian Splatting and Depth","citations":215,"aesthetic":3.3333333333333335,"completeness":5.0,"connectivity":3.0,"interactivity":4.0,"qa":0.7866666666666667,"humanRanks":[{"rank":3,"of":10}]},{"slug":"videotree-adaptive-tree-based-video-representation-for-llm-r-49","url":"https://videotree2024.github.io/","year":2025,"title":"VideoTree: Adaptive Tree-based Video Representation for LLM Reasoning on Long Videos","citations":209,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":1.0,"qa":0.88,"humanRanks":[{"rank":7,"of":10}]},{"slug":"depthcrafter-generating-consistent-long-depth-sequences-for-50","url":"https://depthcrafter.github.io/","year":2025,"title":"DepthCrafter: Generating Consistent Long Depth Sequences for Open-world Videos","citations":201,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.5599999999999999,"humanRanks":[{"rank":3,"of":10}]},{"slug":"video-depth-anything-consistent-depth-estimation-for-super-l-51","url":"https://videodepthanything.github.io/","year":2025,"title":"Video Depth Anything: Consistent Depth Estimation for Super-Long Videos","citations":180,"aesthetic":3.6666666666666665,"completeness":3.0,"connectivity":4.0,"interactivity":5.0,"qa":0.37333333333333335,"humanRanks":[{"rank":5,"of":10}]},{"slug":"wonderworld-interactive-3d-scene-generation-from-a-single-im-53","url":"https://kovenyu.com/wonderworld/","year":2025,"title":"WonderWorld: Interactive 3D Scene Generation from a Single Image","citations":172,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.8266666666666667,"humanRanks":[{"rank":2,"of":10}]},{"slug":"tokenflow-unified-image-tokenizer-for-multimodal-understandi-54","url":"https://bytevisionlab.github.io/TokenFlow/","year":2025,"title":"TokenFlow: Unified Image Tokenizer for Multimodal Understanding and Generation","citations":169,"aesthetic":3.6666666666666665,"completeness":4.0,"connectivity":4.0,"interactivity":2.0,"qa":0.8266666666666667,"humanRanks":[{"rank":2,"of":6}]},{"slug":"transformers-without-normalization-55","url":"https://jiachenzhu.github.io/DyT/","year":2025,"title":"Transformers without Normalization","citations":149,"aesthetic":4.0,"completeness":4.0,"connectivity":3.0,"interactivity":3.0,"qa":0.7599999999999999,"humanRanks":[{"rank":5,"of":10}]},{"slug":"tora-trajectory-oriented-diffusion-transformer-for-video-gen-56","url":"https://ali-videoai.github.io/tora_video/","year":2025,"title":"Tora: Trajectory-oriented Diffusion Transformer for Video Generation","citations":148,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":4.0,"qa":0.7466666666666667,"humanRanks":[{"rank":1,"of":6}]},{"slug":"identity-preserving-text-to-video-generation-by-frequency-de-57","url":"https://pku-yuangroup.github.io/ConsisID","year":2025,"title":"Identity-Preserving Text-to-Video Generation by Frequency Decomposition","citations":144,"aesthetic":2.3333333333333335,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":1.0,"humanRanks":[{"rank":8,"of":10}]},{"slug":"motion-prompting-controlling-video-generation-with-motion-tr-58","url":"https://motion-prompting.github.io/","year":2025,"title":"Motion Prompting: Controlling Video Generation with Motion Trajectories","citations":134,"aesthetic":3.0,"completeness":4.0,"connectivity":3.0,"interactivity":5.0,"qa":0.8533333333333334,"humanRanks":[{"rank":1,"of":10}]},{"slug":"magma-a-foundation-model-for-multimodal-ai-agents-59","url":"https://microsoft.github.io/Magma/","year":2025,"title":"Magma: A Foundation Model for Multimodal AI Agents","citations":131,"aesthetic":3.0,"completeness":4.0,"connectivity":4.0,"interactivity":4.0,"qa":0.6666666666666666,"humanRanks":[{"rank":7,"of":10}]},{"slug":"robospatial-teaching-spatial-understanding-to-2d-and-3d-visi-74","url":"https://chanh.ee/RoboSpatial/","year":2025,"title":"RoboSpatial: Teaching Spatial Understanding to 2D and 3D Vision-Language Models for Robotics","citations":128,"aesthetic":3.3333333333333335,"completeness":4.0,"connectivity":3.0,"interactivity":1.0,"qa":0.7600000000000001,"humanRanks":[{"rank":1,"of":10}]},{"slug":"llava-critic-learning-to-evaluate-multimodal-models-76","url":"https://llava-vl.github.io/blog/2024-10-03-llava-critic/","year":2025,"title":"LLaVA-Critic: Learning to Evaluate Multimodal Models","citations":124,"aesthetic":3.0,"completeness":4.0,"connectivity":5.0,"interactivity":2.0,"qa":0.88,"humanRanks":[{"rank":8,"of":10}]},{"slug":"ac3d-analyzing-and-improving-3d-camera-control-in-video-diff-78","url":"https://snap-research.github.io/ac3d/","year":2025,"title":"AC3D: Analyzing and Improving 3D Camera Control in Video Diffusion Transformers","citations":123,"aesthetic":2.6666666666666665,"completeness":4.0,"connectivity":3.0,"interactivity":3.0,"qa":0.4266666666666667,"humanRanks":[{"rank":4,"of":10}]}]</script>
+            </div>
+            <!-- End 評価したPP一覧 -->
 
             <p class="paper2web-reference">
               参照：Y. Chen et al., “Paper2Web: Let’s Make Your Paper Alive!,” arXiv:2510.15842, 2025.
@@ -1135,6 +1583,123 @@
       });
     </script>
     <!-- End 定性評価 -->
+
+
+    <script>
+      // 評価したPP一覧：サムネイル選択 → 点数の差し替え＋ページのプレビュー
+      document.addEventListener('DOMContentLoaded', function () {
+        var root = document.getElementById('pp-explorer');
+        if (!root) return;
+
+        var raw = document.getElementById('pp-data');
+        var data;
+        try { data = JSON.parse(raw.textContent); } catch (e) { return; }
+        if (!data || !data.length) return;
+
+        var thumbs = root.querySelectorAll('.pp-thumb');
+        var metaEl = root.querySelector('.pp-detail-meta');
+        var titleEl = root.querySelector('.pp-detail-title');
+        var openEl = root.querySelector('.pp-open');
+        var shot = root.querySelector('.pp-viewer-shot');
+        var shotImg = shot.querySelector('img');
+        var frame = root.querySelector('.pp-viewer iframe');
+        var toggle = root.querySelector('.pp-toggle');
+
+        // 指標ごとの満点（情報量だけ正答率なので 1）
+        var MAX = { aesthetic: 5, completeness: 5, connectivity: 5, interactivity: 5, qa: 1 };
+
+        function fmt(key, v) {
+          if (v === null || v === undefined) return { text: '—', sub: '', pct: 0 };
+          if (key === 'qa') return { text: (v * 100).toFixed(1), sub: '%', pct: v * 100 };
+          var t = Number.isInteger(v) ? String(v) : v.toFixed(2);
+          return { text: t, sub: '/5', pct: (v / MAX[key]) * 100 };
+        }
+
+        function show(i) {
+          var d = data[i];
+
+          for (var k = 0; k < thumbs.length; k++) {
+            var on = k === i;
+            thumbs[k].classList.toggle('is-active', on);
+            thumbs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+          }
+
+          var bits = ['CVPR ' + d.year];
+          if (d.citations != null) bits.push('引用数 ' + d.citations.toLocaleString());
+          metaEl.textContent = bits.join('　・　');
+          titleEl.textContent = d.title;
+          openEl.href = d.url;
+
+          root.querySelectorAll('.pp-score[data-k]').forEach(function (cell) {
+            var key = cell.getAttribute('data-k');
+            var valEl = cell.querySelector('.pp-score-value');
+            var bar = cell.querySelector('.pp-score-bar span');
+
+            if (key === 'humanRanks') {
+              var hr = d.humanRanks || [];
+              if (!hr.length) {
+                valEl.textContent = '—';
+                cell.querySelector('.pp-score-pending-note').textContent = '';
+                cell.classList.add('is-pending');
+                return;
+              }
+              // 1本だけ2名が評価しているので複数対応にしておく
+              valEl.innerHTML = hr.map(function (x) {
+                return x.rank + ' <small>/ ' + x.of + '位中</small>';
+              }).join('<br>');
+              cell.querySelector('.pp-score-pending-note').textContent =
+                hr.length > 1 ? '2名がそれぞれ順位付け' : '';
+              cell.classList.remove('is-pending');
+              return;
+            }
+
+            var r = fmt(key, d[key]);
+            valEl.innerHTML = r.text + (r.sub ? ' <small>' + r.sub + '</small>' : '');
+            cell.classList.toggle('is-pending', d[key] === null || d[key] === undefined);
+            if (bar) bar.style.setProperty('--v', r.pct + '%');
+          });
+
+          // 表示はスクリーンショットに戻し，前のページの埋め込みは破棄する
+          setMode('shot');
+          frame.src = '';
+          shotImg.src = 'static/images/pp/full/' + d.slug + '.webp';
+          shotImg.alt = d.title + ' のProject Pageのスクリーンショット';
+          shot.scrollTop = 0;
+        }
+
+        function setMode(mode) {
+          var live = mode === 'live';
+          shot.hidden = live;
+          frame.hidden = !live;
+          toggle.setAttribute('data-mode', mode);
+          toggle.textContent = live ? 'スクリーンショットに戻す' : 'ライブ埋め込みに切替';
+        }
+
+        toggle.addEventListener('click', function () {
+          if (toggle.getAttribute('data-mode') === 'live') {
+            setMode('shot');
+            frame.src = '';
+            return;
+          }
+          // 埋め込みを拒否するサイトも多いので，その場合の逃げ道を添える
+          frame.src = data[current()].url;
+          setMode('live');
+        });
+
+        function current() {
+          for (var k = 0; k < thumbs.length; k++) {
+            if (thumbs[k].classList.contains('is-active')) return k;
+          }
+          return 0;
+        }
+
+        thumbs.forEach(function (btn, i) {
+          btn.addEventListener('click', function () { show(i); });
+        });
+
+        show(0);
+      });
+    </script>
 
 
     <!-- Youtube video (commented out - uncomment to enable) -->
