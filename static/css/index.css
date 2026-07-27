@@ -753,6 +753,10 @@ a:focus {
 /* ===== ページ全体のコンテンツ幅の調整（このブロックを消せば元に戻る） ===== */
 .container.is-max-desktop {
   max-width: 1152px;   /* 元は 960px。さらに広くしたければ 1344px などに */
+  /* .hero は display:flex なので この container はフレックスアイテムになる。
+     幅指定がないと fit-content（＝中身の最大幅）にサイズされ，横スクロールさせたい
+     図の min-width に引きずられてスマホ幅で右側がはみ出す。100% で親幅に固定する。 */
+  width: 100%;
 }
 .columns.is-centered > .column.is-four-fifths {
   flex: none;
