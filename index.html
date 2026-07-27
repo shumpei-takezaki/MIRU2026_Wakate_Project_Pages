@@ -74,12 +74,11 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
+  <title>MIRU2026 若手プログラム: わかりやすいプロジェクトページを求めて</title>
 
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/jpeg" href="static/images/logo.jpg">
+  <link rel="apple-touch-icon" href="static/images/logo.jpg">
 
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -242,8 +241,10 @@
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column has-text-centered">
-              <!-- TODO: Replace with your paper title -->
-              <h1 class="title is-1 publication-title">MIRU若手 発表資料・プロジェクト公開班 (仮）​</h1>
+              <h1 class="title is-1 publication-title">
+                <img src="static/images/logo.jpg" alt="ロゴ" style="max-width: 72px; vertical-align: middle;">
+                わかりやすいプロジェクトページを求めて
+              </h1>
               <div class="is-size-5 publication-authors">
                 <!-- Personal links are OFF by default. To enable a link, uncomment the <a> line and remove the plain name line below it. -->
                 <span class="author-block">
@@ -262,8 +263,7 @@
                   菅谷 友稀<sup>4</sup>,
                 </span>
                 <span class="author-block">
-                  <!-- <a href="TAKEZAKI_PERSONAL_LINK" target="_blank">竹崎 隼平</a> -->
-                  竹崎 隼平<sup>5</sup>,
+                  <a href="https://shumpei-takezaki.github.io/" target="_blank">竹崎 隼平</a><sup>5</sup>,
                 </span>
                 <span class="author-block">
                   <!-- <a href="YAMAMOTO_PERSONAL_LINK" target="_blank">山本 陸</a> -->
@@ -331,39 +331,29 @@
     </section>
 
 
-    <!-- Teaser video-->
+    <!-- Teaser image-->
     <section class="hero teaser">
       <div class="container is-max-desktop">
         <div class="hero-body">
-          <!-- TODO: Replace with your teaser video -->
-          <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-            <!-- TODO: Add your video file path here -->
-            <source src="static/videos/banner_video.mp4" type="video/mp4">
-          </video>
-          <!-- TODO: Replace with your video description -->
-          <h2 class="subtitle has-text-centered">
-            Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat
-            pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.
-          </h2>
+          <img src="static/images/abstract.png" alt="研究概要図"
+            style="width:100%; max-width:1000px; display:block; margin:0 auto;" loading="lazy" />
         </div>
       </div>
     </section>
-    <!-- End teaser video -->
+    <!-- End teaser image -->
 
     <!-- Paper abstract -->
     <section class="section hero is-light">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">Abstract</h2>
+            <h2 class="title is-3">概要</h2>
             <div class="content has-text-justified">
-              <!-- TODO: Replace with your paper abstract -->
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam
-                tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue,
-                a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac
-                gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed
-                vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+                よい研究も，その魅力が伝わらなければ多くの人には届かない．論文やコードとあわせて公開される「プロジェクトページ」は，研究成果を広く届けるための重要な入口である．一方で，どのようなページが研究の認知や理解につながるのかは，十分に整理されていない．
+              </p>
+              <p>
+                本プロジェクトでは，CVPR 2023–2025の論文を対象に，プロジェクトページの公開と引用数の関係，AIによる自動評価と人間の主観評価の関係，そして「わかりやすさ」を左右するデザイン要因を調査した．その結果，ページを公開している論文は引用数が高い傾向にあり，単に情報を多く載せることよりも，動画や図，レイアウト，図と文章のバランスを工夫することが重要だと分かった．
               </p>
             </div>
           </div>
@@ -1771,6 +1761,25 @@
     </section>
     <!--End paper poster -->
 
+
+    <!-- Acknowledgements -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">謝辞</h2>
+            <div class="content has-text-justified">
+              <p>
+                本研究は<a href="https://sites.google.com/view/miru2026wakate" target="_blank">MIRU2026
+                  若手プログラム</a>における活動の一環として行われました．また，本プログラムを通してメンターとしてご指導いただいた<a href="https://sh1027.github.io/en"
+                  target="_blank">上田栞</a>さんに深く感謝いたします．
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Acknowledgements -->
 
 
     <!--BibTex citation -->
