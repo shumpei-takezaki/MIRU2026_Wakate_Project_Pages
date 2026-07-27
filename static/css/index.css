@@ -1415,6 +1415,227 @@ a:focus {
   font-size: 1.05rem;
 }
 
+/* --- QA カード --- */
+.qa-card {
+  background: #f0f2ff;
+  flex: 0 0 100%;
+  margin-bottom: 1rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.qa-header {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.qa-header--detail      { background: #3B5BDB; }
+.qa-header--understanding { background: #7950F2; }
+
+.qa-sep { opacity: 0.6; }
+
+.qa-body { padding: 1rem 1rem 0.5rem; }
+
+.qa-question-area { margin-bottom: 1rem; }
+
+.qa-question-en {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.2rem;
+}
+
+.qa-question-ja {
+  color: #888;
+  font-size: 0.78rem;
+  margin: 0;
+}
+
+.qa-choices { border-radius: 6px; overflow: hidden; }
+
+.qa-choices-header,
+.qa-choice {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 3.5rem 3.5rem 3.5rem;
+}
+
+.qa-choices-header {
+  padding: 0.25rem 0.75rem;
+}
+
+.qa-model-label {
+  color: #999;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.qa-choice {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.5rem 0.75rem;
+}
+
+.qa-choice--correct .qa-choice-content {
+  background: #f0fdf4;
+  border: 2px solid #4ade80;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  margin-left: -0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+}
+
+.qa-choice-content { min-width: 0; }
+
+.qa-choice-en {
+  color: #1a1a2e;
+  font-size: 0.88rem;
+  margin: 0 0 0.1rem;
+}
+
+.qa-choice-en--correct {
+  color: #16a34a;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin: 0 0 0.1rem;
+}
+
+.qa-choice-ja {
+  color: #888;
+  font-size: 0.72rem;
+  margin: 0;
+}
+
+.qa-model-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qa-badge {
+  border-radius: 999px;
+  border-width: 1.5px;
+  border-style: solid;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+}
+
+.qa-badge--ok { border-color: #16a34a; color: #16a34a; }
+.qa-badge--ng { border-color: #dc2626; color: #dc2626; }
+.qa-badge--na { border-color: #9ca3af; color: #9ca3af; }
+
+/* ビューア・ナビゲーション */
+.qa-viewer {
+  overflow: visible;
+  position: relative;
+}
+
+.qa-track-clip {
+  overflow: hidden;
+}
+
+.qa-track {
+  display: flex;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.qa-arrow {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(50,50,50,0.12);
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.15s, box-shadow 0.15s;
+  width: 36px;
+  z-index: 1;
+}
+
+.qa-arrow--prev { left: -18px; }
+.qa-arrow--next { right: -18px; }
+
+.qa-arrow:hover:not(:disabled) {
+  box-shadow: 0 3px 10px rgba(50,50,50,0.18);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.qa-arrow:disabled { opacity: 0.3; cursor: default; }
+
+.qa-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 0.8rem;
+  padding: 0 0.5rem;
+}
+
+.qa-dot {
+  background: #d1d5db;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 10px;
+  padding: 0;
+  transition: background 0.15s, transform 0.15s;
+  width: 10px;
+}
+
+.qa-dot:hover { background: #9ca3af; }
+
+.qa-dot--active {
+  background: #3B5BDB;
+  transform: scale(1.4);
+}
+
+/* --- Paper Quiz トグル --- */
+.pp-quiz-toggle {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  transition: background 0.15s;
+  user-select: none;
+}
+
+.pp-quiz-toggle:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.pp-quiz-label {
+  color: inherit;
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.pp-quiz-chevron {
+  display: inline-block;
+  font-size: 0.75em;
+  margin-left: 0.4em;
+  transform: rotate(-90deg);
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+}
+
+.pp-quiz-content {
+  margin-top: 0.5rem;
+}
+
 /* --- サムネイルのピッカー --- */
 .pp-picker {
   border: 1px solid #e2e8f0;

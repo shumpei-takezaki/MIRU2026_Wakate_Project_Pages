@@ -36,6 +36,17 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// Paper Quiz Toggle
+function togglePaperQuiz() {
+  var content = document.getElementById('paper-quiz-content');
+  var toggle = document.getElementById('paper-quiz-toggle');
+  var chevron = document.getElementById('paper-quiz-chevron');
+  var isOpen = !content.hidden;
+  content.hidden = isOpen;
+  toggle.setAttribute('aria-expanded', String(!isOpen));
+  chevron.style.transform = isOpen ? 'rotate(-90deg)' : 'rotate(0deg)';
+}
+
 // Copy BibTeX to clipboard
 function copyBibTeX() {
     const bibtexElement = document.getElementById('bibtex-code');
@@ -131,15 +142,8 @@ $(document).ready(function() {
 		autoplaySpeed: 5000,
     }
 
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-
-    // QAカルーセルだけ自動遷移を無効化
-    carousels.forEach(function(carousel) {
-        if (carousel.element && carousel.element.id === 'p2w-qa-carousel') {
-            carousel.stop();
-        }
-    });
+	// Initialize all div with carousel class (QAカルーセルは hidden 内にあるため除外)
+    var carousels = bulmaCarousel.attach('.carousel:not(#p2w-qa-carousel)', options);
 	
     bulmaSlider.attach();
     

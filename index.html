@@ -1045,49 +1045,3048 @@
 
             <!-- Paper Quiz サブセクション -->
             <div class="pp-explorer">
-              <div class="pp-explorer-heading" style="justify-content:center;">
-                <div class="has-text-centered">
-                  <p class="paper2web-card-kicker">PAPER QUIZ EXAMPLE</p>
-                  <h3>Paper Quizで生成される質問</h3>
-                </div>
+              <div class="pp-explorer-heading pp-quiz-toggle" id="paper-quiz-toggle" onclick="togglePaperQuiz()" style="cursor:pointer;" aria-expanded="false" aria-controls="paper-quiz-content">
+                <p class="pp-quiz-label">Paper Quizで生成される質問の例 <span class="pp-quiz-chevron" id="paper-quiz-chevron">▼</span></p>
               </div>
 
-              <p class="has-text-grey is-size-7 has-text-centered" style="margin-bottom:2rem;">
-                複数のProject Pageを対象に評価を実施．以下は例として
+              <div id="paper-quiz-content" class="pp-quiz-content" hidden>
+              <p class="has-text-grey is-size-7" style="margin-bottom:0.75rem; padding-left:0.75rem;">
                 <a href="https://vulab-ai.github.io/BARD-GS/" target="_blank" rel="noopener" class="has-text-grey" style="text-decoration:underline;">BARD-GS (CVPR 2025)</a>
-                の結果を示す．
+                のプロジェクトページで生成された質問．
               </p>
 
-              <div id="p2w-qa-carousel" class="carousel results-carousel"></div>
+              <div class="qa-viewer">
+              <div class="qa-track-clip">
+              <div class="qa-track">
+              <div class="qa-card" data-qa-index="0">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>タイトル・著者(所属・キーワード含む)</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q1 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">Which institution is Robin Rombach affiliated with?</p>
+                        <p class="qa-question-ja">Robin Rombachはどの機関に所属していますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Stanford University</p>
+            <p class="qa-choice-ja">A. スタンフォード大学</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. LMU Munich</p>
+            <p class="qa-choice-ja">B. LMUミュンヘン</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. University of California, Berkeley</p>
+            <p class="qa-choice-ja">C. カリフォルニア大学バークレー校</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Massachusetts Institute of Technology</p>
+            <p class="qa-choice-ja">D. マサチューセッツ工科大学</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="1">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>タイトル・著者(所属・キーワード含む)</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q2 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">During internships at which company did Andreas, Robin, and Tim perform the work described in the paper?</p>
+                        <p class="qa-question-ja">AndreasとRobin、Timは本論文の研究をどの企業のインターン中に行いましたか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Apple Inc.</p>
+            <p class="qa-choice-ja">A. Apple Inc.</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Meta Platforms</p>
+            <p class="qa-choice-ja">B. Meta Platforms</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. NVIDIA</p>
+            <p class="qa-choice-ja">C. NVIDIA</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Google AI</p>
+            <p class="qa-choice-ja">D. Google AI</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="2">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>研究の動機・課題背景</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q3 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the primary reason video modeling has lagged behind image modeling despite breakthroughs in generative models?</p>
+                        <p class="qa-question-ja">生成モデルの進歩にも関わらず、動画モデリングが画像モデリングに遅れている主な理由は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Significant computational cost and lack of large-scale, general video datasets.</p>
+            <p class="qa-choice-ja">A. 大幅な計算コストと大規模な汎用動画データセットの不足</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Insufficient computing power for video data.</p>
+            <p class="qa-choice-ja">B. 動画データに対する計算能力の不足</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Lack of sophisticated algorithms for video processing.</p>
+            <p class="qa-choice-ja">C. 動画処理のための高度なアルゴリズムの欠如</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Limited interest in video generation applications.</p>
+            <p class="qa-choice-ja">D. 動画生成アプリへの関心の低さ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="3">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>研究の動機・課題背景</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q4 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">One of the real-world problems addressed by the Video LDM is creative content creation using what method?</p>
+                        <p class="qa-question-ja">Video LDMが取り組む現実の課題の一つとして、どの手法によるコンテンツ制作が挙げられますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Manual frame-by-frame animation</p>
+            <p class="qa-choice-ja">A. フレームごとの手動アニメーション</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. 3D rendering engines</p>
+            <p class="qa-choice-ja">B. 3Dレンダリングエンジン</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Style-transfer algorithms</p>
+            <p class="qa-choice-ja">C. スタイル転送アルゴリズム</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Text-to-video modeling</p>
+            <p class="qa-choice-ja">D. テキストから動画へのモデリング</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="4">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>目的・仮説</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q5 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a key insight for efficiently training a video generation model, as presented in the paper?</p>
+                        <p class="qa-question-ja">動画生成モデルを効率的に学習するための重要な洞察として論文で紹介されているものは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Training a diffusion model directly in pixel space from scratch.</p>
+            <p class="qa-choice-ja">A. 拡散モデルをピクセル空間でゼロから直接学習する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Developing entirely new diffusion model architectures for video.</p>
+            <p class="qa-choice-ja">B. 動画用に全く新しい拡散モデルアーキテクチャを開発する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Relying solely on autoregressive transformers for video generation.</p>
+            <p class="qa-choice-ja">C. 動画生成に自己回帰トランスフォーマーのみを使用する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Re-using a pre-trained, fixed image generation model.</p>
+            <p class="qa-choice-ja">D. 事前学習済みの固定画像生成モデルを再利用する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="5">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>目的・仮説</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q6 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">How do the authors propose to transform an LDM image generator into a video generator?</p>
+                        <p class="qa-question-ja">著者らはLDM画像生成器を動画生成器に変換するためにどのような方法を提案していますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. By using larger image datasets for pre-training.</p>
+            <p class="qa-choice-ja">A. 大規模な画像データセットを事前学習に使用する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. By introducing a temporal dimension to the latent space diffusion model and fine-tuning on encoded image sequences.</p>
+            <p class="qa-choice-ja">B. 潜在空間拡散モデルに時間次元を導入し符号化画像シーケンスでFTする</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. By increasing the batch size of image training data.</p>
+            <p class="qa-choice-ja">C. 画像学習データのバッチサイズを増やす</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. By re-training the entire LDM architecture on video data.</p>
+            <p class="qa-choice-ja">D. LDMアーキテクチャ全体を動画データで再学習する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="6">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>データセット・実験材料</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q7 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the resolution and frame rate of the in-house dataset of real driving scene (RDS) videos used in this work?</p>
+                        <p class="qa-question-ja">本研究で使用されたリアル走行シーン（RDS）動画の社内データセットの解像度とフレームレートは？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. 1920×1080 at 60 fps</p>
+            <p class="qa-choice-ja">A. 1920×1080、60fps</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. 512×1024 at up to 30 fps</p>
+            <p class="qa-choice-ja">B. 512×1024、最大30fps</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. 1024×512 at 15 fps</p>
+            <p class="qa-choice-ja">C. 1024×512、15fps</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 720×1280 at 24 fps</p>
+            <p class="qa-choice-ja">D. 720×1280、24fps</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="7">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>データセット・実験材料</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q8 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the total number of videos in the Real Driving Scene (RDS) dataset mentioned?</p>
+                        <p class="qa-question-ja">リアル走行シーン（RDS）データセットの総動画数は何本ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. 100,000 videos</p>
+            <p class="qa-choice-ja">A. 10万本</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. 683,060 videos</p>
+            <p class="qa-choice-ja">B. 683,060本</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. 50,000 videos</p>
+            <p class="qa-choice-ja">C. 5万本</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 1,000,000 videos</p>
+            <p class="qa-choice-ja">D. 100万本</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="8">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>手法(アルゴリズム・モデル構造・処理フロー)</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q9 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What component of the image LDM remains fixed while only the parameters of the temporal layers are optimized during fine-tuning?</p>
+                        <p class="qa-question-ja">ファインチューニング中に時間層のパラメータのみ最適化される際、画像LDMのどのコンポーネントが固定されたままですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. The spatial layers of the image backbone</p>
+            <p class="qa-choice-ja">A. 画像バックボーンの空間層</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. The latent space dimensions</p>
+            <p class="qa-choice-ja">B. 潜在空間の次元</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. The noise schedule parameters</p>
+            <p class="qa-choice-ja">C. ノイズスケジュールパラメータ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. The entire decoder module</p>
+            <p class="qa-choice-ja">D. デコーダモジュール全体</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="9">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>手法(アルゴリズム・モデル構造・処理フロー)</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q10 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What are the two different kinds of temporal mixing layers implemented in the Video LDM?</p>
+                        <p class="qa-question-ja">Video LDMに実装されている2種類の時間混合層とは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Spatial convolution and recurrent networks</p>
+            <p class="qa-choice-ja">A. 空間畳み込みと再帰型ネットワーク</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. Temporal attention and residual blocks based on 3D convolutions</p>
+            <p class="qa-choice-ja">B. 時間的アテンションと3D畳み込みに基づく残差ブロック</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Gated recurrent units and long short-term memory</p>
+            <p class="qa-choice-ja">C. ゲート付き再帰ユニットとLSTM</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Fully connected layers and self-attention</p>
+            <p class="qa-choice-ja">D. 全結合層と自己アテンション</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="10">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>パラメータ・ハイパーパラメータ</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q11 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the guidance scale used for the Text-to-Video LDM keyframes model during sampling?</p>
+                        <p class="qa-question-ja">テキストから動画へのLDMキーフレームモデルのサンプリング時のガイダンススケールは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. 8.0</p>
+            <p class="qa-choice-ja">A. 8.0</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. 5.0</p>
+            <p class="qa-choice-ja">B. 5.0</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. 1.0</p>
+            <p class="qa-choice-ja">C. 1.0</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 2.0</p>
+            <p class="qa-choice-ja">D. 2.0</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="11">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>パラメータ・ハイパーパラメータ</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q12 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the number of diffusion steps used for the Diffusion Setup in the Driving (Video) LDM?</p>
+                        <p class="qa-question-ja">Driving Video LDMの拡散セットアップで使用される拡散ステップ数は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. 500</p>
+            <p class="qa-choice-ja">A. 500</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. 250</p>
+            <p class="qa-choice-ja">B. 250</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. 1000</p>
+            <p class="qa-choice-ja">C. 1000</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 2000</p>
+            <p class="qa-choice-ja">D. 2000</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="12">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>評価指標・基準</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q13 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What metric is used for frame-wise evaluation of the models?</p>
+                        <p class="qa-question-ja">モデルのフレームごとの評価に使用される指標は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Peak Signal-to-Noise Ratio (PSNR)</p>
+            <p class="qa-choice-ja">A. ピーク信号対雑音比（PSNR）</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. Fréchet Inception Distance (FID)</p>
+            <p class="qa-choice-ja">B. フレシェ開始距離（FID）</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Mean Squared Error (MSE)</p>
+            <p class="qa-choice-ja">C. 平均二乗誤差（MSE）</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Structural Similarity Index (SSIM)</p>
+            <p class="qa-choice-ja">D. 構造的類似度指標（SSIM）</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="13">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>評価指標・基準</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q14 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">According to the text, for what specific aspect is human evaluation used, apart from quantitative metrics?</p>
+                        <p class="qa-question-ja">定量的指標以外に人間評価が使用される特定の側面は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Computational efficiency</p>
+            <p class="qa-choice-ja">A. 計算効率</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Model complexity</p>
+            <p class="qa-choice-ja">B. モデルの複雑さ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Training convergence speed</p>
+            <p class="qa-choice-ja">C. 学習の収束速度</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Realism of generated videos</p>
+            <p class="qa-choice-ja">D. 生成動画のリアリティ</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="14">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>定量的な結果(表・グラフ中の数値)</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q15 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the FVD score obtained by 'Ours (cond.)' when compared with LVG on RDS, as shown in Table 1?</p>
+                        <p class="qa-question-ja">表1に示されるRDS上でのLVGとの比較における「Ours (cond.)」のFVDスコアは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. 356</p>
+            <p class="qa-choice-ja">A. 356</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. 478</p>
+            <p class="qa-choice-ja">B. 478</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. 389</p>
+            <p class="qa-choice-ja">C. 389</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 534.17</p>
+            <p class="qa-choice-ja">D. 534.17</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="15">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>定量的な結果(表・グラフ中の数値)</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q16 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">For the 'Video discriminator only' method in decoder fine-tuning, what is the Reconstruction FVD score?</p>
+                        <p class="qa-question-ja">デコーダFTの「Video discriminator only」手法の再構成FVDスコアはいくつですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. 9.04</p>
+            <p class="qa-choice-ja">A. 9.04</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. 32.94</p>
+            <p class="qa-choice-ja">B. 32.94</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. 51.01</p>
+            <p class="qa-choice-ja">C. 51.01</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 9.17</p>
+            <p class="qa-choice-ja">D. 9.17</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="16">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>定性的な知見・図表の説明</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q17 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What does Figure 2, 'Temporal Video Fine-Tuning', primarily illustrate?</p>
+                        <p class="qa-question-ja">図2「Temporal Video Fine-Tuning」が主に示しているのは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. How pre-trained image diffusion models are turned into temporally consistent video generators.</p>
+            <p class="qa-choice-ja">A. 事前学習済み画像拡散モデルが時間的に一貫した動画生成器に変換される方法</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. The impact of hyperparameter tuning on video quality.</p>
+            <p class="qa-choice-ja">B. ハイパーパラメータチューニングが動画品質に与える影響</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. The process of generating key frames for long videos.</p>
+            <p class="qa-choice-ja">C. 長動画のキーフレーム生成プロセス</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. The architecture of the spatial layers in the LDM.</p>
+            <p class="qa-choice-ja">D. LDMの空間層のアーキテクチャ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="17">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>定性的な知見・図表の説明</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q18 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What does Figure 1, the video LDM samples, demonstrate regarding the model's capabilities?</p>
+                        <p class="qa-question-ja">図1のVideo LDMサンプルはモデルの何の能力を示していますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Both text-to-video generation and real driving scene video generation.</p>
+            <p class="qa-choice-ja">A. テキストから動画への生成とリアル走行シーン動画生成の両方</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. The computational cost savings of the LDM paradigm.</p>
+            <p class="qa-choice-ja">B. LDMパラダイムによる計算コスト削減</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Only real driving scene video generation.</p>
+            <p class="qa-choice-ja">C. リアル走行シーン動画生成のみ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Only text-to-video generation.</p>
+            <p class="qa-choice-ja">D. テキストから動画への生成のみ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="18">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>比較実験・アブレーション結果</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q19 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">Which ablation study result indicates a significant degradation in both FID and FVD when compared to the Video LDM?</p>
+                        <p class="qa-question-ja">FIDとFVDの両方でVideo LDMより大幅な劣化を示すアブレーション研究の結果はどれですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. End-to-End LDM</p>
+            <p class="qa-choice-ja">A. End-to-End LDM</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Ours (context-guided)</p>
+            <p class="qa-choice-ja">B. Ours (context-guided)</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Attention-only</p>
+            <p class="qa-choice-ja">C. Attention-only</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Pixel-baseline</p>
+            <p class="qa-choice-ja">D. Pixel-baseline</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="19">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>比較実験・アブレーション結果</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q20 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What key finding resulted from comparing video fine-tuned pixel-space upsampler with independent frame-wise image upsampling?</p>
+                        <p class="qa-question-ja">動画FTされたアップサンプラーと独立したフレームごとのアップサンプリングを比較した重要な発見は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Pixel-space upsampling is always superior to latent space upsampling.</p>
+            <p class="qa-choice-ja">A. ピクセル空間アップサンプリングは常に潜在空間より優れている</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. Temporal alignment of the upsampler is crucial for high performance.</p>
+            <p class="qa-choice-ja">B. アップサンプラーの時間的整合性は高いパフォーマンスに不可欠</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. FID was significantly affected by temporal alignment.</p>
+            <p class="qa-choice-ja">C. FIDは時間的整合性によって大きく影響された</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Independent upsampling significantly improved FVD.</p>
+            <p class="qa-choice-ja">D. 独立したアップサンプリングはFVDを大幅に改善した</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="20">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>結論・貢献・示唆</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q21 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is one of the key design choices of the presented Video Latent Diffusion Models?</p>
+                        <p class="qa-question-ja">提示されたVideo Latent Diffusion Modelsの主要な設計選択の一つは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. To use only pixel-space diffusion models for all video generation tasks.</p>
+            <p class="qa-choice-ja">A. 全動画生成タスクにピクセル空間拡散モデルのみを使用する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. To solely rely on new, untried diffusion model architectures.</p>
+            <p class="qa-choice-ja">B. 新しい未試行の拡散モデルアーキテクチャのみに依存する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. To build on pre-trained image diffusion models and turn them into video generators by temporally video fine-tuning them.</p>
+            <p class="qa-choice-ja">C. 事前学習済み画像拡散モデルを基に時間的動画FTで動画生成器に変換する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. To forego high-resolution video generation in favor of computational efficiency.</p>
+            <p class="qa-choice-ja">D. 計算効率のために高解像度動画生成を断念する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="21">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>結論・貢献・示唆</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q22 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">Apart from high-resolution video generation, what specific application is mentioned as a benefit of Video LDM, particularly in the context of autonomous driving?</p>
+                        <p class="qa-question-ja">高解像度動画生成の他に、自律走行の文脈でVideo LDMの利点として言及されている応用は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Traffic flow prediction</p>
+            <p class="qa-choice-ja">A. 交通流予測</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Autonomous vehicle control</p>
+            <p class="qa-choice-ja">B. 自動運転車制御</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Real-time object detection</p>
+            <p class="qa-choice-ja">C. リアルタイム物体検出</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Serving as simulators in autonomous driving research</p>
+            <p class="qa-choice-ja">D. 自律走行研究のシミュレータとして機能する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="22">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>限界・今後の課題</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q23 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a potential negative ethical implication highlighted regarding enhanced versions of the model achieving higher quality?</p>
+                        <p class="qa-question-ja">モデルの強化版が高品質を達成することで生じる潜在的な否定的倫理的含意は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Difficulty in deployment on mobile devices</p>
+            <p class="qa-choice-ja">A. モバイルデバイスへの展開の難しさ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Increased computational costs</p>
+            <p class="qa-choice-ja">B. 計算コストの増大</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. Potential for generating deceptively real videos for malicious purposes</p>
+            <p class="qa-choice-ja">C. 悪意ある目的のために欺瞞的にリアルな動画を生成する可能性</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Limited artistic expression</p>
+            <p class="qa-choice-ja">D. 芸術的表現の制限</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="23">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>限界・今後の課題</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q24 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">An important direction for future work mentioned is training large-scale generative models with what kind of data?</p>
+                        <p class="qa-question-ja">将来の研究の方向として、どのようなデータで大規模生成モデルを学習させることが重要ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Open-source, unlabeled datasets</p>
+            <p class="qa-choice-ja">A. オープンソースのラベルなしデータセット</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Unlimited, publicly available internet data</p>
+            <p class="qa-choice-ja">B. 無制限の公開インターネットデータ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Strictly synthetic data</p>
+            <p class="qa-choice-ja">C. 厳密に合成されたデータ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Ethically sourced, commercially viable data</p>
+            <p class="qa-choice-ja">D. 倫理的に調達された商業的に実行可能なデータ</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="24">
+                    <div class="qa-header qa-header--detail">
+                      <span>Detail</span>
+                      <span class="qa-sep">│</span>
+                      <span>専門用語・略語の定義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q25 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What does the abbreviation 'H × W' typically refer to in the context of image and video data resolution?</p>
+                        <p class="qa-question-ja">画像・動画データの解像度の文脈で「H×W」という略語は通常何を指しますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Height by Width</p>
+            <p class="qa-choice-ja">A. 高さ×幅</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Horizontal by Vertical</p>
+            <p class="qa-choice-ja">B. 水平×垂直</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Hue by Saturation</p>
+            <p class="qa-choice-ja">C. 色相×彩度</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Height by Weight</p>
+            <p class="qa-choice-ja">D. 高さ×重量</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="25">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>研究分野・背景</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q1 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the primary focus of Latent Diffusion Models (LDMs) in the context of image synthesis?</p>
+                        <p class="qa-question-ja">画像合成の文脈で潜在拡散モデル（LDM）の主な焦点は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Enabling high-quality image synthesis with excessive compute demands.</p>
+            <p class="qa-choice-ja">A. 過剰な計算要求で高品質な画像合成を実現する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Focusing exclusively on low-resolution image generation.</p>
+            <p class="qa-choice-ja">B. 低解像度画像生成のみに集中する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. Training a diffusion model in a compressed lower-dimensional latent space.</p>
+            <p class="qa-choice-ja">C. 圧縮された低次元潜在空間で拡散モデルを学習する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Directly generating images in pixel space without compression.</p>
+            <p class="qa-choice-ja">D. 圧縮なしにピクセル空間で直接画像を生成する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="26">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>研究分野・背景</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q2 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What kind of models currently dominate powerful image generation?</p>
+                        <p class="qa-question-ja">現在強力な画像生成を支配しているモデルの種類は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Only autoregressive transformers.</p>
+            <p class="qa-choice-ja">A. 自己回帰トランスフォーマーのみ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Neural networks focused solely on image classification.</p>
+            <p class="qa-choice-ja">B. 画像分類のみに焦点を当てたニューラルネットワーク</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. A combination of generative adversarial networks, autoregressive transformers, and diffusion models.</p>
+            <p class="qa-choice-ja">C. GAN・自己回帰トランスフォーマー・拡散モデルの組み合わせ</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Primarily generative adversarial networks (GANs).</p>
+            <p class="qa-choice-ja">D. 主に生成的敵対ネットワーク（GAN）</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="27">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>中心的な課題・動機</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q3 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a significant challenge faced by video modeling compared to image domain advancements?</p>
+                        <p class="qa-question-ja">画像ドメインの進歩と比較して動画モデリングが直面する重要な課題は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. The low computational cost associated with training on video data.</p>
+            <p class="qa-choice-ja">A. 動画データ学習に伴う低い計算コスト</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. The significant computational cost and lack of extensive video datasets.</p>
+            <p class="qa-choice-ja">B. 大幅な計算コストと広範な動画データセットの不足</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. The ease of generating high-resolution, long videos with existing methods.</p>
+            <p class="qa-choice-ja">C. 既存手法での高解像度長動画生成の容易さ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. The abundance of large-scale, general, and publicly available video datasets.</p>
+            <p class="qa-choice-ja">D. 大規模・汎用・公開動画データセットの豊富さ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="28">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>中心的な課題・動機</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q4 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is one limitation of efficiently generating long videos using the approach described in Section 3.1?</p>
+                        <p class="qa-question-ja">セクション3.1のアプローチを使って長動画を効率的に生成する際の制限の一つは何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. It is only suitable for generating low-resolution video sequences.</p>
+            <p class="qa-choice-ja">A. 低解像度の動画シーケンスのみに適している</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. It reaches its limits when synthesizing very long videos.</p>
+            <p class="qa-choice-ja">B. 非常に長い動画の合成時に限界に達する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. It requires excessively high frame rates, which are difficult to achieve.</p>
+            <p class="qa-choice-ja">C. 達成困難な過度に高いフレームレートを必要とする</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. It eliminates the need for separate prediction models.</p>
+            <p class="qa-choice-ja">D. 別の予測モデルの必要性を排除する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="29">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主な目的・研究課題</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q5 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the primary objective when converting an image generator into a video generator in this research?</p>
+                        <p class="qa-question-ja">本研究における画像生成器を動画生成器に変換する際の主な目的は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. To solely focus on image generation capabilities without considering temporal consistency.</p>
+            <p class="qa-choice-ja">A. 時間的一貫性を考慮せずに画像生成能力のみに集中する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. To eliminate the need for pre-trained image models entirely.</p>
+            <p class="qa-choice-ja">B. 事前学習済み画像モデルの必要性を完全に排除する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. To reduce the spatial resolution of the generated content.</p>
+            <p class="qa-choice-ja">C. 生成コンテンツの空間解像度を下げる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. To introduce a temporal dimension to the latent space diffusion model and fine-tune on encoded image sequences.</p>
+            <p class="qa-choice-ja">D. 潜在空間拡散モデルに時間次元を導入し符号化画像シーケンスでFTする</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="30">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主な目的・研究課題</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q6 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">Regarding the autoencoder finetuning, what is the purpose of introducing additional temporal layers for the autoencoder's decoder?</p>
+                        <p class="qa-question-ja">オートエンコーダのFTでデコーダに追加の時間層を導入する目的は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. To prevent the autoencoder from being used in latent space.</p>
+            <p class="qa-choice-ja">A. 潜在空間でのオートエンコーダ使用を防ぐ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. To increase the memory requirements of the model.</p>
+            <p class="qa-choice-ja">B. モデルのメモリ要件を増やす</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. To counteract flickering artifacts when encoding and decoding temporally coherent image sequences.</p>
+            <p class="qa-choice-ja">C. 時間的に一貫した画像シーケンスのエンコード・デコード時のフリッカリングに対処する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. To maintain frame independence and eliminate temporal awareness.</p>
+            <p class="qa-choice-ja">D. フレームの独立性を維持し時間的認識を排除する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="31">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主要な貢献・新規性</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q7 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a key contribution of this work regarding pre-trained image diffusion models?</p>
+                        <p class="qa-question-ja">事前学習済み画像拡散モデルに関するこの研究の重要な貢献は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Eliminating the need for any diffusion models in high-resolution video synthesis.</p>
+            <p class="qa-choice-ja">A. 高解像度動画合成での拡散モデルの必要性を排除する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Focusing solely on image super-resolution without video applications.</p>
+            <p class="qa-choice-ja">B. 動画アプリなしに画像超解像のみに集中する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. Leveraging pre-trained image DMs and turning them into video generators by inserting temporal layers.</p>
+            <p class="qa-choice-ja">C. 事前学習済み画像DMを活用し時間層を挿入して動画生成器に変換する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Developing entirely new diffusion models from scratch for video generation.</p>
+            <p class="qa-choice-ja">D. 動画生成用の全く新しい拡散モデルをゼロから開発する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="32">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主要な貢献・新規性</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q8 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What novel application is showcased for the first time using the Video LDM approach?</p>
+                        <p class="qa-question-ja">Video LDMアプローチを使って初めて実証された新しい応用は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Creating static images with temporal layers.</p>
+            <p class="qa-choice-ja">A. 時間層を持つ静止画像の作成</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. Personalised text-to-video generation.</p>
+            <p class="qa-choice-ja">B. 個人化されたテキストから動画への生成</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Training diffusion models with only pixel-space data.</p>
+            <p class="qa-choice-ja">C. ピクセル空間データのみで拡散モデルを学習する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Generating low-resolution videos from text prompts.</p>
+            <p class="qa-choice-ja">D. テキストプロンプトから低解像度動画を生成する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="33">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>手法・ワークフローの概要</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q9 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the method for converting an LDM image generator into a video generator?</p>
+                        <p class="qa-question-ja">LDM画像生成器を動画生成器に変換する方法は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Applying the LDM solely to individual image frames sequentially.</p>
+            <p class="qa-choice-ja">A. LDMを個々の画像フレームに順番に適用するだけ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Training a new LDM entirely from scratch using video data.</p>
+            <p class="qa-choice-ja">B. 動画データを使って新しいLDMをゼロから学習する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. Introducing a temporal dimension to the latent space diffusion model and fine-tuning on encoded image sequences.</p>
+            <p class="qa-choice-ja">C. 潜在空間拡散モデルに時間次元を導入し符号化画像シーケンスでFTする</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Removing spatial layers and replacing them with temporal layers.</p>
+            <p class="qa-choice-ja">D. 空間層を除去して時間層に置き換える</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="34">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>手法・ワークフローの概要</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q10 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">How is the goal of achieving high frame rates addressed in the video synthesis process?</p>
+                        <p class="qa-question-ja">動画合成で高いフレームレートを達成するという目標はどのように対処されますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. By relying solely on low frame rate key frames.</p>
+            <p class="qa-choice-ja">A. 低フレームレートのキーフレームのみに頼る</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. By introducing an additional model to interpolate between given key frames.</p>
+            <p class="qa-choice-ja">B. キーフレーム間を補間する追加モデルを導入する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. By generating all frames at once in a single step.</p>
+            <p class="qa-choice-ja">C. 全フレームを一度に単一ステップで生成する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. By increasing the spatial resolution instead of the temporal resolution.</p>
+            <p class="qa-choice-ja">D. 時間解像度の代わりに空間解像度を上げる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="35">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主要な(数値的)成果とその意義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q11 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What does the user study on Driving Video Synthesis on RDS indicate about the 'Ours (cond.)' method compared to LVG?</p>
+                        <p class="qa-question-ja">RDSでの走行動画合成のユーザ研究はLVGとの比較で「Ours (cond.)」について何を示していますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Both methods achieve equal preference in realism, with no significant difference.</p>
+            <p class="qa-choice-ja">A. 両手法ともリアリティで同等の好みで有意差なし</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. LVG samples are generally preferred over 'Ours (cond.)' in terms of realism.</p>
+            <p class="qa-choice-ja">B. LVGサンプルがOurs (cond.)より一般的に好まれる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. The 'Ours (cond.)' method is preferred in terms of realism by 8% of participants over LVG.</p>
+            <p class="qa-choice-ja">C. Ours (cond.)はLVGより8%の参加者にリアリティで好まれる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Samples from 'Ours (cond.)' are preferred over unconditional samples and LVG samples in terms of realism.</p>
+            <p class="qa-choice-ja">D. Ours (cond.)のサンプルが無条件サンプルとLVGより好まれる</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="36">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主要な(数値的)成果とその意義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q12 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What was the observed impact on FVD and FID when video frames were upsampled independently, rather than with temporal alignment of the upsampler?</p>
+                        <p class="qa-question-ja">時間的整合性なしにフレームを独立してアップサンプリングした場合のFVDとFIDへの影響は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. FVD degraded significantly while FID remained essentially unaffected, showing loss of temporal consistency.</p>
+            <p class="qa-choice-ja">A. FVDは大幅に劣化したがFIDは基本的に影響なく時間的一貫性の損失を示した</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Neither FVD nor FID showed any change, suggesting no impact from temporal alignment.</p>
+            <p class="qa-choice-ja">B. FVDもFIDも変化なく時間的整合性の影響なし</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. FVD improved significantly, while FID degraded, indicating better temporal consistency but worse image quality.</p>
+            <p class="qa-choice-ja">C. FVDは大幅に改善したがFIDは劣化した</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Both FVD and FID improved significantly, indicating better performance.</p>
+            <p class="qa-choice-ja">D. FVDとFIDの両方が大幅に改善した</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="37">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>定性的な知見・具体例</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q13 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What kind of scenarios can a high-resolution video generator trained on in-the-wild driving scenes simulate?</p>
+                        <p class="qa-question-ja">野生の走行シーンで学習された高解像度動画生成器はどのようなシナリオをシミュレートできますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Several different plausible future predictions given an initial frame.</p>
+            <p class="qa-choice-ja">A. 初期フレームが与えられた複数の異なる可能な未来予測</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Only low-resolution, short driving clips.</p>
+            <p class="qa-choice-ja">B. 低解像度の短い走行クリップのみ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Only predetermined, fixed driving scenarios.</p>
+            <p class="qa-choice-ja">C. あらかじめ決められた固定の走行シナリオのみ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Static images of driving environments without motion.</p>
+            <p class="qa-choice-ja">D. 動きのない走行環境の静止画像</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="38">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>定性的な知見・具体例</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q14 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">How does the approach enable a user to create customized driving scenario simulations?</p>
+                        <p class="qa-question-ja">このアプローチはユーザーがカスタマイズされた走行シナリオシミュレーションを作成するためにどのように機能しますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. By providing pre-generated video templates for common scenarios.</p>
+            <p class="qa-choice-ja">A. 一般的なシナリオ用の事前生成動画テンプレートを提供する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. By manually creating a scene composition through specifying bounding boxes for cars and using this as an initialization.</p>
+            <p class="qa-choice-ja">B. 車のバウンディングボックスを指定してシーン構成を手動で作成し初期化として使用する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. By only using existing images from the dataset without any user input.</p>
+            <p class="qa-choice-ja">C. ユーザー入力なしにデータセットの既存画像のみを使用する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. By training a new Video LDM for each desired scenario from scratch.</p>
+            <p class="qa-choice-ja">D. 望ましいシナリオごとに新しいVideo LDMをゼロから学習する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="39">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>応用・意義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q15 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What are two real-world applications focused on in this research?</p>
+                        <p class="qa-question-ja">本研究で焦点を当てている2つの実世界の応用は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Simulation of in-the-wild driving data and creative content creation with text-to-video modeling.</p>
+            <p class="qa-choice-ja">A. 野生の走行データのシミュレーションとテキストから動画へのモデリングによるコンテンツ制作</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Weather forecasting and astronomical simulations.</p>
+            <p class="qa-choice-ja">B. 気象予報と天文シミュレーション</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Financial market prediction and natural language processing.</p>
+            <p class="qa-choice-ja">C. 金融市場予測と自然言語処理</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Medical imaging analysis and robotics control.</p>
+            <p class="qa-choice-ja">D. 医療画像解析とロボティクス制御</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="40">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>応用・意義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q16 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">How does the Video LDM contribute to personalized text-to-video generation?</p>
+                        <p class="qa-question-ja">Video LDMはどのようにして個人化されたテキストから動画への生成に貢献しますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. By limiting generation to generic, non-personalized content.</p>
+            <p class="qa-choice-ja">A. 汎用的な非個人化コンテンツのみに生成を制限する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. By altering the spatial layers for each personalized request.</p>
+            <p class="qa-choice-ja">B. 個人化リクエストごとに空間層を変更する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. By transferring temporal layers trained on one Image LDM backbone to other fine-tuned model checkpoints.</p>
+            <p class="qa-choice-ja">C. ある画像LDMバックボーンで学習した時間層を他のFTモデルチェックポイントに転送する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. By requiring extensive new training data for each personalized item.</p>
+            <p class="qa-choice-ja">D. 個人化された各アイテムに大量の新しい学習データを必要とする</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="41">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>限界・今後の展望</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q17 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a stated limitation of the current synthesized videos generated by the Video LDM?</p>
+                        <p class="qa-question-ja">Video LDMが生成した現在の合成動画の述べられた限界は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. They can only be generated in low resolution.</p>
+            <p class="qa-choice-ja">A. 低解像度でのみ生成できる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. They lack any ethical or safety implications.</p>
+            <p class="qa-choice-ja">B. 倫理的・安全性への影響が全くない</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. They are not indistinguishable from real content yet.</p>
+            <p class="qa-choice-ja">C. まだリアルなコンテンツと区別がつかない状態ではない</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. They are indistinguishable from real content.</p>
+            <p class="qa-choice-ja">D. リアルなコンテンツと区別がつかない</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="42">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>限界・今後の展望</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q18 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is an important direction for future work regarding large-scale generative models?</p>
+                        <p class="qa-question-ja">大規模生成モデルに関する将来の研究の重要な方向性は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. Reducing model size to limit performance.</p>
+            <p class="qa-choice-ja">A. パフォーマンスを制限するためにモデルサイズを縮小する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Avoiding any ethical considerations in model development.</p>
+            <p class="qa-choice-ja">B. モデル開発での倫理的考慮を避ける</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Focusing exclusively on commercially non-viable data.</p>
+            <p class="qa-choice-ja">C. 商業的に実行不可能なデータのみに集中する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. Training with ethically sourced, commercially viable data.</p>
+            <p class="qa-choice-ja">D. 倫理的に調達された商業的に実行可能なデータで学習する</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="43">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>結論・要点</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q19 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is the key design choice of the presented Video Latent Diffusion Models (Video LDMs) for high-resolution video generation?</p>
+                        <p class="qa-question-ja">高解像度動画生成のためのVideo LDMsの主要な設計選択は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Building on pre-trained image diffusion models and temporally video fine-tuning them with alignment layers.</p>
+            <p class="qa-choice-ja">A. 事前学習済み画像拡散モデルを基に整合層で時間的動画FTを行う</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Building new video models entirely from scratch without leveraging existing image models.</p>
+            <p class="qa-choice-ja">B. 既存の画像モデルを活用せずに全く新しい動画モデルをゼロから構築する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Relying solely on pixel-space diffusion models for all video generation tasks.</p>
+            <p class="qa-choice-ja">C. 全動画生成タスクにピクセル空間拡散モデルのみを使用する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Prioritizing computational intensity to ensure high resolution.</p>
+            <p class="qa-choice-ja">D. 高解像度を確保するために計算強度を優先する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="44">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>結論・要点</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q20 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a main conclusion regarding the learned temporal layers in the Video LDM?</p>
+                        <p class="qa-question-ja">Video LDMで学習された時間層に関する主な結論は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. They transfer to different model checkpoints, enabling personalized text-to-video generation.</p>
+            <p class="qa-choice-ja">A. 異なるモデルチェックポイントに転送可能で個人化テキストから動画への生成を可能にする</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. They are highly specific to the initial model and do not generalize.</p>
+            <p class="qa-choice-ja">B. 初期モデルに非常に特有で汎化しない</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. They increase computational cost without significant benefits.</p>
+            <p class="qa-choice-ja">C. 大幅な利益なしに計算コストを増加させる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. They only work with low-resolution video generation tasks.</p>
+            <p class="qa-choice-ja">D. 低解像度の動画生成タスクにのみ機能する</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="45">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>中心的な課題・動機</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q21 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">Why has video modeling lagged behind image domain advancements?</p>
+                        <p class="qa-question-ja">動画モデリングはなぜ画像ドメインの進歩に遅れをとっているのですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">A. Mainly due to the significant computational cost associated with training on video data, and the lack of large-scale, general, and publicly available video datasets.</p>
+            <p class="qa-choice-ja">A. 主に動画データ学習の大幅な計算コストと大規模・汎用・公開動画データセットの不足のため</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Due to insufficient computational cost associated with video data.</p>
+            <p class="qa-choice-ja">B. 動画データに伴う不十分な計算コストのため</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. Because there are no real-world problems that require video generation.</p>
+            <p class="qa-choice-ja">C. 動画生成を必要とする現実世界の問題がないため</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. Because video data is too easy to acquire and process.</p>
+            <p class="qa-choice-ja">D. 動画データの取得と処理が容易すぎるため</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="46">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主要な貢献・新規性</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q22 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">How does the approach leverage off-the-shelf pre-trained image LDMs efficiently?</p>
+                        <p class="qa-question-ja">このアプローチは市販の事前学習済み画像LDMをどのように効率的に活用しますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. By discarding the spatial layers of the pre-trained image LDM.</p>
+            <p class="qa-choice-ja">A. 事前学習済み画像LDMの空間層を廃棄することによって</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. By retraining the entire LDM from scratch for video tasks.</p>
+            <p class="qa-choice-ja">B. 動画タスクのためにLDM全体をゼロから再学習することによって</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. By only needing to train a temporal alignment model in that case.</p>
+            <p class="qa-choice-ja">C. その場合に時間的整合モデルのみを学習することが必要なことによって</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. By using an entirely different architecture for video generation.</p>
+            <p class="qa-choice-ja">D. 動画生成に全く異なるアーキテクチャを使用することによって</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="47">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>手法・ワークフローの概要</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q23 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What physical constraint often dictates that the video upsampler only needs to operate locally for synthesis at very high resolutions?</p>
+                        <p class="qa-question-ja">非常に高い解像度での合成において動画アップサンプラーがローカルにのみ動作する必要がある物理的制約は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. The absence of long-term temporal correlations in upscaling tasks.</p>
+            <p class="qa-choice-ja">A. アップスケーリングタスクにおける長期的時間相関の欠如</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. The inherent difficulty in processing global information at high resolutions.</p>
+            <p class="qa-choice-ja">B. 高解像度でのグローバル情報処理の固有の難しさ</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ng">NG</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. The limited capabilities of pixel-space diffusion models.</p>
+            <p class="qa-choice-ja">C. ピクセル空間拡散モデルの限られた能力</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">D. The need to maintain low training and computational requirements.</p>
+            <p class="qa-choice-ja">D. 低い学習・計算要件を維持する必要性</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="48">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>主要な(数値的)成果とその意義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q24 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">According to the human evaluation on driving video synthesis, how do 'Ours (cond.)' samples compare to 'Ours (uncond.)' samples in terms of realism?</p>
+                        <p class="qa-question-ja">走行動画合成の人間評価によると「Ours (cond.)」は「Ours (uncond.)」とリアリティの観点でどのように比較されますか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. The human evaluation showed no preference between the two methods.</p>
+            <p class="qa-choice-ja">A. 人間評価では2手法間の優位性の差はなかった</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">B. Both methods are equally preferred, indicating no significant difference.</p>
+            <p class="qa-choice-ja">B. 両手法は同等に好まれ有意差なし</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">C. 'Ours (cond.)' samples are preferred over 'Ours (uncond.)' samples by about 7% of participants.</p>
+            <p class="qa-choice-ja">C. Ours (cond.)のサンプルはOurs (uncond.)より約7%の参加者に好まれる</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--na">N/A</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. 'Ours (uncond.)' samples are largely preferred over 'Ours (cond.)' samples.</p>
+            <p class="qa-choice-ja">D. Ours (uncond.)のサンプルはOurs (cond.)より大幅に好まれる</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="qa-card" data-qa-index="49">
+                    <div class="qa-header qa-header--understanding">
+                      <span>Understanding</span>
+                      <span class="qa-sep">│</span>
+                      <span>応用・意義</span>
+                      <span class="qa-sep">│</span>
+                      <span>Q25 / 25</span>
+                    </div>
+                    <div class="qa-body">
+                      <div class="qa-question-area">
+                        <p class="qa-question-en">What is a potential negative implication of enhanced versions of the Video LDM reaching even higher quality?</p>
+                        <p class="qa-question-ja">Video LDMの強化版がより高品質に達することの潜在的な否定的含意は何ですか？</p>
+                      </div>
+                      <div class="qa-choices">
+                        <div class="qa-choices-header">
+                          <div class="qa-choice-content"></div>
+                          <div class="qa-model-cell qa-model-label">4o</div>
+                          <div class="qa-model-cell qa-model-label">Flash</div>
+                          <div class="qa-model-cell qa-model-label">mini</div>
+                        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">A. It might increase the cost of video content creation for digital artists.</p>
+            <p class="qa-choice-ja">A. デジタルアーティストの動画コンテンツ制作コストが増加する可能性</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice qa-choice--correct">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en--correct">B. It could generate videos that appear deceptively real, leading to ethical and safety implications due to malicious use.</p>
+            <p class="qa-choice-ja">B. 欺瞞的にリアルに見える動画を生成し悪意ある使用による倫理的・安全性への影響をもたらす可能性</p>
+          </div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+          <div class="qa-model-cell"><span class="qa-badge qa-badge--ok">OK</span></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">C. It could limit artistic expression to only a few individuals.</p>
+            <p class="qa-choice-ja">C. 芸術的表現を少数の個人のみに制限する可能性</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                        <div class="qa-choice">
+          <div class="qa-choice-content">
+            <p class="qa-choice-en">D. It may reduce the need for autonomous driving simulators.</p>
+            <p class="qa-choice-ja">D. 自律走行シミュレータの必要性を減らす可能性</p>
+          </div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+          <div class="qa-model-cell"></div>
+        </div>
+                      </div>
+                    </div>
+              </div>
+              </div><!-- end qa-track -->
+              </div><!-- end qa-track-clip -->
+              <button class="qa-arrow qa-arrow--prev" id="qa-prev" onclick="qaMove(-1)" disabled aria-label="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+              <button class="qa-arrow qa-arrow--next" id="qa-next" onclick="qaMove(1)" aria-label="next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+              </div><!-- end qa-viewer -->
+              <div class="qa-dots">
+                  <button class="qa-dot qa-dot--active" onclick="qaGoto(0)" aria-label="Q1"></button>
+                  <button class="qa-dot" onclick="qaGoto(1)" aria-label="Q2"></button>
+                  <button class="qa-dot" onclick="qaGoto(2)" aria-label="Q3"></button>
+                  <button class="qa-dot" onclick="qaGoto(3)" aria-label="Q4"></button>
+                  <button class="qa-dot" onclick="qaGoto(4)" aria-label="Q5"></button>
+                  <button class="qa-dot" onclick="qaGoto(5)" aria-label="Q6"></button>
+                  <button class="qa-dot" onclick="qaGoto(6)" aria-label="Q7"></button>
+                  <button class="qa-dot" onclick="qaGoto(7)" aria-label="Q8"></button>
+                  <button class="qa-dot" onclick="qaGoto(8)" aria-label="Q9"></button>
+                  <button class="qa-dot" onclick="qaGoto(9)" aria-label="Q10"></button>
+                  <button class="qa-dot" onclick="qaGoto(10)" aria-label="Q11"></button>
+                  <button class="qa-dot" onclick="qaGoto(11)" aria-label="Q12"></button>
+                  <button class="qa-dot" onclick="qaGoto(12)" aria-label="Q13"></button>
+                  <button class="qa-dot" onclick="qaGoto(13)" aria-label="Q14"></button>
+                  <button class="qa-dot" onclick="qaGoto(14)" aria-label="Q15"></button>
+                  <button class="qa-dot" onclick="qaGoto(15)" aria-label="Q16"></button>
+                  <button class="qa-dot" onclick="qaGoto(16)" aria-label="Q17"></button>
+                  <button class="qa-dot" onclick="qaGoto(17)" aria-label="Q18"></button>
+                  <button class="qa-dot" onclick="qaGoto(18)" aria-label="Q19"></button>
+                  <button class="qa-dot" onclick="qaGoto(19)" aria-label="Q20"></button>
+                  <button class="qa-dot" onclick="qaGoto(20)" aria-label="Q21"></button>
+                  <button class="qa-dot" onclick="qaGoto(21)" aria-label="Q22"></button>
+                  <button class="qa-dot" onclick="qaGoto(22)" aria-label="Q23"></button>
+                  <button class="qa-dot" onclick="qaGoto(23)" aria-label="Q24"></button>
+                  <button class="qa-dot" onclick="qaGoto(24)" aria-label="Q25"></button>
+                  <button class="qa-dot" onclick="qaGoto(25)" aria-label="Q26"></button>
+                  <button class="qa-dot" onclick="qaGoto(26)" aria-label="Q27"></button>
+                  <button class="qa-dot" onclick="qaGoto(27)" aria-label="Q28"></button>
+                  <button class="qa-dot" onclick="qaGoto(28)" aria-label="Q29"></button>
+                  <button class="qa-dot" onclick="qaGoto(29)" aria-label="Q30"></button>
+                  <button class="qa-dot" onclick="qaGoto(30)" aria-label="Q31"></button>
+                  <button class="qa-dot" onclick="qaGoto(31)" aria-label="Q32"></button>
+                  <button class="qa-dot" onclick="qaGoto(32)" aria-label="Q33"></button>
+                  <button class="qa-dot" onclick="qaGoto(33)" aria-label="Q34"></button>
+                  <button class="qa-dot" onclick="qaGoto(34)" aria-label="Q35"></button>
+                  <button class="qa-dot" onclick="qaGoto(35)" aria-label="Q36"></button>
+                  <button class="qa-dot" onclick="qaGoto(36)" aria-label="Q37"></button>
+                  <button class="qa-dot" onclick="qaGoto(37)" aria-label="Q38"></button>
+                  <button class="qa-dot" onclick="qaGoto(38)" aria-label="Q39"></button>
+                  <button class="qa-dot" onclick="qaGoto(39)" aria-label="Q40"></button>
+                  <button class="qa-dot" onclick="qaGoto(40)" aria-label="Q41"></button>
+                  <button class="qa-dot" onclick="qaGoto(41)" aria-label="Q42"></button>
+                  <button class="qa-dot" onclick="qaGoto(42)" aria-label="Q43"></button>
+                  <button class="qa-dot" onclick="qaGoto(43)" aria-label="Q44"></button>
+                  <button class="qa-dot" onclick="qaGoto(44)" aria-label="Q45"></button>
+                  <button class="qa-dot" onclick="qaGoto(45)" aria-label="Q46"></button>
+                  <button class="qa-dot" onclick="qaGoto(46)" aria-label="Q47"></button>
+                  <button class="qa-dot" onclick="qaGoto(47)" aria-label="Q48"></button>
+                  <button class="qa-dot" onclick="qaGoto(48)" aria-label="Q49"></button>
+                  <button class="qa-dot" onclick="qaGoto(49)" aria-label="Q50"></button>
+              </div>
+              </div>
               <script>
-          (function () {
-            var images = [
-              "Detail_Q1_A", "Detail_Q2_A", "Detail_Q3_B", "Detail_Q4_B",
-              "Detail_Q5_C", "Detail_Q6_C", "Detail_Q7_D", "Detail_Q8_D",
-              "Detail_Q9_E", "Detail_Q10_E", "Detail_Q11_F", "Detail_Q12_F",
-              "Detail_Q13_G", "Detail_Q14_G", "Detail_Q15_H", "Detail_Q16_H",
-              "Detail_Q17_I", "Detail_Q18_I", "Detail_Q19_J", "Detail_Q20_J",
-              "Detail_Q21_K", "Detail_Q22_K", "Detail_Q23_L", "Detail_Q24_L",
-              "Detail_Q25_M",
-              "Understanding_Q1_A", "Understanding_Q2_A", "Understanding_Q3_B", "Understanding_Q4_B",
-              "Understanding_Q5_C", "Understanding_Q6_C", "Understanding_Q7_D", "Understanding_Q8_D",
-              "Understanding_Q9_E", "Understanding_Q10_E", "Understanding_Q11_F", "Understanding_Q12_F",
-              "Understanding_Q13_G", "Understanding_Q14_G", "Understanding_Q15_H", "Understanding_Q16_H",
-              "Understanding_Q17_I", "Understanding_Q18_I", "Understanding_Q19_J", "Understanding_Q20_J",
-              "Understanding_Q21_B", "Understanding_Q22_D", "Understanding_Q23_E",
-              "Understanding_Q24_F", "Understanding_Q25_H"
-            ];
-            var carousel = document.getElementById('p2w-qa-carousel');
-            images.forEach(function (name) {
-              var item = document.createElement('div');
-              item.className = 'item';
-              item.innerHTML =
-                '<img src="static/images/p2w_qa/' + name + '.png" alt="' + name + '" style="width:100%;" loading="lazy"/>' +
-                '<p class="has-text-centered" style="margin-top:0.5rem;font-size:0.9rem;">' + name.replace(/_/g, ' ') + '</p>';
-              carousel.appendChild(item);
-            });
-          })();
-          </script>
+              (function () {
+                var track   = document.querySelector('.qa-track');
+                var dots    = document.querySelectorAll('.qa-dot');
+                var total   = dots.length;
+                var current = 0;
+                function goto(idx) {
+                  dots[current].classList.remove('qa-dot--active');
+                  current = idx;
+                  track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                  dots[current].classList.add('qa-dot--active');
+                  document.getElementById('qa-prev').disabled = current === 0;
+                  document.getElementById('qa-next').disabled = current === total - 1;
+                }
+                window.qaMove = function (dir) {
+                  goto(Math.max(0, Math.min(total - 1, current + dir)));
+                };
+                window.qaGoto = goto;
+              })();
+              </script>
+              </div><!-- end paper-quiz-content -->
             </div>
             <!-- End Paper Quiz サブセクション -->
 
