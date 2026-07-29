@@ -828,8 +828,7 @@ a:focus {
   margin: 0 auto 2rem;
 }
 
-.paper2web-lead a,
-.paper2web-reference a {
+.paper2web-lead a {
   color: var(--p2w-blue);
   font-weight: 700;
   text-decoration: underline;
@@ -1371,13 +1370,6 @@ a:focus {
 
 .paper2web-takeaway strong {
   color: var(--p2w-navy);
-}
-
-.paper2web-reference {
-  color: var(--p2w-muted);
-  font-size: 0.68rem;
-  line-height: 1.6;
-  margin: 1.1rem 0 0;
 }
 
 
