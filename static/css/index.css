@@ -787,14 +787,11 @@ a:focus {
   position: relative;
 }
 
-.paper2web-kicker,
-.paper2web-card-kicker,
-.paper2web-finding-kicker,
 .paper2web-takeaway-label {
   color: var(--p2w-blue);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.04em;
   margin: 0 0 0.55rem;
 }
 
@@ -1309,10 +1306,6 @@ a:focus {
   right: -70px;
   top: -65px;
   width: 150px;
-}
-
-.paper2web-finding-kicker {
-  color: #93c5fd;
 }
 
 .paper2web-finding-value {
